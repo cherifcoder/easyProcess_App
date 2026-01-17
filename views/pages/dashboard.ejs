@@ -1,0 +1,268 @@
+<div class="row ">
+    <%-include("../partials/btnAjout.ejs") %>
+    <div class="row g-4 mb-4 ps-5 justify-content-center">
+        <div class="col-sm-6 col-lg-3 d-flex">
+            <div class="card border-0 shadow h-100 w-100">
+                <div class="card-body">
+                    <p class="badge bg-primary-subtle text-primary rounded-3 px-3 py-3">
+                        <i class="bi bi-folder fs-3"></i>
+                    </p>
+                    <h3 class="fw-semibold">1,200</h3>
+                    <h6 class="text-muted">Nbr total de demande</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3 d-flex">
+            <div class="card border-0 shadow h-100 w-100">
+                <div class="card-body">
+                    <p class="badge bg-success-subtle text-success rounded-3 px-3 py-3">
+                        <i class="bi bi-check-circle fs-3"></i>
+                    </p>
+                    <h3 class="fw-semibold">1,200</h3>
+                    <h6 class="text-muted">Demandes validees</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3 d-flex">
+            <div class="card border-0 shadow h-100 w-100">
+                <div class="card-body">
+                    <p class="badge bg-warning-subtle text-warning rounded-3 px-3 py-3">
+                        <i class="bi bi-clock fs-3"></i>
+                    </p>
+                    <h3 class="fw-semibold">1,200</h3>
+                    <h6 class="text-muted">Demandes en cours de traitement</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3 d-flex">
+            <div class="card border-0 shadow h-100 w-100">
+                <div class="card-body">
+                    <p class="badge bg-danger-subtle text-danger rounded-3 px-3 py-3">
+                        <i class="bi bi-x-circle fs-3"></i>
+                    </p>
+                    <h3 class="fw-semibold">1,200</h3>
+                    <h6 class="text-muted">Demandes Rejetees</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="  ">
+    
+    <div class="table-responsive  border-0 shadow p-5">
+        <h2 class="pb-3">Demandes recentes</h2>
+        <table class="table   table-hover">
+            <thead class="bg-dark text-white">
+                <th>#</th>
+                <th>Etudiant </th>
+                <th>filere</th>
+                <th>Demande</th>
+                <th>Date </th>
+                <th>Statut </th>
+                <th class="">Action </th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Mohamed Diarra</td>
+                    <td>Genie Informatique</td>
+                    <td>Releve de note</td>
+                    <td>22-12-2025</td>
+                    <td>
+                        <span class="badge bg-success-subtle text-success">
+                            Validee
+                        </span>
+                    </td>
+                    <td class="d-flex gap-3">
+                        <a href="" class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
+                            <i class="bi bi-eye fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
+                            <i class="bi bi-pen fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                            <i class="bi bi-check2-circle fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                            <i class="bi bi-x-circle fs-4"></i>
+                        </a>
+
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Mohamed Diarra</td>
+                    <td>Genie Informatique</td>
+                    <td>Releve de note</td>
+                    <td>22-12-2025</td>
+                    <td>
+                        <span class="badge bg-warning-subtle text-warning">
+                            en attente
+                        </span>
+                    </td>
+                    <td class="d-flex gap-3">
+                        <a href="" class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
+                            <i class="bi bi-eye fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
+                            <i class="bi bi-pen fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                            <i class="bi bi-check2-circle fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                            <i class="bi bi-x-circle fs-4"></i>
+                        </a>
+
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Mohamed Diarra</td>
+                    <td>Genie Informatique</td>
+                    <td>Releve de note</td>
+                    <td>22-12-2025</td>
+                    <td>
+                        <span class="badge bg-danger-subtle text-danger">
+                            rejetee
+                        </span>
+                    </td>
+                    <td class="d-flex gap-3">
+                        <a href="" class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
+                            <i class="bi bi-eye fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
+                            <i class="bi bi-pen fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                            <i class="bi bi-check2-circle fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                            <i class="bi bi-x-circle fs-4"></i>
+                        </a>
+
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Mohamed Diarra</td>
+                    <td>Genie Informatique</td>
+                    <td>Releve de note</td>
+                    <td>22-12-2025</td>
+                    <td>
+                        <span class="badge bg-primary-subtle text-primary">
+                            nouveau
+                        </span>
+                    </td>
+                    <td class="d-flex gap-3">
+                        <a href="" class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
+                            <i class="bi bi-eye fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
+                            <i class="bi bi-pen fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                            <i class="bi bi-check2-circle fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                            <i class="bi bi-x-circle fs-4"></i>
+                        </a>
+
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Mohamed Diarra</td>
+                    <td>Genie Informatique</td>
+                    <td>Releve de note</td>
+                    <td>22-12-2025</td>
+                    <td>
+                        <span class="badge bg-warning-subtle text-warning">
+                            en attente
+                        </span>
+                    </td>
+                    <td class="d-flex gap-3">
+                        <a href="" class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
+                            <i class="bi bi-eye fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
+                            <i class="bi bi-pen fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                            <i class="bi bi-check2-circle fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                            <i class="bi bi-x-circle fs-4"></i>
+                        </a>
+
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Mohamed Diarra</td>
+                    <td>Genie Informatique</td>
+                    <td>Releve de note</td>
+                    <td>22-12-2025</td>
+                    <td>
+                        <span class="badge bg-success-subtle text-success">
+                            validee
+                        </span>
+                    </td>
+                    <td class="d-flex gap-3">
+                        <a href="" class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
+                            <i class="bi bi-eye fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
+                            <i class="bi bi-pen fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                            <i class="bi bi-check2-circle fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                            <i class="bi bi-x-circle fs-4"></i>
+                        </a>
+
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Mohamed Diarra</td>
+                    <td>Genie Informatique</td>
+                    <td>Releve de note</td>
+                    <td>22-12-2025</td>
+                    <td>
+                        <span class="badge bg-primary-subtle text-primary">
+                            Nouveau
+                        </span>
+                    </td>
+                    <td class="d-flex gap-3">
+                        <a href="" class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
+                            <i class="bi bi-eye fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
+                            <i class="bi bi-pen fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                            <i class="bi bi-check2-circle fs-4"></i>
+                        </a>
+                        <a href="" class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                            <i class="bi bi-x-circle fs-4"></i>
+                        </a>
+
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

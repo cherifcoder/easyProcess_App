@@ -1,0 +1,78 @@
+<div class="row g-3">
+    <div class="form-section-header border-info d-flex justify-content-between">
+        <div class="">
+             <h3 class="fw-bold text-primary">
+            <i class="bi bi-mortarboard-fill fs-1 me-2"></i>Informations sur l'etudiant
+        </h3>
+        </div>
+       
+        <%-include("../partials/btn.ejs") %>
+    </div>
+
+    <!-- Civilité -->
+    <div class="col-md-2">
+        <label class="form-label fw-semibold">Civilité</label>
+        <select name="civilite" id="civilite" class="form-select shadow-sm" required>
+            <option value="" selected disabled class="text-muted">Choisir</option>
+            <option value="M.">M.</option>
+            <option value="Mme">Mme</option>
+            <option value="Mlle">Mlle</option>
+        </select>
+    </div>
+
+    <!-- Nom -->
+    <div class="col-md-3">
+        <label class="form-label fw-semibold">Nom</label>
+        <input type="text" name="nom" id="nom" class="form-control shadow-sm" placeholder="Entrez votre nom" required>
+    </div>
+
+    <!-- Prénom -->
+    <div class="col-md-3">
+        <label class="form-label fw-semibold">Prénom</label>
+        <input type="text" name="prenom" id="prenom" class="form-control shadow-sm" placeholder="Entrez votre prénom"
+            required>
+    </div>
+
+    <!-- Filière -->
+    <div class="col-md-2">
+        <label class="form-label fw-semibold">Filière</label>
+        <select name="filiere" id="filiere" class="form-select shadow-sm" required>
+            <option value="" selected disabled class="text-muted">Choisir une filière</option>
+            <option value="AB">AB</option>
+            <option value="AG">AG</option>
+            <option value="CFA">CFA</option>
+            <option value="3ER">3ER</option>
+            <option value="GI">GI</option>
+            <option value="HT">HT</option>
+            <option value="MA">MA</option>
+            <option value="MC">MC</option>
+        </select>
+    </div>
+
+    <!-- Niveau -->
+    <div class="col-md-2">
+        <label class="form-label fw-semibold">Niveau</label>
+        <select name="niveau" id="niveau" class="form-select shadow-sm" required>
+            <option value="" selected disabled class="text-muted">Niveau</option>
+            <option value="L1">L1</option>
+            <option value="L2">L2</option>
+            <option value="L3">L3</option>
+        </select>
+    </div>
+  <!-- Prénom -->
+  <div class="col-md-2">
+    <label class="form-label fw-semibold">Promotion</label>
+    <input type="number" name="promotion" id="promotion" class="form-control shadow-sm" placeholder="Entrez votre promotion"
+        required min="2015" max="2026" step="1">
+</div>
+    <!-- Matricule -->
+    <div class="col-md-4">
+        <label class="form-label fw-semibold">Numéro matricule</label>
+        <input type="text" name="matricule" id="matricule" class="form-control shadow-sm" placeholder="Numero Matricule"
+            required>
+    </div>
+
+</div>
+<hr class="mx-4">
+
+

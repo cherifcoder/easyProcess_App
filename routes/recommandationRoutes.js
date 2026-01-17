@@ -1,0 +1,17 @@
+const express=require("express")
+const router=express.Router()
+
+const recommandationController=require("../controllers/recommandationController")
+
+
+router.get("/demandes/create/recommandation",(req,res)=>{
+    const local={
+        title:"Gestion des demandes - Creation recommandation",
+        layout:"layouts/main"
+    }
+    res.render("demandes/recommandation",local)
+})
+router.post("/demandes/create/recommandation", recommandationController.createRecommandation)
+
+
+module.exports=router

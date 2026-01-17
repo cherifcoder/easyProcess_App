@@ -1,0 +1,121 @@
+:root {
+    --primary: #021342;
+    --secondary: #9333EA;
+    --accent: #F59E0B;
+    --background: #F9FAFB;
+    --text-main: #111827;
+    --text-muted: #6B7280;
+    --success: #10B981;
+    --danger: #EF4444;
+}
+
+body {
+    font-family: 'Merriweather', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.text-primary {
+    color: var(--primary) !important;
+    border: none !important;
+}
+
+
+.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary) !important;
+}
+
+.btn-primary:hover {
+    transform: scale(1.1);
+    transition: 0.9s;
+    background: linear-gradient(135deg, #021342, #10B981) !important;
+}
+
+.bg-accent {
+    background-color: var(--accent) !important;
+}
+
+.text-accent {
+    color: var(--accent);
+}
+
+.profil {
+    height: 50px;
+    width: 50px;
+}
+
+/* .collapse {
+    transition: width 1.9s;
+} */
+
+.sidebar {
+    height: 100vh;
+    overflow-y: auto;
+
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+.inter-tight {
+    font-family: "Inter Tight", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.inter {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.3rem;
+    letter-spacing: 0.03rem;
+}
+
+
+/* Ajustement du main content */
+.main {
+    margin-left: 16.666667%;
+    /* Largeur équivalente à col-md-2 */
+    width: 83.333333%;
+    min-height: 100vh;
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 768px) {
+
+    .logo {
+        width: 50px;
+        height: 50px;
+    }
+    .sidebar {
+        width: 8.333333%; /* Largeur de la sidebar = 1/12 */
+    }
+    
+    .main {
+        margin-left: 8.333333%; /* Marge pour sidebar de 1 colonne */
+        width: 91.666667%; /* Largeur restante = 11/12 */
+        min-height: 100vh;
+    }
+}
+
+/* Ajustements pour le contenu */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+/* .border-bottom{
+    border: none !important;
+    border-bottom: solid 1px black !important;
+    background: none !important;
+    background: transparent;
+} */
+/* Test dans main-style.css */

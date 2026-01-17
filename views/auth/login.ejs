@@ -1,0 +1,48 @@
+<div class=" container-fluid login-page p-5">
+
+    <div class=" row justify-content-center p-5 rounded-5  ">
+
+        <div
+            class="col-lg-5 col-md-7 col-sm-10 shadow-lg bg-white  p-5  row align-items-center justify-content-center lef order-2 order-md-0 left rounded-start-4">
+            <h2 class="text-center  fw-bold">Se connecter</h2>
+
+            <form action="/login" class="col-md-9 " method="POST">
+                <div class="pb-4">
+                    <label for="login" class="form-label fs-5 px-3">Email</label>
+                    <div class="input-group">
+                        <span class="bg-dark-subtle px-2 align-content-center rounded-start-3" ><i class="text-white fs-3 bi bi-at"></i></span>
+                        <input type="text" class="form-control" placeholder="Votre Email " name="email" id="login">
+                    </div>
+                </div>
+                <div class="pb-4">
+                    <label for="pass" class="form-label fs-5 px-3">Mot de passe</label>
+                    <div class="input-group">
+                        <span class="bg-dark-subtle px-2 align-content-center rounded-start-3" ><i class="text-white fs-3 bi bi-key"></i></span>
+                       <input type="password" class="form-control" placeholder=" Votre mot de passe" name="motDePass" id="pass"> 
+                    </div>
+                    
+                </div>
+                <p class="text-muted small text-center py-1">Pas de compte ?
+                    <span class="fs-6 fw-bold">
+                        <a href="/register" class="text-decoration-none text-primary">Creer un compte</a>
+                    </span>
+                </p>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-lg btn-primary border-0 ">Se connecter</button>
+                </div>
+
+            </form>
+            
+        </div>
+        <div
+            class="col-lg-3 col-md-5 col-sm-10 row p-3 justify-content-center shadow-sm bg-white order-1  order-md-1 right rounded-end-4">
+            <a href="index.html" class="text-center"><img src="/img/logoUSegou.png" class="logo-lg rounded-circle" alt="logo"></a>
+            <div class="">
+                <p class="text-center text-primary fs-4 fw-bold text-uppercase">Bienvenue</p>
+                <p class="lead text-center">Connectez-vous pour accéder à votre espace étudiant, consulter vos
+                    cours, suivre vos demandes administratives et gérer vos informations académiques.</p>
+            </div>
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<form class="bg-white px-4 py-4" method="POST" action="/demandes/diplome/edit/<%=diplome.identifiant%>">
+    <h1>Modifier le diplome</h1>
+    <%- include("../../partials/infoEtd.ejs") %>
+
+        <div class="form-section bg-white">
+            <div class="form-section-header border-info">
+                <h3 class="fw-bold text-primary">
+                    <i class="bi bi-award fs-1 me-2"></i>Informations sur  demande d'Attestation
+                </h3>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Diplome souhaité</label>
+                        <select class="form-select" required name="diplome">
+                            <option value="" selected disabled>Choisir un Diplome</option>
+                            <option value="DUT" <%= diplome.diplome === "DUT" ? "selected" : "" %>>DUT</option>
+                            <option value="Licence" <%= diplome.diplome === "Licence" ? "selected" : "" %>>LICENCE</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+</form>
+</div>

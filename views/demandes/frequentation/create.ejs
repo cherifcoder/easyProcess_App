@@ -1,0 +1,112 @@
+
+    <form class="bg-white px-4 py-4" action="/demandes/create/frequentation" method="POST">
+        <%- include("../partials/infoEtd.ejs") %>
+
+        <div class="form-section bg-white shadow-sm" id="form-frequentation">
+            <div class="form-section-header border-success">
+                <h3 class="fw-bold text-primary">
+                    <i class="bi bi-calendar-check fs-1 me-2"></i>Informations sur le Certificat de Fréquentation
+                </h3>
+            </div>
+        <!-- Période concernée -->
+        <div class="mb-4">
+            <h5 class="fw-bold mb-3">Période concernée</h5>
+            <div class="row g-3">
+                <!-- Licence 1 -->
+                <div class="col-md-3 col-6">
+                    <div class="card border h-100">
+                        <div class="card-body">
+                            <h6 class="card-title text-center fw-bold">Licence 1</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="freq_semestre[]" value="S1" id="freqL1S1">
+                                <label class="form-check-label" for="freqL1S1">Semestre 1</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="freq_semestre[]" value="S2" id="freqL1S2">
+                                <label class="form-check-label" for="freqL1S2">Semestre 2</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Licence 2 -->
+                <div class="col-md-3 col-6">
+                    <div class="card border h-100">
+                        <div class="card-body">
+                            <h6 class="card-title text-center fw-bold">Licence 2</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="freq_semestre[]" value="S3" id="freqL2S1">
+                                <label class="form-check-label" for="freqL2S1">Semestre 3</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="freq_semestre[]" value="S4" id="freqL2S2">
+                                <label class="form-check-label" for="freqL2S2">Semestre 4</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Licence 3 -->
+                <div class="col-md-3 col-6">
+                    <div class="card border h-100">
+                        <div class="card-body">
+                            <h6 class="card-title text-center fw-bold">Licence 3</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="freq_semestre[]" value="S5" id="freqL3S1">
+                                <label class="form-check-label" for="freqL3S1">Semestre 5</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="freq_semestre[]" value="S6" id="freqL3S2">
+                                <label class="form-check-label" for="freqL3S2">Semestre 6</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cycle complet -->
+                <div class="col-md-3 col-6">
+                    <div class="card border h-100">
+                        <div class="card-body">
+                            <h6 class="card-title text-center fw-bold">Cycle complet</h6>
+                            <div class="form-check d-flex justify-content-center">
+                                <input class="form-check-input me-2" type="checkbox" name="freq_cycle" value="1" id="freqCycle">
+                                <label class="form-check-label" for="freqCycle">Tous les semestres</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Destination -->
+        <div class="mb-4">
+            <h5 class="fw-bold mb-3">Destination du certificat</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="destination" id="destAdmin" value="admin">
+                        <label class="form-check-label" for="destAdmin">Usage administratif interne (Université)</label>
+                    </div>
+                    
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="destination" id="destBourse" value="bourse">
+                        <label class="form-check-label" for="destBourse">Bourse d'étude</label>
+                    </div>
+                    
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="destination" id="destEmploi" value="emploi">
+                        <label class="form-check-label" for="destEmploi">Emploi</label>
+                    </div>
+                    
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" name="destination" id="destStage" value="stage">
+                        <label class="form-check-label" for="destStage">Stage</label>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        </div>
+    </form>
+</div>

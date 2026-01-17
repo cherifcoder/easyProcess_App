@@ -1,0 +1,54 @@
+
+    <form class=" bg-white bg-white px-4 py-4" method="POST" action="/demandes/create/stage">
+        <%- include("../partials/infoEtd.ejs") %>
+
+
+        <div class="form-section-header border-warning">
+            <h3 class="fw-bold text-primary">
+                <i class="bi bi-briefcase fs-1 me-2"></i>Informations sur la demande de Stage
+            </h3>
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">Type de stage</label>
+                <select class="form-select" required>
+                    <option value="" selected disabled>Choisir le type de stage</option>
+                    <option value="dut">Stage pour l'obtention du DUT</option>
+                    <option value="licence">Stage de fin de cycle (licence)</option>
+                    <option value="perfectionnement">Stage de perfectionnement</option>
+                </select>
+            </div>
+            
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">Nom de l'entreprise d'accueil</label>
+                <input type="text" class="form-control" placeholder="Entrez le nom de l'entreprise" name="entreprise" required>
+            </div>
+            
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">Nom du maître de stage</label>
+                <input type="text" class="form-control" placeholder="Nom du maître de stage (si connu)">
+            </div>
+            
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">Adresse du lieu de stage</label>
+                <input type="text" class="form-control" placeholder="Adresse du lieu stage" required>
+            </div>
+            
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">Nom de l'encadrant universitaire</label>
+                <input type="text" class="form-control" placeholder="Entrez le nom de l'encadrant" required>
+            </div>
+            
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">Durée souhaitée</label>
+                <select class="form-select" required autocomplete="off">
+                    <option value="" selected disabled>Choisir la durée</option>
+                    <option value="2">2 Mois</option>
+                    <option value="3">3 Mois</option>
+                    <option value="6" >6 Mois</option>
+                </select>
+            </div>
+
+        </div>
+    
+    </form>

@@ -1,0 +1,166 @@
+<div class=" d-md-flex justify-content-center align-content-center d-sm-block rounded-5 p-5 ">
+
+    <div
+        class=" col-md-7 col-sm-10 shadow-lg bg-white  row align-items-center justify-content-center left order-2 order-md-0 left rounded-start-4 p-4">
+        <h2 class="text-center  fw-bold">Creer un compte</h2>
+
+        <form action="/register" method="POST" class=" ">
+            <div class="row d-flex">
+                <div class="col-md-6 pb-4">
+                    <label for="nom" class="form-label fs-5 px-3">Nom</label>
+                    <div class="input-group">
+                        <span class="bg-dark-subtle px-2 align-content-center rounded-start-3"><i
+                                class="text-white fs-3 bi bi-person"></i></span>
+                        <input type="text" class="form-control" placeholder="Votre Nom" name="nom" id="nom" >
+                    </div>
+                </div>
+                <div class="col-md-6 pb-4">
+                    <label for="prenom" class="form-label fs-5 px-3">Prenom</label>
+                    <div class="input-group">
+                        <span class="bg-dark-subtle px-2 align-content-center rounded-start-3"><i
+                                class="text-white fs-3 bi bi-person"></i></span>
+                        <input type="text" class="form-control" placeholder=" Votre prenom" name="prenom" id="prenom">
+                    </div>
+
+                </div>
+            </div>
+            <div class="row d-flex">
+                <div class="col-md-6 pb-4">
+                    <label for="ddn" class="form-label fs-5 px-3">Date de naissance</label>
+                    <div class="input-group">
+                        <span class="bg-dark-subtle px-2 align-content-center rounded-start-3"><i
+                                class="text-white fs-3 bi bi-cake"></i></span>
+                        <input type="date" class="form-control" placeholder="Votre date de naissance" name="dateNaissance" id="ddn" >
+                    </div>
+                </div>
+                <div class="col-md-6 pb-4">
+                    <label for="sexe" class="form-label fs-5 px-3">Sexe</label>
+                    <div class="input-group">
+                        <span class="bg-dark-subtle px-2 align-content-center rounded-start-3"><i
+                                class="text-white fs-3 bi bi-gender-ambiguous"></i></span>
+                        <select name="sexe" id="sexe" class=" form-control" autocomplete="off">
+                            <option value="" selected disabled>----Selectionnez une option----</option>
+                            <option value="Homme">Homme</option>
+                            <option value="Femme">Femme</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row d-flex">
+                <div class="col-md-6 pb-4">
+                    <label for="adresse" class="form-label fs-5 px-3">Adresse</label>
+                    <div class="input-group">
+                        <span class="bg-dark-subtle px-2 align-content-center rounded-start-3"><i
+                                class="text-white fs-3 bi bi-geo-alt"></i></span>
+                        <input type="text" class="form-control" placeholder="Votre adresse" name="adresse" id="adresse">
+                    </div>
+                </div>
+                <div class="col-md-6 pb-4">
+                    <label for="tel" class="form-label fs-5 px-3">Telephone</label>
+                    <div class="input-group">
+                        <span class="bg-dark-subtle px-2 align-content-center rounded-start-3"><i
+                                class="text-white fs-3 bi bi-phone"></i></span>
+                        <input type="tel" class="form-control" placeholder=" +223 XXXXXXXX" name="telephone" id="tel">
+                    </div>
+
+                </div>
+            </div>
+            <div class="row d-flex">
+                <div class="col-md-6 pb-4">
+                    <label for="filiere" class="form-label fs-5 px-3">Filiere</label>
+                    <div class="input-group">
+                        <span class="bg-dark-subtle px-2 align-content-center rounded-start-3">
+                            <i class="text-white fs-3 bi bi-person-workspace"></i></span>
+                        <select name="filiere" id="filiere" autocomplete="off" class="form-select">
+                            <option value="" disabled selected>---Choisissez Votre Filiere---</option>
+                            <option value="AB">Agrobusiness</option>
+                            <option value="AG">Assistant de Gestion</option>
+                            <option value="CFA">Comptabilité Finace Audit</option>
+                            <option value="3ER">Eau Environement et Energie Renouvelable</option>
+                            <option value="GI">Génie Informatique</option>
+                            <option value="HT">Hôtellerie et Tourisme</option>
+                            <option value="MA">Machinisme Agricole</option>
+                            <option value="MC">Marketing et Communication</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="col-md-6 pb-4">
+                    <label for="niveau" class="form-label fs-5 px-3">Niveau</label>
+                    <div class="input-group">
+                        <span class="bg-dark-subtle px-2 align-content-center rounded-start-3">
+                            <i class="text-white fs-3 bi bi-mortarboard"></i></span>
+                        <select name="niveau" id="niveau" class=" form-control" autocomplete="off">
+                            <option value="" disabled selected>---Votre Niveau d'etude---</option>
+                            <option value="L1">L1</option>
+                            <option value="L2">L2</option>
+                            <option value="L3">L3</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row d-flex">
+                <div class="col-md-6 pb-4">
+                    <label for="promo" class="form-label fs-5 px-3">Promotion</label>
+                    <div class="input-group">
+                        <span class="bg-dark-subtle px-2 align-content-center rounded-start-3"><i
+                                class="text-white fs-3 bi bi-mortarboard"></i></span>
+                        <input type="number" class="form-control" placeholder="Votre Promo Ex: 2018" name="promotion" id="promo" min="2015" max="2026" step="1">
+                    </div>
+                </div>
+                <div class="col-md-6 pb-4">
+                    <label for="matricule" class="form-label fs-5 px-3">Matricule</label>
+                    <div class="input-group">
+                        <span class="bg-dark-subtle px-2 align-content-center rounded-start-3"><i
+                                class="text-white fs-3 bi bi-person-vcard"></i></span>
+                        <input type="text" class="form-control" placeholder=" Votre Matricule" name="matricule" id="matricule">
+                    </div>
+
+                </div>
+            </div>
+            <div class="row d-flex ">
+                <div class="col-md-6 pb-4">
+                    <label for="email" class="form-label fs-5 px-3">Email</label>
+                    <div class="input-group">
+                        <span class="bg-dark-subtle px-2 align-content-center rounded-start-3"><i
+                                class="text-white fs-3 bi bi-at"></i></span>
+                        <input type="text" class="form-control" placeholder="Votre Email" name="email" id="email">
+                    </div>
+                </div>
+                <div class="col-md-6 pb-4">
+                    <label for="mdp" class="form-label fs-5 px-3">Mot de passe</label>
+                    <div class="input-group">
+                        <span class="bg-dark-subtle px-2 align-content-center rounded-start-3"><i
+                                class="text-white fs-3 bi bi-key"></i></span>
+                        <input type="password" class="form-control" placeholder=" Votre mot de passe" name="motDePass" id="mdp">
+                    </div>
+
+                </div>
+            </div>
+
+            <p class="text-muted small text-center py-1">Deja inscrit ?
+                <span class="fs-6 fw-bold">
+                    <a href="/login" class="text-decoration-none text-primary">Se Connecter</a>
+                </span>
+            </p>
+            <div class="text-center">
+                <button type="submit" class="btn btn-lg btn-primary border-0 ">Creer un compte</button>
+            </div>
+
+        </form>
+
+    </div>
+    <div
+        class="col-md-4 col-sm-10 row pt-5 justify-content-center shadow-sm bg-gradient order-1  order-md-1 right rounded-end-4">
+        <a href="index.html" class="text-center "><img src="/img/logoUSegou.png" class="logo-lg rounded-circle mt-5 bg-white p-2 px-3 rounded-circle" alt="logo"></a>
+        <div class="">
+            <p class="text-center text-primary fs-4 fw-bold text-uppercase">Bienvenue</p>
+            <p class="lead text-center">Connectez-vous pour accéder à votre espace étudiant, consulter vos
+                cours, suivre vos demandes administratives et gérer vos informations académiques.</p>
+        </div>
+    </div>
+
+</div>
+
