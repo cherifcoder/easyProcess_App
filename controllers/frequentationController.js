@@ -64,3 +64,25 @@ exports.getFrequenationById= async(req,res)=>{
         })
     }
 }
+
+
+exports.deleteFrequentation=async(req,res)=>{
+    try{
+        const deleted=Frequentation.findOneAndDelete({identifiant:req.params.id})
+        if(!deleted){
+            res.render("errors/404",{
+                title:"Erreur",
+                layout:"layouts/main"
+            })
+        }res.send("demandes/frequentation",{
+            title:"Gestion des demandes - Afficher Frequentation",
+            layout:"layouts/main"
+        })
+    }catch(err){ 
+        res.render("errors/404",{
+            title:"Erreur",
+            layout:"layouts/main"
+        })
+        console.log(err)
+    }
+}
