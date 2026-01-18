@@ -1,0 +1,70 @@
+<div class="">
+    <%-include("../../partials/btnAjout") %>
+        <div class="form-section bg-white">
+            <div class="form-section-header border-info">
+                <h3 class="fw-bold text-primary">
+                    <i class="bi bi-award fs-1 me-2"></i>Demandes de diplome
+                </h3>
+            </div>
+
+
+            <table class="table table-borderless table-hover table-responsive text-center border-0 shadow p-5">
+                <thead class="bg-dark text-white">
+                    <th>Demande</th>
+                    <th>Demandeur</th>
+                    <th>Niveau</th>
+                    <th>Filiere</th>
+                    <th>Promotion</th>
+                    <th>Matricule</th>
+                    <th>periode</th>
+                    <th>destination</th>
+                    <th>statut</th>
+                    <th>Actions</th>
+                </thead>
+                <tr>
+
+                    <% frequentations.forEach(frequentation=>{ %> 
+
+                        <td><%= frequentation.identifiant %> </td>
+                        <td> <%= frequentation.prenom %> <%= frequentation.nom %>  </td>
+                        <td>
+                            <%=frequentation.niveau %>
+                        </td>
+                        <td>
+                            <%=frequentation.filiere %>
+                        </td>
+                        <td>
+                            <%=frequentation.promotion %>
+                        </td>
+                        <td>
+                            <%=frequentation.matricule %>
+                        </td>
+                        <td>
+                            <%= frequentation.periode %> 
+                        </td>
+                        <td><%=frequentation.destination %> </td>
+                       <td 
+                       class="m-2 badge <%= frequentation.statut==="En attente"? "bg-primary-subtle text-primary": frequentation.statut==="validee"?"bg-success-subtle text-success": frequentation.statut==='rejetee'?"bg-danger-subtle text-danger": "" %> "
+                       > <%=frequentation.statut  %>  </td>
+                        <td >
+                            <a href="/demandes/frequentation/view/<%= frequentation.identifiant %> " class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
+                                <i class="bi bi-eye fs-4"></i>
+                            </a>
+                            <a href="" class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
+                                <i class="bi bi-pen fs-4"></i>
+                            </a>
+                            <a href="" class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                                <i class="bi bi-check2-circle fs-4"></i>
+                            </a>
+                            <a href="" class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                                <i class="bi bi-x-circle fs-4"></i>
+                            </a>
+
+
+                        </td>
+
+                </tr>
+                <% })  %> 
+            </table>
+        </div>
+</div>

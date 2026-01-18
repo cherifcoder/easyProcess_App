@@ -24,3 +24,43 @@ exports.createFrequentation=async(req,res)=>{
     }
     
 }
+
+exports.getAllfrequentation=async(req,res)=>{
+    try{
+        const frequentations= await Frequentation.find();
+        frequentations.sort((a,b)=>new Date(b.createdAt) - new Date(a.createdAt))
+        res.render("demandes/frequentation/list",{
+            title:"Gestion des demandes - Afficher Diplome",
+            layout:"layouts/main",
+            frequentations
+        })
+    }catch(err){
+        console.log(err);
+        res.render("errors/404",{
+            title:"Erreur",
+            layout:"layouts/main",
+        })
+    }
+}
+
+exports.getFrequenationById= async(req,res)=>{
+    try{
+        const frequentation=await Frequentation.findOne({identifiant:req.params.id})
+        if(!frequentation){
+            res.render("errors/404",{
+                title:"Erreur",
+                layout:"layouts/main"
+            })
+            console.log("Je suis ds le 404")
+        }res.render("demandes/frequentation/view",{
+            title:"Gestion des demandes - Afficher Frequentation",
+            layout:"layouts/main",
+            frequentation
+        })
+    }catch(err){
+        res.render("errors/404",{
+            title:"Erreur",
+            layout:"layouts/main"
+        })
+    }
+}

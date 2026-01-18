@@ -1,6 +1,6 @@
 
     <form class="bg-white px-4 py-4" action="/demandes/create/frequentation" method="POST">
-        <%- include("../partials/infoEtd.ejs") %>
+        <%- include("../../partials/infoEtd.ejs") %>
 
         <div class="form-section bg-white shadow-sm" id="form-frequentation">
             <div class="form-section-header border-success">
@@ -18,11 +18,11 @@
                         <div class="card-body">
                             <h6 class="card-title text-center fw-bold">Licence 1</h6>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="freq_semestre[]" value="S1" id="freqL1S1">
+                                <input class="form-check-input" type="checkbox" name="periode" value="S1" id="freqL1S1">
                                 <label class="form-check-label" for="freqL1S1">Semestre 1</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="freq_semestre[]" value="S2" id="freqL1S2">
+                                <input class="form-check-input" type="checkbox" name="periode" value="S2" id="freqL1S2">
                                 <label class="form-check-label" for="freqL1S2">Semestre 2</label>
                             </div>
                         </div>
@@ -35,11 +35,11 @@
                         <div class="card-body">
                             <h6 class="card-title text-center fw-bold">Licence 2</h6>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="freq_semestre[]" value="S3" id="freqL2S1">
+                                <input class="form-check-input" type="checkbox" name="periode" value="S3" id="freqL2S1">
                                 <label class="form-check-label" for="freqL2S1">Semestre 3</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="freq_semestre[]" value="S4" id="freqL2S2">
+                                <input class="form-check-input" type="checkbox" name="periode" value="S4" id="freqL2S2">
                                 <label class="form-check-label" for="freqL2S2">Semestre 4</label>
                             </div>
                         </div>
@@ -52,11 +52,11 @@
                         <div class="card-body">
                             <h6 class="card-title text-center fw-bold">Licence 3</h6>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="freq_semestre[]" value="S5" id="freqL3S1">
+                                <input class="form-check-input" type="checkbox" name="periode" value="S5" id="freqL3S1">
                                 <label class="form-check-label" for="freqL3S1">Semestre 5</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="freq_semestre[]" value="S6" id="freqL3S2">
+                                <input class="form-check-input" type="checkbox" name="periode" value="S6" id="freqL3S2">
                                 <label class="form-check-label" for="freqL3S2">Semestre 6</label>
                             </div>
                         </div>

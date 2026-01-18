@@ -42,7 +42,7 @@ const frequentationSchema= new mongoose.Schema({
         require: true,
     },
     periode:{
-        type:String,
+        type:[String],
     },
 
     destination:{
