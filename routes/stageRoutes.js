@@ -8,7 +8,7 @@ router.get("/demandes/create/stage",(req,res)=>{
         title:"Gestion des demandes - Fiche de stage",
         layout:"layouts/main"
     }
-    res.render("demandes/stage",local)
+    res.render("demandes/stage/create",local)
 })
 router.post("/demandes/create/stage",stageController.createStage)
 

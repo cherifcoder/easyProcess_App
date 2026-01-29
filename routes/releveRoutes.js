@@ -10,7 +10,7 @@ router.get("/demandes/create/releve",(req,res)=>{
         title:"Gestion des demandes - Creation releve de note",
         layout:"layouts/main"
     }
-    res.render("demandes/releve",local)
+    res.render("demandes/releve/create",local)
 })
 router.post("/demandes/create/releve", releveController.createReleve)
 

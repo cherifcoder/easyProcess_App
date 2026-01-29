@@ -4,10 +4,10 @@ const etudiantController=require("../controllers/etudiantController")
 
 router.get("/", (req,res)=>{
     const local={
-        title:"Inscription"
+        title:"Connexion"
     }
 
-    res.render('./auth/register',local)
+    res.render('./auth/login',local)
 })
 
 router.get("/register",

@@ -8,7 +8,7 @@ router.get("/demandes/create/reclamation",(req,res)=>{
         title:"Gestion des demandes - Creation reclamation",
         layout:"layouts/main"
     }
-    res.render("demandes/reclamation",local)
+    res.render("demandes/reclamation/create",local)
 })
 router.post("/demandes/create/reclamation",reclamationController.createReclamation)
 

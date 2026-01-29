@@ -26,6 +26,6 @@ router.get("/demandes/frequentation",frequentationController.getAllfrequentation
 router.get("/demandes/frequentation/view/:id",frequentationController.getFrequenationById)
 
 
-router.get("/frequentation/delete/:id",frequentationController.deleteFrequentation)
+router.post("/demandes/frequentation/delete/:id",frequentationController.deleteFrequentation)
 
 module.exports=router

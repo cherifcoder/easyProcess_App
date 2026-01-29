@@ -9,7 +9,7 @@ router.get("/demandes/create/recommandation",(req,res)=>{
         title:"Gestion des demandes - Creation recommandation",
         layout:"layouts/main"
     }
-    res.render("demandes/recommandation",local)
+    res.render("demandes/recommandation/create",local)
 })
 router.post("/demandes/create/recommandation", recommandationController.createRecommandation)
 

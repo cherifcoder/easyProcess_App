@@ -22,10 +22,15 @@
                 </thead>
                 <tr>
 
-                    <% frequentations.forEach(frequentation=>{ %> 
+                    <% frequentations.forEach(frequentation=>{ %>
 
-                        <td><%= frequentation.identifiant %> </td>
-                        <td> <%= frequentation.prenom %> <%= frequentation.nom %>  </td>
+                        <td>
+                            <%= frequentation.identifiant %>
+                        </td>
+                        <td>
+                            <%= frequentation.prenom %>
+                                <%= frequentation.nom %>
+                        </td>
                         <td>
                             <%=frequentation.niveau %>
                         </td>
@@ -39,17 +44,23 @@
                             <%=frequentation.matricule %>
                         </td>
                         <td>
-                            <%= frequentation.periode %> 
+                            <%= frequentation.periode %>
                         </td>
-                        <td><%=frequentation.destination %> </td>
-                       <td 
-                       class="m-2 badge <%= frequentation.statut==="En attente"? "bg-primary-subtle text-primary": frequentation.statut==="validee"?"bg-success-subtle text-success": frequentation.statut==='rejetee'?"bg-danger-subtle text-danger": "" %> "
-                       > <%=frequentation.statut %>  </td>
-                        <td >
-                            <a href="/demandes/frequentation/view/:<%= frequentation.identifiant %> " class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
+                        <td>
+                            <%=frequentation.destination %>
+                        </td>
+                        <td class="m-2 badge <%= frequentation.statut===" En attente"? "bg-primary-subtle text-primary"
+                            : frequentation.statut==="validee" ?"bg-success-subtle text-success":
+                            frequentation.statut==='rejetee' ?"bg-danger-subtle text-danger": "" %> "
+                            > <%=frequentation.statut %>
+                        </td>
+                        <td>
+                            <a href="/demandes/frequentation/view/<%= frequentation.identifiant %> "
+                                class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
                                 <i class="bi bi-eye fs-4"></i>
                             </a>
-                            <a href="../frequentation/view/:<%=frequentation.identifiant %> " class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
+                            <a href="../frequentation/view/<%=frequentation.identifiant %> "
+                                class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
                                 <i class="bi bi-pen fs-4"></i>
                             </a>
                             <a href="" class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
@@ -59,14 +70,43 @@
                                 <i class="bi bi-x-circle fs-4"></i>
                             </a>
 
-                            <a href="demandes/frequentation/delete/<%=frequentation.identifiant %> " class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
-                                <i class="bi bi-trash fs-4"></i>
+                            <a action="/demandes/frequentation/delete/<%=frequentation.identifiant %> " method="POST"
+                                class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                                <button class="bi bi-trash fs-4 text-danger bg-danger-subtle" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal-<%= frequentation.identifiant %>"> <i></i> </button>
+
+                                <div class="modal fade" id="deleteModal-<%= frequentation.identifiant %>" tabindex="-1"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-danger text-white">
+                                                <h5 class="modal-title">Confirmation de suppression</h5>
+                                                <button type="button" class="btn-close btn-close-white text-primary"
+                                                    data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Voulez-vous vraiment supprimer la demande <strong>
+                                                        <%= frequentation.identifiant %>
+                                                    </strong> ?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="reset" class="btn btn-primary border-0"
+                                                    data-bs-dismiss="modal">Annuler</button>
+                                                <form
+                                                    action="/demandes/frequentation/delete/<%= frequentation.identifiant %>"
+                                                    method="POST">
+                                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </a>
 
                         </td>
 
                 </tr>
-                <% })  %> 
+                <% }) %>
             </table>
         </div>
 </div>
