@@ -7,7 +7,16 @@ const frequentationController=require("../controllers/frequentationController")
 router.get("/demandes/create/frequentation",(req,res)=>{
     const local={
         title:"Gestion des demandes - Creation attestation",
-        layout:"layouts/main"
+        layout:"layouts/main",
+       
+            breadcrumbs: [
+              { label: "Demandes", url: "/demandes" },
+              { label: "Type de demande", url: "/demandes/type" },
+              { label: "Diplôme", url: "/demandes/type/diplome" },
+              { label: "Créer", url: null }
+            ]
+
+        
     }
     res.render("demandes/frequentation/create",local)
 })

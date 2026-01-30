@@ -32,8 +32,9 @@ exports.getAllfrequentation=async(req,res)=>{
         res.render("demandes/frequentation/list",{
             title:"Gestion des demandes - Afficher Diplome",
             layout:"layouts/main",
-            frequentations
-        })
+            frequentations,
+        },
+    )
     }catch(err){
         console.log(err);
         res.render("errors/404",{
@@ -42,7 +43,7 @@ exports.getAllfrequentation=async(req,res)=>{
         })
     }
 }
-
+ 
 exports.getFrequenationById= async(req,res)=>{
     try{
         const frequentation=await Frequentation.findOne({identifiant:req.params.id})

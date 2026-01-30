@@ -1,5 +1,6 @@
 <div class="">
     <%-include("../../partials/btnAjout") %>
+    
         <div class="form-section bg-white">
             <div class="form-section-header border-info">
                 <h3 class="fw-bold text-primary">
@@ -49,7 +50,7 @@
                         <td>
                             <%=frequentation.destination %>
                         </td>
-                        <td class="m-2 badge <%= frequentation.statut===" En attente"? "bg-primary-subtle text-primary"
+                        <td class="m-2 badge <%= frequentation.statut==="En attente"? "bg-primary-subtle text-primary"
                             : frequentation.statut==="validee" ?"bg-success-subtle text-success":
                             frequentation.statut==='rejetee' ?"bg-danger-subtle text-danger": "" %> "
                             > <%=frequentation.statut %>
