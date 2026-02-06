@@ -8,7 +8,13 @@ const releveController=require("../controllers/releveController")
 router.get("/demandes/create/releve",(req,res)=>{
     const local={
         title:"Gestion des demandes - Creation releve de note",
-        layout:"layouts/main"
+        layout:"layouts/main",
+        breadcrumbs:[
+       { label: "Demandes", url: "#" },
+       { label: "Type de demande", url: "/demandes" },
+       { label: "Releve"},
+       { label: "Créer", url: null }
+     ]
     }
     res.render("demandes/releve/create",local)
 })

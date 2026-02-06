@@ -1,20 +1,12 @@
 <div class="container py-4">
-    <div class="text-primary fs-5 d-flex  align-items-center">
-        <p class="d-flex  align-items-center">
-            <span class="badge bg-dark-subtle text-primary  small mx-2">Demandes</span>
-            <span class="fs-3 fw-light"> > </span>
-            <a href="../demandes/demandes.ejs">
-                <span class="badge bg-dark-subtle text-primary small mx-2">Choix</span>
-            </a>
-        </p>
-    </div>
+    <%- include("../partials/filsDAriane.ejs")  %> 
     <h1 class="text-center mb-4">Demandes Administratives</h1>
     <p class="text-center text-muted mb-5">Sélectionnez le type de document dont vous avez besoin</p>
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4 justify-content-center">
         <!-- Diplôme -->
         <div class="col">
-            <a href="demandes/create/diplome" class="text-decoration-none">
+            <a href="/demandes/create/diplome" class="text-decoration-none">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body text-center p-4">
                         <div class="mb-3">
@@ -33,7 +25,7 @@
 
         <!-- Relevé de Notes -->
         <div class="col">
-            <a href="demandes/create/releve" class="text-decoration-none">
+            <a href="/demandes/create/releve" class="text-decoration-none">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body text-center p-4">
                         <div class="mb-3">
@@ -52,7 +44,7 @@
 
         <!-- Fiche de Stage -->
         <div class="col">
-            <a href="demandes/create/stage" class="text-decoration-none">
+            <a href="/demandes/create/stage" class="text-decoration-none">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body text-center p-4">
                         <div class="mb-3">
@@ -71,7 +63,7 @@
 
         <!-- Réclamation -->
         <div class="col">
-            <a href="demandes/create/reclamation" class="text-decoration-none">
+            <a href="/demandes/create/reclamation" class="text-decoration-none">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body text-center p-4">
                         <div class="mb-3">
@@ -90,7 +82,7 @@
 
         <!-- Attestation de Fréquentation -->
         <div class="col">
-            <a href="demandes/create/frequentation" class="text-decoration-none">
+            <a href="/demandes/create/frequentation" class="text-decoration-none">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body text-center p-4">
                         <div class="mb-3">

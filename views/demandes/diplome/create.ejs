@@ -1,38 +1,27 @@
 <div class="container py-4">
-      
-    <div class="text-primary fs-5 d-flex  align-items-center">
-        <p class="d-flex  align-items-center">
-            <span class="badge bg-dark-subtle text-primary  small mx-2">Demandes</span>
-            <span class="fs-3 fw-light"> > </span>
-            <a href="../demandes/demandes.ejs">
-                <span class="badge bg-dark-subtle text-primary small mx-2">Type de demande</span>
-            </a>
-            <span class="fs-3 fw-light"> > </span>
-                <span class="badge bg-dark-subtle text-primary small mx-2">Diplome</span>
-        </p>
-    </div> 
-    
-    <form class="bg-white px-4 py-4" method="POST" action="/demandes/create/diplome">
-        <%- include("../../partials/infoEtd.ejs") %>
-            <div class="form-section bg-white">
-                <div class="form-section-header border-info">
-                    <h3 class="fw-bold text-primary">
-                        <i class="bi bi-award fs-1 me-2"></i>Informations sur demande d'Attestation
-                    </h3>
-                </div>
+
+    <%- include("../../partials/filsDAriane.ejs") %>
+</div>
+<form class="bg-white px-4 py-4" method="POST" action="/demandes/create/diplome">
+    <%- include("../../partials/infoEtd.ejs") %>
+        <div class="form-section bg-white">
+            <div class="form-section-header border-info">
+                <h3 class="fw-bold text-primary">
+                    <i class="bi bi-award fs-1 me-2"></i>Informations sur demande d'Attestation
+                </h3>
+            </div>
 
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="mb-4">
-                            <label class="form-label fw-semibold">Diplome souhaité</label>
-                            <select class="form-select" required name="diplome">
-                                <option value="" selected disabled>Choisir un Diplome</option>
-                                <option value="DUT">DUT</option>
-                                <option value="Licence">LICENCE</option>
-                            </select>
-                        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Diplome souhaité</label>
+                        <select class="form-select" required name="diplome">
+                            <option value="" selected disabled>Choisir un Diplome</option>
+                            <option value="DUT">DUT</option>
+                            <option value="Licence">LICENCE</option>
+                        </select>
                     </div>
                 </div>
-    </form>
-</div>
+            </div>
+</form>

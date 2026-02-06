@@ -5,8 +5,14 @@ const reclamationController=require("../controllers/reclamationController")
 
 router.get("/demandes/create/reclamation",(req,res)=>{
     const local={
-        title:"Gestion des demandes - Creation reclamation",
-        layout:"layouts/main"
+        title:"Gestion des demandes - Creer reclamation",
+        layout:"layouts/main",
+        breadcrumbs:[
+       { label: "Demandes", url: "#" },
+       { label: "Type de demande", url: "/demandes" },
+       { label: "Reclamation"},
+       { label: "Créer", url: null }
+     ]
     }
     res.render("demandes/reclamation/create",local)
 })

@@ -3,7 +3,7 @@ const Frequentation=require("../models/frequentationModel")
 exports.createFrequentation=async(req,res)=>{
     try{
 
-        const{civilite,nom, prenom,filiere,niveau,promotion,matricule,periode,destination}=req.body
+        const{civilite,nom, prenom,filiere,niveau,promotion,matricule,periode,destination,statut}=req.body
         const newFrequentaion=new Frequentation({
             civilite,
             nom,
@@ -13,7 +13,8 @@ exports.createFrequentation=async(req,res)=>{
             promotion,
             matricule,
             periode,
-            destination
+            destination,
+            statut
         })
 
         await newFrequentaion.save()
@@ -32,6 +33,12 @@ exports.getAllfrequentation=async(req,res)=>{
         res.render("demandes/frequentation/list",{
             title:"Gestion des demandes - Afficher Diplome",
             layout:"layouts/main",
+            breadcrumbs: [
+                { label: "Demandes", url: "#" },
+                { label: "Type de demande", url: "/demandes" },
+                { label: "Frequentation"},
+                { label: "Liste", url: null }
+              ],
             frequentations,
         },
     )
@@ -56,6 +63,12 @@ exports.getFrequenationById= async(req,res)=>{
         }res.render("demandes/frequentation/view",{
             title:"Gestion des demandes - Afficher Frequentation",
             layout:"layouts/main",
+            breadcrumbs: [
+                { label: "Demandes", url: "#" },
+                { label: "Type de demande", url: "/demandes" },
+                { label: "Frequentation",url:"/demandes/frequentation"},
+                { label: "ID:", url: null }
+              ],
             frequentation
         })
     }catch(err){
@@ -69,8 +82,8 @@ exports.getFrequenationById= async(req,res)=>{
 
 exports.deleteFrequentation=async(req,res)=>{
     try{
-        const deleted=await Frequentation.findOneAndDelete({identifiant:req.params.id})
-        if(!deleted){
+        const frequentation=await Frequentation.findOneAndDelete({identifiant:req.params.id})
+        if(!frequentation){
             res.render("errors/404",{
                 title:"Erreur",
                 layout:"layouts/main"

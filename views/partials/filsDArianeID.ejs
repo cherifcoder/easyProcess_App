@@ -1,0 +1,17 @@
+<ol class="breadcrumb text-primary fs-5 d-flex  align-items-center ">
+    <% breadcrumbs.forEach(function(crumb, index) { %>
+        <% if(index===breadcrumbs.length - 1) { %>
+            <li class="" aria-current="page">
+               <span href="#" class="text-decoration-none badge bg-dark-subtle text-primary  small mx-2">
+
+               </span> 
+            </li>
+            <% } else { %>
+                <li class=""><a class="text-decoration-none badge bg-dark-subtle text-primary  small mx-2" href="<%= crumb.url %>">
+                        <%=crumb.label%>
+                    </a> 
+                </li>
+                <span class="fs-3 fw-light align-items-center"> >> </span>
+                <% } %>
+                    <% }); %>
+</ol>   

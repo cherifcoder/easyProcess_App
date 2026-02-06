@@ -66,6 +66,10 @@ const etudiantSchema = new mongoose.Schema({
     identifiant:{
         type:String,
         unique:true
+    },
+    date: { 
+        type: Date, 
+        default: Date.now 
     }
 
 },{ timestamps: true });

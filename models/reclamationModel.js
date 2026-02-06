@@ -54,6 +54,10 @@ const reclamationSchema=new mongoose.Schema({
         require:true,
         enum:["En attente", "Validee", "Rejetee"],
         default:"En attente"
+    },
+    date: { 
+        type: Date, 
+        default: Date.now 
     }
 },{timestamps:true})
 

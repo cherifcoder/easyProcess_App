@@ -31,6 +31,12 @@ exports.getAllDiplome=async(req,res)=>{
         res.render("demandes/diplome/list", {
             title: "Gestion des demandes - Afficher Diplome",
             layout: "layouts/main",
+            breadcrumbs: [
+                { label: "Demandes", url: "#" },
+                { label: "Type de demande", url: "/demandes" },
+                { label: "Diplome", url:null},
+                { label: "Liste", url: null }
+              ],
             diplomes 
         });
     } catch (err) {
@@ -49,7 +55,13 @@ exports.getDiplomeById=async(req,res)=>{
         res.render("demandes/diplome/view",{
             title: "Gestion des demandes - Afficher Diplome",
             layout: "layouts/main",
-            diplome 
+            breadcrumbs: [
+                { label: "Demandes", url: "#" },
+                { label: "Type de demande", url: "/demandes" },
+                { label: "Diplome",url:"/demandes/diplome"},
+                { label: "Afficher",url:null}
+              ],
+            diplome
         })
     }catch (err) 
     { console.error(err)
@@ -77,3 +89,20 @@ exports.updateDiplome=async(req,res)=>{
     }
 }
 
+exports.deleteDiplome=async(req,res)=>{
+    try{
+        const diplome=await Diplome.findOneAndDelete({identifiant:req.params.id})
+        if(!diplome){
+            res.render("errors/404",{
+                title:"Erreur",
+                layout:"layouts/main"
+            })
+        }res.redirect("/demandes/diplome")
+    }catch(err){ 
+        res.render("errors/404",{
+            title:"Erreur",
+            layout:"layouts/main"
+        })
+        console.log(err)
+    }
+}

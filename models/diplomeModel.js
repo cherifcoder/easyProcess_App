@@ -46,9 +46,14 @@ const diplomeSchema= new mongoose.Schema({
     },
     statut:{
         type:String,
-        enum:["En attente", "validee","Rejetee" ],
+        enum:["En attente", "Validee","Rejetee" ],
         default:"En attente"
+    },
+    date: { 
+        type: Date, 
+        default: Date.now 
     }
+    
 },{timestamps:true}
 )
 
