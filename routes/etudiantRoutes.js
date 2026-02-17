@@ -36,4 +36,41 @@ router.get("/dashboard",(req,res)=>{
     res.render("pages/dashboard", local)
 })
 
+router.get("/users/etd",etudiantController.getAllEtudiant,(req,res)=>{
+    const local={
+        title:" Gestion des utilisateurs - Afficher Etudiant",
+        layout:"layouts/main",
+       
+    }
+    res.render("users/etd/list", local)
+})
+
+
+router.get("/users/etd/view/:id", etudiantController.getEtudiantById,
+    (req,res)=>{
+        const local={
+            title:"Gestion des Utilisateurs - Afficher etudiant",
+            layout:"layouts/main",
+            breadcrumbs: [
+                { label: "Utilisateurs", url: "#" },
+                { label: "Etudiant", url: "/etd" },
+                { label: "Afficher"},
+              ]
+        }
+    }
+
+);
+
+
+
+
+router.get("/users/etd/edit/:id", etudiantController.getEtudiantEditForm);
+// Exemple : /users/etd/edit/ETD-001-GI-25
+router.post("/users/etd/edit/:id", etudiantController.updateEtudiant);
+
+
+router.post("/users/etd/delete/:id", etudiantController.deleteEtudiant);
+
+
+
 module.exports=router

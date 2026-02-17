@@ -67,7 +67,7 @@ exports.getFrequenationById= async(req,res)=>{
                 { label: "Demandes", url: "#" },
                 { label: "Type de demande", url: "/demandes" },
                 { label: "Frequentation",url:"/demandes/frequentation"},
-                { label: "ID:", url: null }
+                { label: "Afficher", url: null }
               ],
             frequentation
         })
@@ -95,5 +95,48 @@ exports.deleteFrequentation=async(req,res)=>{
             layout:"layouts/main"
         })
         console.log(err)
+    }
+}
+
+
+exports.getFrequentationEditForm = async (req, res) => {
+    try {
+        const frequentation = await Frequentation.findOne({identifiant: req.params.id});
+        if (!frequentation) {
+            return res.status(404).send("Demande introuvable");
+        }
+        res.render("demandes/frequentation/edit", { // Assurez-vous que le chemin est correct
+            title: "Gestion des demandes - Modifier Fréquentation",
+            layout: "layouts/main",
+            breadcrumbs: [
+                { label: "Demandes", url: "#" },
+                { label: "Type de demande", url: "/demandes" },
+                { label: "Fréquentation", url: "/demandes/frequentation" },
+                { label: "Modifier", url: null }
+            ],
+            frequentation 
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Erreur serveur");
+    }
+}
+
+exports.updateFrequentation = async (req, res) => {
+    try {
+        const frequentation = await Frequentation.findOneAndUpdate(
+            { identifiant: req.params.id },
+            req.body,
+            { new: true, runValidators: true }
+        );
+        
+        if (!frequentation) {
+            return res.status(404).send("Demande introuvable");
+        }
+        
+        res.redirect("/demandes/frequentation");
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Erreur lors de la modification");
     }
 }

@@ -1,0 +1,86 @@
+<div class="container py-4">
+    <%- include("../../partials/filsDAriane.ejs") %> 
+</div>
+<div class="">
+    <%- include("../../partials/btnAjout") %>
+    <div class="form-section bg-white">
+        <div class="form-section-header border-info">
+            <h3 class="fw-bold text-primary">
+                <i class="bi bi-briefcase fs-1 me-2"></i>Demandes de stage
+            </h3>
+        </div>
+
+        <table class="table table-borderless table-hover table-responsive text-center border-0 shadow p-5">
+            <thead class="bg-dark text-white">
+                <th>Demande</th>
+                <th>Demandeur</th>
+                <th>Niveau</th>
+                <th>Filière</th>
+                <th>Promotion</th>
+                <th>Matricule</th>
+                <th>Type</th>
+                <th>Durée</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                <% stages.forEach(stage => { %>
+                    <tr>
+                        <td><%= stage.identifiant %></td>
+                        <td><%= stage.prenom %> <%= stage.nom %></td>
+                        <td><%= stage.niveau %></td>
+                        <td><%= stage.filiere %></td>
+                        <td><%= stage.promotion %></td>
+                        <td><%= stage.matricule %></td>
+                        <td><%= stage.type %></td>
+                        <td><%= stage.duree %></td>
+                        <td class="z-0 m-2 badge 
+                            <%= stage.statut==='En attente' ? 'bg-primary-subtle text-primary' 
+                            : stage.statut==='validee' ? 'bg-success-subtle text-success' 
+                            : stage.statut==='rejetee' ? 'bg-danger-subtle text-danger' : '' %>">
+                            <%= stage.statut %>
+                        </td>
+                        <td>
+                            <a href="/demandes/stage/view/<%= stage.identifiant %>" 
+                               class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
+                                <i class="bi bi-eye fs-4"></i>
+                            </a>
+                            <a href="/demandes/edit/stage/<%= stage.identifiant %>" 
+                               class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
+                                <i class="bi bi-pen fs-4"></i>
+                            </a>
+                            <a action="/demandes/stage/delete/<%= stage.identifiant %>" method="POST"
+                               class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                                <button class="bi bi-trash fs-4 text-danger bg-danger-subtle" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#deleteModal-<%= stage.identifiant %>"> 
+                                </button>
+
+                                <!-- Modal de confirmation -->
+                                <div class="modal fade" id="deleteModal-<%= stage.identifiant %>" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-danger text-white">
+                                                <h5 class="modal-title">Confirmation de suppression</h5>
+                                                <button type="button" class="btn-close btn-close-white text-primary" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Voulez-vous vraiment supprimer la demande <strong><%= stage.identifiant %></strong> ?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="reset" class="btn btn-primary border-0" data-bs-dismiss="modal">Annuler</button>
+                                                <form action="/demandes/stage/delete/<%= stage.identifiant %>" method="POST">
+                                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>

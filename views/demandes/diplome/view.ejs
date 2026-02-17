@@ -1,65 +1,105 @@
 <div class="bg-white px-4 py-4">
-   <%-include("../../partials/filsDAriane.ejs")  %> 
+    <%- include("../../partials/filsDAriane.ejs") %> 
     <div class="row g-3">
         <div class="form-section-header border-info d-flex justify-content-between">
             <div class="">
-                 <h3 class="fw-bold text-primary">
-                <i class="bi bi-mortarboard-fill fs-1 me-2"></i>Informations sur l'etudiant
-            </h3>
-            </div>
-           
-        </div>
-    
-        <!-- Civilité -->
-        <div class="col-md-1">
-            <p class="form-label fw-semibold">Civilite : </p> <span><%=diplome.civilite  %> </span>
-        </div>
-    
-        <!-- Nom -->
-        <div class="col-md-3">
-            <p class="form-label fw-semibold">Nom Complet : </p> <span><%=diplome.prenom  %> <%=diplome.nom  %> </span>
-        </div>
-    
-        <!-- Filière -->
-        <div class="col-md-2">
-            <p class="form-label fw-semibold">Filiere : </p> <span > <%=diplome.filiere  %> </span>
-        </div>
-    
-        <!-- Niveau -->
-        <div class="col-md-2">
-            <p class="form-label fw-semibold">Niveau: </p> <span><%=diplome.niveau %> </span>
-        </div>
-      <!-- Prénom -->
-      <div class="col-md-2">
-        <p class="form-label fw-semibold">Promotion: </p> <span><%=diplome.promotion  %> </span>
-    </div>
-        <!-- Matricule -->
-        <div class="col-md-2">
-            <p class="form-label fw-semibold">Numéro matricule : </p> <span><%=diplome.matricule  %> </span>
-        </div>
-    
-    </div>
-    <hr class="mx-4">
-        
-
-        <div class="form-section bg-white">
-            <div class="form-section-header border-info">
                 <h3 class="fw-bold text-primary">
-                    <i class="bi bi-award fs-1 me-2"></i>Informations sur  demande d'Attestation
+                    <i class="bi bi-mortarboard-fill fs-1 me-2"></i>Informations sur l'étudiant
                 </h3>
             </div>
-
-
-            <div class="row">
-               
-                    <div class="col-md-4">
-                        <p class="form-label fw-semibold">Id: </p> <span><%=diplome.identifiant  %> </span>
-                    </div>
-                    <div class="mb-4">
-                        <p class="form-label fw-semibold">diplome : </p> <span><%=diplome.diplome  %> </span>
-                    </div>
-                   
-            
+        </div>
+ 
+        exports.getEtudiantById=async(req,res)=>{
+            try{
+                const etudiant=await Etudiant.findOne({identifiant:req.params.id})
+                if(!etudiant){
+                    return res.status(404).send("Etudiant introuvable")
+                    
+                }
+                res.render("users/etd/view",{
+                    title: "Gestion des utilisateurs - Afficher Utilisateurs",
+                    layout: "layouts/main",
+                    breadcrumbs: [
+                        { label: "Utilisateurs", url: "#" },
+                        { label: "Etudiant", url: "/etd" },
+                        { label: "Afficher", url:null},
+                      ],
+                    etudiant
+                })
+        
+            }catch (err) 
+            { console.error(err)
+             res.status(500).send("Erreur serveur"); }
+        }      <!-- Civilité -->
+        <div class="col-md-1">
+            <p class="form-label fw-semibold">Civilité :</p> 
+            <span><%= diplome.civilite %></span>
+        </div>
+ 
+        <!-- Nom complet -->
+        <div class="col-md-3">
+            <p class="form-label fw-semibold">Nom Complet :</p> 
+            <span><%= diplome.prenom %> <%= diplome.nom %></span>
+        </div>
+ 
+        <!-- Filière -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Filière :</p> 
+            <span><%= diplome.filiere %></span>
+        </div>
+ 
+        <!-- Niveau -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Niveau :</p> 
+            <span><%= diplome.niveau %></span>
+        </div>
+ 
+        <!-- Promotion -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Promotion :</p> 
+            <span><%= diplome.promotion %></span>
+        </div>
+ 
+        <!-- Matricule -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Numéro matricule :</p> 
+            <span><%= diplome.matricule %></span>
+        </div>
+    </div>
+ 
+    <hr class="mx-4">
+ 
+    <div class="form-section bg-white">
+        <div class="form-section-header border-info">
+            <h3 class="fw-bold text-primary">
+                <i class="bi bi-award fs-1 me-2"></i>Informations sur la demande de diplôme
+            </h3>
+        </div>
+ 
+        <div class="row">
+            <!-- Identifiant -->
+            <div class="col-md-4">
+                <p class="form-label fw-semibold">Id :</p> 
+                <span><%= diplome.identifiant %></span>
+            </div>
+ 
+            <!-- Diplôme demandé -->
+            <div class="col-md-4">
+                <p class="form-label fw-semibold">Diplôme :</p> 
+                <span><%= diplome.diplome %></span>
+            </div>
+ 
+            <!-- Statut -->
+            <div class="col-md-4">
+                <p class="form-label fw-semibold">Statut :</p> 
+                <span class="badge 
+                    <%= diplome.statut==='En attente' ? 'bg-primary-subtle text-primary' 
+                    : diplome.statut==='validee' ? 'bg-success-subtle text-success' 
+                    : diplome.statut==='rejetee' ? 'bg-danger-subtle text-danger' : '' %>">
+                    <%= diplome.statut %>
+                </span>
             </div>
         </div>
-</div>
+    </div>
+ </div>
+ 

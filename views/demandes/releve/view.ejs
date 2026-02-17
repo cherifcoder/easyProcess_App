@@ -1,81 +1,83 @@
 <div class="bg-white px-4 py-4">
-    <ol class="breadcrumb text-primary fs-5 d-flex  align-items-center ">
-        <% breadcrumbs.forEach(function(crumb, index) { %>
-            <% if(index===breadcrumbs.length - 1) { %>
-                <li class="" aria-current="page">
-                   <span href="#" class="text-decoration-none badge bg-dark-subtle text-primary  small mx-2">
-                    <%=releve.identifiant  %>
-                   </span> 
-                </li>
-                <% } else { %>
-                    <li class=""><a class="text-decoration-none badge bg-dark-subtle text-primary  small mx-2" href="<%= crumb.url %>">
-                            <%= crumb.label %>
-                        </a> 
-                    </li>
-                    <span class="fs-3 fw-light align-items-center"> >> </span>
-                    <% } %>
-                        <% }); %>
-    </ol>
+    <%- include("../../partials/filsDAriane.ejs") %> 
     <div class="row g-3">
         <div class="form-section-header border-info d-flex justify-content-between">
             <div class="">
-                 <h3 class="fw-bold text-primary">
-                <i class="bi bi-mortarboard-fill fs-1 me-2"></i>Informations sur l'etudiant
-            </h3>
-            </div>
-           
-        </div>
-    
-        <!-- Civilité -->
-        <div class="col-md-1">
-            <p class="form-label fw-semibold">Civilite : </p> <span><%=releve.civilite  %> </span>
-        </div>
-    
-        <!-- Nom -->
-        <div class="col-md-3">
-            <p class="form-label fw-semibold">Nom Complet : </p> <span><%=releve.prenom  %> <%=diplome.nom  %> </span>
-        </div>
-    
-        <!-- Filière -->
-        <div class="col-md-2">
-            <p class="form-label fw-semibold">Filiere : </p> <span > <%=releve.filiere  %> </span>
-        </div>
-    
-        <!-- Niveau -->
-        <div class="col-md-2">
-            <p class="form-label fw-semibold">Niveau: </p> <span><%=releve.niveau %> </span>
-        </div>
-      <!-- Prénom -->
-      <div class="col-md-2">
-        <p class="form-label fw-semibold">Promotion: </p> <span><%=releve.promotion  %> </span>
-    </div>
-        <!-- Matricule -->
-        <div class="col-md-2">
-            <p class="form-label fw-semibold">Numéro matricule : </p> <span><%=releve.matricule  %> </span>
-        </div>
-    
-    </div>
-    <hr class="mx-4">
-        
-
-        <div class="form-section bg-white">
-            <div class="form-section-header border-info">
                 <h3 class="fw-bold text-primary">
-                    <i class="bi bi-award fs-1 me-2"></i>Informations sur  demande d'Attestation
+                    <i class="bi bi-mortarboard-fill fs-1 me-2"></i>Informations sur l'étudiant
                 </h3>
             </div>
+        </div>
 
+        <!-- Civilité -->
+        <div class="col-md-1">
+            <p class="form-label fw-semibold">Civilité :</p> 
+            <span><%= releve.civilite %></span>
+        </div>
 
-            <div class="row">
-               
-                    <div class="col-md-4">
-                        <p class="form-label fw-semibold">Id: </p> <span><%=releve.identifiant  %> </span>
-                    </div>
-                    <div class="mb-4">
-                        <p class="form-label fw-semibold">diplome : </p> <span><%=releve.diplome  %> </span>
-                    </div>
-                   
-            
+        <!-- Nom complet -->
+        <div class="col-md-3">
+            <p class="form-label fw-semibold">Nom Complet :</p> 
+            <span><%= releve.prenom %> <%= releve.nom %></span>
+        </div>
+
+        <!-- Filière -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Filière :</p> 
+            <span><%= releve.filiere %></span>
+        </div>
+
+        <!-- Niveau -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Niveau :</p> 
+            <span><%= releve.niveau %></span>
+        </div>
+
+        <!-- Promotion -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Promotion :</p> 
+            <span><%= releve.promotion %></span>
+        </div>
+
+        <!-- Matricule -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Numéro matricule :</p> 
+            <span><%= releve.matricule %></span>
+        </div>
+    </div>
+
+    <hr class="mx-4">
+
+    <div class="form-section bg-white">
+        <div class="form-section-header border-info">
+            <h3 class="fw-bold text-primary">
+                <i class="bi bi-award fs-1 me-2"></i>Informations sur le relevé de notes
+            </h3>
+        </div>
+
+        <div class="d-flex justify-content-around">
+            <!-- Identifiant -->
+            <div class="col-md-4">
+                <p class="form-label fw-semibold">Id :</p> 
+                <span><%= releve.identifiant %></span>
+            </div>
+
+            <!-- Semestre -->
+            <div class="mb-4">
+                <p class="form-label fw-semibold">Semestre :</p> 
+                <span><%= releve.semestre %></span>
+            </div>
+
+            <!-- Statut -->
+            <div class="mb-4">
+                <p class="form-label fw-semibold">Statut :</p> 
+                <span class="badge 
+                    <%= releve.statut==='En attente' ? 'bg-primary-subtle text-primary' 
+                    : releve.statut==='validee' ? 'bg-success-subtle text-success' 
+                    : releve.statut==='rejetee' ? 'bg-danger-subtle text-danger' : '' %>">
+                    <%= releve.statut %>
+                </span>
             </div>
         </div>
+    </div>
 </div>

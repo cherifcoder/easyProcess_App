@@ -2,14 +2,13 @@
     <div class="d-flex flex-column justify-content-center ">
         <div class="row">
             <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                <img src="../assets/img/logounivsegou.png" alt="logo"
-                    class="logo img-fluid bg-white rounded-circle p-2">
+                <img src="/img/logoUSegou.png" alt="logo" class="logo img-fluid bg-white rounded-circle p-2">
                 <h3 class="inter-tight d-none d-md-block">Easy Process</h3>
             </div>
         </div>
         <div class="border-bottom border-1 border-accent"></div>
         <div class="row p-0 d-block justify-content-center w-100 py-3">
-            <a href="main.html"
+            <a href="/dashboard"
                 class="nav-link d-flex align-items-center gap-2 btn btn-primary ps-md-5 ps-3 rounded-end-5 mb-3 ">
                 <i class="bi bi-house fs-3"></i>
                 <span class="description d-none d-md-block inter">Dashboard</span>
@@ -22,25 +21,40 @@
                         class="bi bi-caret-down-fill small"></i></span>
             </a>
             <div id="demandeSubmenu" class="collapse mb-3">
-                <a href="demandes.html"
+                <a href="/demandes/list"
                     class="nav-link d-flex align-items-center gap-2 btn btn-primary ps-md-5 ps-2 rounded-end-5 mb-md-2">
                     <i class="bi bi-folder fs-4"></i>
                     <span class="description d-none d-md-block inter">Toutes</span>
                 </a>
-                <a href="validees.html"
+                <a href="/demandes/diplome"
                     class="nav-link d-flex align-items-center gap-2 btn btn-primary ps-md-5 ps-2  rounded-end-5 mb-md-2">
-                    <i class="bi bi-check-circle fs-4"></i>
-                    <span class="description d-none d-md-block inter">Validees</span>
+                    <i class="bi bi-award  fs-4"></i>
+                    <span class="description d-none d-md-block inter">Diplome</span>
                 </a>
-                <a href="enCours.html"
+                <a href="/demandes/frequentation"
+                class="nav-link d-flex align-items-center gap-2 btn btn-primary ps-md-5 ps-2  rounded-end-5 mb-md-2">
+                <i class="bi bi-calendar-check fs-4"></i>
+                <span class="description d-none d-md-block inter">Frequentaion</span>
+            </a>
+                <a href="/demandes/reclamation"
                     class="nav-link d-flex align-items-center gap-2 btn btn-primary ps-md-5 ps-2  rounded-end-5 mb-md-2">
-                    <i class="bi bi-clock fs-4"></i>
-                    <span class="description d-none d-md-block inter">En Cours</span>
+                    <i class="bi bi-exclamation-triangle fs-4"></i>
+                    <span class="description d-none d-md-block inter">Reclamation</span>
                 </a>
-                <a href="rejetees.html"
-                    class="nav-link d-flex align-items-center gap-2 btn btn-primary ps-md-5 ps-2 rounded-end-5 mb-md-2">
-                    <i class="bi bi-x-circle fs-4"></i>
-                    <span class="description d-none d-md-block inter">Rejetees</span>
+                <a href="/demandes/recommandation"
+                    class="nav-link d-flex align-items-center gap-2 btn btn-primary ps-md-5 ps-2  rounded-end-5 mb-md-2">
+                    <i class="bi bi-envelope fs-4"></i>
+                    <span class="description d-none d-md-block inter">Recommandation</span>
+                </a>
+                <a href="/demandes/releve"
+                    class="nav-link d-flex align-items-center gap-2 btn btn-primary ps-md-5 ps-2  rounded-end-5 mb-md-2">
+                    <i class="bi bi-file-text fs-4"></i>
+                    <span class="description d-none d-md-block inter">Releve de note</span>
+                </a>
+                <a href="/demandes/stage"
+                    class="nav-link d-flex align-items-center gap-2 btn btn-primary ps-md-5 ps-2  rounded-end-5 mb-md-2">
+                    <i class="bi bi-briefcase  fs-4"></i>
+                    <span class="description d-none d-md-block inter">Stage</span>
                 </a>
             </div>
             <a href="main.html"
@@ -51,12 +65,12 @@
                         class="bi bi-caret-down-fill small"></i></span>
             </a>
             <div id="userSubmenu" class="collapse">
-                <a href="main.html"
+                <a href="/users/admin"
                     class="nav-link d-flex align-items-center gap-2 btn btn-primary ps-md-5 ps-2  rounded-end-5 mb-md-2">
                     <i class="bi bi-person-gear fs-4"></i>
                     <span class="description d-none d-md-block inter">Admin</span>
                 </a>
-                <a href="etd.html"
+                <a href="/users/etd"
                     class="nav-link d-flex align-items-center gap-2 btn btn-primary ps-md-5 ps-2  rounded-end-5 mb-md-2">
                     <i class="bi bi-person-vcard fs-4"></i>
                     <span class="description d-none d-md-block inter">Etudiants</span>

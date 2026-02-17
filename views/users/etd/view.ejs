@@ -1,0 +1,102 @@
+<div class="bg-white px-4 py-4">
+    <%- include("../../partials/filsDArianeUsers.ejs") %> 
+
+    <div class="row g-3">
+        <div class="form-section-header border-info d-flex justify-content-between">
+            <div>
+                <h3 class="fw-bold text-primary">
+                    <i class="bi bi-mortarboard-fill fs-1 me-2"></i>Informations sur l'étudiant
+                </h3>
+            </div>
+        </div>
+
+        <!-- Civilité -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Sexe :</p> 
+            <span><%= etudiant.sexe %></span>
+        </div>
+
+        <!-- Nom complet -->
+        <div class="col-md-3">
+            <p class="form-label fw-semibold">Nom Complet :</p> 
+            <span><%= etudiant.prenom %> <%= etudiant.nom %></span>
+        </div>
+
+        <!-- Filière -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Filière :</p> 
+            <span><%= etudiant.filiere %></span>
+        </div>
+
+        <!-- Niveau -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Niveau :</p> 
+            <span><%= etudiant.niveau %></span>
+        </div>
+
+        <!-- Promotion -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Promotion :</p> 
+            <span><%= etudiant.promotion %></span>
+        </div>
+
+        <!-- Matricule -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Numéro matricule :</p> 
+            <span><%= etudiant.matricule %></span>
+        </div>
+
+        <!-- Email -->
+        <div class="col-md-3">
+            <p class="form-label fw-semibold">Email :</p> 
+            <span><%= etudiant.email %></span>
+        </div>
+
+        <!-- Téléphone -->
+        <div class="col-md-3">
+            <p class="form-label fw-semibold">Téléphone :</p> 
+            <span><%= etudiant.telephone %></span>
+        </div>
+
+        <!-- Adresse -->
+        <div class="col-md-4">
+            <p class="form-label fw-semibold">Adresse :</p> 
+            <span><%= etudiant.adresse %></span>
+        </div>
+
+        <!-- Date de naissance -->
+        <div class="col-md-3">
+            <p class="form-label fw-semibold">Date de naissance :</p> 
+            <span><%= etudiant.dateNaissance.toLocaleDateString("fr-FR") %></span>
+        </div>
+
+        <!-- Identifiant -->
+        <div class="col-md-3">
+            <p class="form-label fw-semibold">Identifiant :</p> 
+            <span><%= etudiant.identifiant %></span>
+        </div>
+    </div>
+
+    <hr class="mx-4">
+
+    <div class="form-section bg-white">
+        <div class="form-section-header border-info">
+            <h3 class="fw-bold text-primary">
+                <i class="bi bi-gear fs-1 me-2"></i>Actions
+            </h3>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 d-flex justify-content-start gap-3">
+                <a href="/users/etd/edit/<%= etudiant.identifiant %>" class="btn btn-warning">
+                    <i class="bi bi-pen"></i> Modifier
+                </a>
+                <form action="/users/etd/delete/<%= etudiant.identifiant %>" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-trash"></i> Supprimer
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

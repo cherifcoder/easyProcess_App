@@ -2,7 +2,7 @@
 
     <%- include("../../partials/filsDAriane.ejs") %>
 </div>
-<form action="/demandes/create/reclamation" method="POST" >
+<form action="/demandes/create/recommandation" method="POST" >
     <%- include("../../partials/infoEtd.ejs") %>
     
     <div class="form-section-header border-success">
@@ -30,30 +30,26 @@
         
         <div class="col-md-3">
             <label class="form-label fw-semibold">Poste/Programme visé</label>
-            <input type="text" class="form-control" placeholder="Ex: Master en Informatique, Poste de Développeur..." required>
+            <input type="text" class="form-control" placeholder="Ex: Master en Informatique, Poste de Développeur..." name="programme" required>
         </div>
         
         <div class="col-md-3">
             <label class="form-label fw-semibold">Enseignant/professeur sollicité</label>
-            <select class="form-select" required>
+            <select class="form-select" required name="professeur">
                 <option value="" selected disabled>Choisir un enseignant</option>
-                <option value="prof1">Pr. Ahmed BENANI</option>
-                <option value="prof2">Pr. Fatima ALAMI</option>
-                <option value="prof3">Dr. Karim SAIDI</option>
-                <option value="prof4">Mme. Leila CHERKAOUI</option>
+                <option value="Dr. Daouda Traore">Dr. Daouda Traore</option>
+                <option value="Dr. Mahame Koita ">Dr. Mahame Koita </option>
+                <option value="Dr. Solemane Coulibaly">Dr. Solemane Coulibaly</option>
+                <option value="M. Moussa Cisse">M. Moussa Cisse</option>
             </select>
         </div>
         
         <div class="col-12">
             <label class="form-label fw-semibold">Informations complémentaires pour le rédacteur</label>
-            <textarea class="form-control" rows="4" placeholder="Précisez les points importants à mentionner dans la lettre, vos motivations, vos compétences spécifiques..."></textarea>
+            <textarea class="form-control" rows="4" placeholder="Précisez les points importants à mentionner dans la lettre, vos motivations, vos compétences spécifiques..." name="infoSuplementaire"></textarea>
             <div class="form-text">Ces informations aideront le rédacteur à personnaliser votre lettre.</div>
         </div>
-        
-        
-        
-       
-        
+
        
     </div>
     

@@ -35,4 +35,12 @@ router.get("/demandes/frequentation/view/:id",frequentationController.getFrequen
 
 router.post("/demandes/frequentation/delete/:id",frequentationController.deleteFrequentation)
 
+
+// Route pour le formulaire d'édition des fréquentations
+router.get("/demandes/edit/frequentation/:id", frequentationController.getFrequentationEditForm);
+
+// Route pour la mise à jour des fréquentations
+router.post("/demandes/edit/frequentation/:id", frequentationController.updateFrequentation);
+
+
 module.exports=router

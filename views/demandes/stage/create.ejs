@@ -14,7 +14,7 @@
         <div class="row g-3 mb-3">
             <div class="col-md-3">
                 <label class="form-label fw-semibold">Type de stage</label>
-                <select class="form-select" required>
+                <select class="form-select" required name="type"> 
                     <option value="" selected disabled>Choisir le type de stage</option>
                     <option value="dut">Stage pour l'obtention du DUT</option>
                     <option value="licence">Stage de fin de cycle (licence)</option>
@@ -44,11 +44,11 @@
             
             <div class="col-md-3">
                 <label class="form-label fw-semibold">Durée souhaitée</label>
-                <select class="form-select" required autocomplete="off">
+                <select class="form-select" required autocomplete="off" name="duree">
                     <option value="" selected disabled>Choisir la durée</option>
-                    <option value="2">2 Mois</option>
-                    <option value="3">3 Mois</option>
-                    <option value="6" >6 Mois</option>
+                    <option value="2 Mois">2 Mois</option>
+                    <option value="3 Mois">3 Mois</option>
+                    <option value="6 Mois" >6 Mois</option>
                 </select>
             </div>
 

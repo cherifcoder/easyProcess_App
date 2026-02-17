@@ -1,0 +1,116 @@
+<div class="container py-4">
+
+    <%- include("../../partials/filsDAriane.ejs") %>
+</div>
+<form class="bg-white px-4 py-4" method="POST" action="/demandes/edit/recommandation/<%= recommandation.identifiant %>">
+    <h1>Modifier la recommandation</h1>
+    <div class="row g-3">
+        <div class="form-section-header border-info d-flex justify-content-between">
+            <div class="">
+                <h3 class="fw-bold text-primary">
+                    <i class="bi bi-mortarboard-fill fs-1 me-2"></i>Informations sur l'étudiant
+                </h3>
+            </div>
+            <%- include("../../partials/btnEdit.ejs") %>
+        </div>
+
+        <!-- Civilité -->
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Civilité</label>
+            <select name="civilite" class="form-select shadow-sm" required>
+                <option value="" disabled>Choisir</option>
+                <option value="M." <%= recommandation.civilite === "M." ? "selected" : "" %>>M.</option>
+                <option value="Mme" <%= recommandation.civilite === "Mme" ? "selected" : "" %>>Mme</option>
+                <option value="Mlle" <%= recommandation.civilite === "Mlle" ? "selected" : "" %>>Mlle</option>
+            </select>
+        </div>
+
+        <!-- Nom -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Nom</label>
+            <input type="text" name="nom" class="form-control shadow-sm" required value="<%= recommandation.nom %>">
+        </div>
+
+        <!-- Prénom -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Prénom</label>
+            <input type="text" name="prenom" class="form-control shadow-sm" required value="<%= recommandation.prenom %>">
+        </div>
+
+        <!-- Filière -->
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Filière</label>
+            <input type="text" name="filiere" class="form-control shadow-sm" required value="<%= recommandation.filiere %>">
+        </div>
+
+        <!-- Niveau -->
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Niveau</label>
+            <input type="text" name="niveau" class="form-control shadow-sm" required value="<%= recommandation.niveau %>">
+        </div>
+
+        <!-- Promotion -->
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Promotion</label>
+            <input type="number" name="promotion" class="form-control shadow-sm" required value="<%= recommandation.promotion %>">
+        </div>
+
+        <!-- Matricule -->
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Matricule</label>
+            <input type="text" name="matricule" class="form-control shadow-sm" required value="<%= recommandation.matricule %>">
+        </div>
+    </div>
+
+    <hr class="mx-4">
+
+    <div class="form-section bg-white">
+        <div class="form-section-header border-info">
+            <h3 class="fw-bold text-primary">
+                <i class="bi bi-award fs-1 me-2"></i>Informations sur la recommandation
+            </h3>
+        </div>
+
+        <div class="row">
+            <!-- Type -->
+            <div class="col-md-4">
+                <label class="form-label fw-semibold">Type</label>
+                <input type="text" name="type" class="form-control shadow-sm" value="<%= recommandation.type %>">
+            </div>
+
+            <!-- Destinataire -->
+            <div class="col-md-4">
+                <label class="form-label fw-semibold">Destinataire</label>
+                <input type="text" name="destinataire" class="form-control shadow-sm" value="<%= recommandation.destinataire %>">
+            </div>
+
+            <!-- Programme -->
+            <div class="col-md-6">
+                <label class="form-label fw-semibold">Programme</label>
+                <input type="text" name="programme" class="form-control shadow-sm" value="<%= recommandation.programme %>">
+            </div>
+
+            <!-- Professeur -->
+            <div class="col-md-6">
+                <label class="form-label fw-semibold">Professeur</label>
+                <input type="text" name="professeur" class="form-control shadow-sm" value="<%= recommandation.professeur %>">
+            </div>
+
+            <!-- Note -->
+            <div class="col-md-6">
+                <label class="form-label fw-semibold">Informations complémentaires pour le rédacteur</label>
+                <textarea name="infoSuplementaire" class="form-control shadow-sm" rows="4"><%= recommandation.infoSupplementaire %></textarea>
+            </div>            
+
+            <!-- Statut -->
+            <div class="col-md-6">
+                <label class="form-label fw-semibold">Statut</label>
+                <select class="form-select" name="statut">
+                    <option value="En attente" <%= recommandation.statut === "En attente" ? "selected" : "" %>>En attente</option>
+                    <option value="validee" <%= recommandation.statut === "validee" ? "selected" : "" %>>Validée</option>
+                    <option value="rejetee" <%= recommandation.statut === "rejetee" ? "selected" : "" %>>Rejetée</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</form>

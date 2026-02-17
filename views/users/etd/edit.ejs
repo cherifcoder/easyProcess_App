@@ -1,0 +1,106 @@
+<div class="container py-4">
+    <%- include("../../partials/filsDArianeUsers.ejs") %>
+</div>
+
+<form class="bg-white px-4 py-4" method="POST" action="/users/etd/edit/<%= etudiant.identifiant %>">
+    <div class="row g-3">
+        <div class="form-section-header border-info d-flex justify-content-between">
+            <div>
+                <h3 class="fw-bold text-primary">
+                    <i class="bi bi-mortarboard-fill fs-1 me-2"></i>Informations sur l'étudiant
+                </h3>
+            </div>
+            <%- include("../../partials/btnEdit.ejs") %>
+        </div>
+
+        <!-- Nom -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Nom</label>
+            <input type="text" name="nom" class="form-control shadow-sm" required value="<%= etudiant.nom %>">
+        </div>
+
+        <!-- Prénom -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Prénom</label>
+            <input type="text" name="prenom" class="form-control shadow-sm" required value="<%= etudiant.prenom %>">
+        </div>
+
+        <!-- Date de naissance -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Date de naissance</label>
+            <input type="date" name="dateNaissance" class="form-control shadow-sm" 
+                   value="<%= etudiant.dateNaissance.toISOString().split('T')[0] %>" required>
+        </div>
+
+        <!-- Sexe -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Sexe</label>
+            <select name="sexe" class="form-select shadow-sm" required>
+                <option value="Homme" <%= etudiant.sexe === "Homme" ? "selected" : "" %>>Homme</option>
+                <option value="Femme" <%= etudiant.sexe === "Femme" ? "selected" : "" %>>Femme</option>
+            </select>
+        </div>
+
+        <!-- Adresse -->
+        <div class="col-md-6">
+            <label class="form-label fw-semibold">Adresse</label>
+            <input type="text" name="adresse" class="form-control shadow-sm" value="<%= etudiant.adresse %>">
+        </div>
+
+        <!-- Téléphone -->
+        <div class="col-md-6">
+            <label class="form-label fw-semibold">Téléphone</label>
+            <input type="tel" name="telephone" class="form-control shadow-sm" value="<%= etudiant.telephone %>">
+        </div>
+
+        <!-- Filière -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Filière</label>
+            <select name="filiere" class="form-select shadow-sm" required>
+                <option value="AB" <%= etudiant.filiere === "AB" ? "selected" : "" %>>Agrobusiness</option>
+                <option value="AG" <%= etudiant.filiere === "AG" ? "selected" : "" %>>Assistant de Gestion</option>
+                <option value="CFA" <%= etudiant.filiere === "CFA" ? "selected" : "" %>>Comptabilité Finance Audit</option>
+                <option value="3ER" <%= etudiant.filiere === "3ER" ? "selected" : "" %>>Eau Environnement et Énergie Renouvelable</option>
+                <option value="GI" <%= etudiant.filiere === "GI" ? "selected" : "" %>>Génie Informatique</option>
+                <option value="HT" <%= etudiant.filiere === "HT" ? "selected" : "" %>>Hôtellerie et Tourisme</option>
+                <option value="MA" <%= etudiant.filiere === "MA" ? "selected" : "" %>>Machinisme Agricole</option>
+                <option value="MC" <%= etudiant.filiere === "MC" ? "selected" : "" %>>Marketing et Communication</option>
+            </select>
+        </div>
+
+        <!-- Niveau -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Niveau</label>
+            <select name="niveau" class="form-select shadow-sm" required>
+                <option value="L1" <%= etudiant.niveau === "L1" ? "selected" : "" %>>L1</option>
+                <option value="L2" <%= etudiant.niveau === "L2" ? "selected" : "" %>>L2</option>
+                <option value="L3" <%= etudiant.niveau === "L3" ? "selected" : "" %>>L3</option>
+            </select>
+        </div>
+
+        <!-- Promotion -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Promotion</label>
+            <input type="number" name="promotion" class="form-control shadow-sm" min="2015" max="2026" 
+                   value="<%= etudiant.promotion %>">
+        </div>
+
+        <!-- Matricule -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Matricule</label>
+            <input type="text" name="matricule" class="form-control shadow-sm" value="<%= etudiant.matricule %>">
+        </div>
+
+        <!-- Email -->
+        <div class="col-md-6">
+            <label class="form-label fw-semibold">Email</label>
+            <input type="email" name="email" class="form-control shadow-sm" value="<%= etudiant.email %>">
+        </div>
+
+        <!-- Mot de passe -->
+        <div class="col-md-6">
+            <label class="form-label fw-semibold">Mot de passe</label>
+            <input type="password" name="motDePass" class="form-control shadow-sm" placeholder="Nouveau mot de passe (laisser vide si inchangé)">
+        </div>
+    </div>
+</form>

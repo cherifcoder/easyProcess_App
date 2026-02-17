@@ -46,13 +46,13 @@ const recommandationSchema=new mongoose.Schema({
     destinataire:{
         type:String
     },
-    programe:{
+    programme:{
         type:String
     },
-    infoSuplementaire:{
+    infoSupplementaire:{
         type:String
     },
-    prof:{
+    professeur:{
         type:String
     },
     statut:{

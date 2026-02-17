@@ -1,0 +1,132 @@
+<div class="container py-4">
+
+    <%- include("../../partials/filsDAriane.ejs") %>
+</div>
+<form class="bg-white px-4 py-4" method="POST" action="/demandes/edit/stage/<%= stage.identifiant %>">
+    <div class="row g-3">
+        <div class="form-section-header border-info d-flex justify-content-between">
+            <div class="">
+                <h3 class="fw-bold text-primary">
+                    <i class="bi bi-mortarboard-fill fs-1 me-2"></i>Informations sur l'étudiant
+                </h3>
+            </div>
+            <%- include("../../partials/btnEdit.ejs") %>
+        </div>
+
+        <!-- Civilité -->
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Civilité</label>
+            <select name="civilite" class="form-select shadow-sm" required>
+                <option value="" disabled>Choisir</option>
+                <option value="M." <%= stage.civilite === "M." ? "selected" : "" %>>M.</option>
+                <option value="Mme" <%= stage.civilite === "Mme" ? "selected" : "" %>>Mme</option>
+                <option value="Mlle" <%= stage.civilite === "Mlle" ? "selected" : "" %>>Mlle</option>
+            </select>
+        </div>
+
+        <!-- Nom -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Nom</label>
+            <input type="text" name="nom" class="form-control shadow-sm" required value="<%= stage.nom %>">
+        </div>
+
+        <!-- Prénom -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Prénom</label>
+            <input type="text" name="prenom" class="form-control shadow-sm" required value="<%= stage.prenom %>">
+        </div>
+
+        <!-- Filière -->
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Filière</label>
+            <input type="text" name="filiere" class="form-control shadow-sm" required value="<%= stage.filiere %>">
+        </div>
+
+        <!-- Niveau -->
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Niveau</label>
+            <input type="text" name="niveau" class="form-control shadow-sm" required value="<%= stage.niveau %>">
+        </div>
+
+        <!-- Promotion -->
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Promotion</label>
+            <input type="number" name="promotion" class="form-control shadow-sm" required value="<%= stage.promotion %>">
+        </div>
+
+        <!-- Matricule -->
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Matricule</label>
+            <input type="text" name="matricule" class="form-control shadow-sm" required value="<%= stage.matricule %>">
+        </div>
+    </div>
+
+    <hr class="mx-4">
+
+    <div class="form-section bg-white">
+        <div class="form-section-header border-info">
+            <h3 class="fw-bold text-primary">
+                <i class="bi bi-award fs-1 me-2"></i>Informations sur le stage
+            </h3>
+        </div>
+
+        <div class="row">
+            <!-- Type -->
+           <!-- Type de stage -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Type de stage</label>
+            <select class="form-select" required name="type"> 
+                <option value="" disabled>Choisir le type de stage</option>
+                <option value="dut" <%= stage.type === "dut" ? "selected" : "" %>>Stage pour l'obtention du DUT</option>
+                <option value="licence" <%= stage.type === "licence" ? "selected" : "" %>>Stage de fin de cycle (licence)</option>
+                <option value="perfectionnement" <%= stage.type === "perfectionnement" ? "selected" : "" %>>Stage de perfectionnement</option>
+            </select>
+        </div>
+
+            <!-- Entreprise -->
+            <div class="col-md-4">
+                <label class="form-label fw-semibold">Entreprise</label>
+                <input type="text" name="entreprise" class="form-control shadow-sm" value="<%= stage.entreprise %>">
+            </div>
+
+            <!-- Maître de stage -->
+            <div class="col-md-4">
+                <label class="form-label fw-semibold">Maître de stage</label>
+                <input type="text" name="maitreDeStage" class="form-control shadow-sm" value="<%= stage.maitreDeStage %>">
+            </div>
+
+            <!-- Lieu de stage -->
+            <div class="col-md-6">
+                <label class="form-label fw-semibold">Lieu de stage</label>
+                <input type="text" name="lieuDeStage" class="form-control shadow-sm" value="<%= stage.lieuDeStage %>">
+            </div>
+
+            <!-- Encadrant -->
+            <div class="col-md-6">
+                <label class="form-label fw-semibold">Encadrant</label>
+                <input type="text" name="encadrant" class="form-control shadow-sm" value="<%= stage.encadrant %>">
+            </div>
+
+            <!-- Durée -->
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">Durée souhaitée</label>
+                <select class="form-select" required name="duree">
+                    <option value="" disabled>Choisir la durée</option>
+                    <option value="2 Mois" <%= stage.duree === "2 Mois" ? "selected" : "" %>>2 Mois</option>
+                    <option value="3 Mois" <%= stage.duree === "3 Mois" ? "selected" : "" %>>3 Mois</option>
+                    <option value="6 Mois" <%= stage.duree === "6 Mois" ? "selected" : "" %>>6 Mois</option>
+                </select>
+            </div>
+
+            <!-- Statut -->
+            <div class="col-md-6">
+                <label class="form-label fw-semibold">Statut</label>
+                <select class="form-select" name="statut">
+                    <option value="En attente" <%= stage.statut === "En attente" ? "selected" : "" %>>En attente</option>
+                    <option value="validee" <%= stage.statut === "validee" ? "selected" : "" %>>Validée</option>
+                    <option value="rejetee" <%= stage.statut === "rejetee" ? "selected" : "" %>>Rejetée</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</form>

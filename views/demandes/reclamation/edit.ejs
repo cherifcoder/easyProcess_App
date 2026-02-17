@@ -1,0 +1,192 @@
+<div class="container py-4">
+
+    <%- include("../../partials/filsDAriane.ejs") %>
+</div>
+<form class="bg-white px-4 py-4" method="POST" action="/demandes/edit/reclamation/<%= reclamation.identifiant %>">
+    <h1>Modifier la réclamation de note</h1>
+    <div class="row g-3">
+        <div class="form-section-header border-info d-flex justify-content-between">
+            <div class="">
+                <h3 class="fw-bold text-primary">
+                    <i class="bi bi-mortarboard-fill fs-1 me-2"></i>Informations sur l'étudiant
+                </h3>
+            </div>
+            <%- include("../../partials/btnEdit.ejs") %>
+        </div>
+    
+        <!-- Civilité -->
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Civilité</label>
+            <select name="civilite" id="civilite" class="form-select shadow-sm" required>
+                <option value="" selected disabled class="text-muted">Choisir</option>
+                <option value="M." <%= reclamation.civilite === "M." ? "selected" : "" %>>M.</option>
+                <option value="Mme" <%= reclamation.civilite === "Mme" ? "selected" : "" %>>Mme</option>
+                <option value="Mlle" <%= reclamation.civilite === "Mlle" ? "selected" : "" %>>Mlle</option>
+            </select>
+        </div>
+    
+        <!-- Nom -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Nom</label>
+            <input type="text" name="nom" id="nom" class="form-control shadow-sm" placeholder="Entrez votre nom" required value="<%= reclamation.nom %>">
+        </div>
+    
+        <!-- Prénom -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Prénom</label>
+            <input type="text" name="prenom" id="prenom" class="form-control shadow-sm" placeholder="Entrez votre prénom" value="<%= reclamation.prenom %>" required>
+        </div>
+    
+        <!-- Filière -->
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Filière</label>
+            <select name="filiere" id="filiere" class="form-select shadow-sm" required>
+                <option value="" selected disabled class="text-muted">Choisir une filière</option>
+                <option value="AB" <%= reclamation.filiere === "AB" ? "selected" : "" %>>AB</option>
+                <option value="AG" <%= reclamation.filiere === "AG" ? "selected" : "" %>>AG</option>
+                <option value="CFA" <%= reclamation.filiere === "CFA" ? "selected" : "" %>>CFA</option>
+                <option value="3ER" <%= reclamation.filiere === "3ER" ? "selected" : "" %>>3ER</option>
+                <option value="GI" <%= reclamation.filiere === "GI" ? "selected" : "" %>>GI</option>
+                <option value="HT" <%= reclamation.filiere === "HT" ? "selected" : "" %>>HT</option>
+                <option value="MA" <%= reclamation.filiere === "MA" ? "selected" : "" %>>MA</option>
+                <option value="MC" <%= reclamation.filiere === "MC" ? "selected" : "" %>>MC</option>
+            </select>
+        </div>
+    
+        <!-- Niveau -->
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Niveau</label>
+            <select name="niveau" id="niveau" class="form-select shadow-sm" required>
+                <option value="" selected disabled class="text-muted">Niveau</option>
+                <option value="L1" <%= reclamation.niveau === "L1" ? "selected" : "" %>>L1</option>
+                <option value="L2" <%= reclamation.niveau === "L2" ? "selected" : "" %>>L2</option>
+                <option value="L3" <%= reclamation.niveau === "L3" ? "selected" : "" %>>L3</option>
+            </select>
+        </div>
+      
+        <!-- Promotion -->
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Promotion</label>
+            <input type="number" name="promotion" id="promotion" class="form-control shadow-sm" placeholder="Entrez votre promotion" value="<%= reclamation.promotion %>" required min="2015" max="2026" step="1">
+        </div>
+        
+        <!-- Matricule -->
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Numéro matricule</label>
+            <input type="text" name="matricule" id="matricule" class="form-control shadow-sm" placeholder="Numero Matricule" value="<%= reclamation.matricule %>" required>
+        </div>
+    </div>
+    
+    <hr class="mx-4">
+    
+    <!-- SECTION RÉCLAMATION DE NOTE -->
+    <div class="form-section-header border-danger">
+        <h3 class="fw-bold text-primary">
+            <i class="bi bi-exclamation-triangle fs-1 me-2"></i>Informations sur la réclamation de Note
+        </h3>
+    </div>
+    
+    <!-- Détails -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-6">
+            <label class="form-label fw-semibold">Matière concernée</label>
+            <input type="text" class="form-control" placeholder="Nom de la matière" name="matiere" required value="<%= reclamation.matiere%>">
+        </div>
+        
+        <div class="col-md-6">
+            <label class="form-label fw-semibold">Professeur responsable</label>
+            <input type="text" class="form-control" placeholder="Professeur en charge" name="professeur" required value="<%= reclamation.professeur%>">
+        </div>
+    </div>
+    
+   <!-- Session concernée -->
+   <div class="mb-4">
+    <h5 class="fw-bold mb-3">Session concernée</h5>
+    <div class="row">
+        <div class="col-md-6">
+            <h6 class="fw-semibold text-primary mb-2">Session normale</h6>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="session" id="normS1" value="SN_S1" <%= reclamation.session === "SN_S1" ? "checked" : "" %>>
+                <label class="form-check-label" for="normS1">Semestre 1</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="session" id="normS2" value="SN_S2" <%= reclamation.session === "SN_S2" ? "checked" : "" %>>
+                <label class="form-check-label" for="normS2">Semestre 2</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="session" id="normS3" value="SN_S3" <%= reclamation.session === "SN_S3" ? "checked" : "" %>>
+                <label class="form-check-label" for="normS3">Semestre 3</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="session" id="normS4" value="SN_S4" <%= reclamation.session === "SN_S4" ? "checked" : "" %>>
+                <label class="form-check-label" for="normS4">Semestre 4</label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="radio" name="session" id="normS5" value="SN_S5" <%= reclamation.session === "SN_S5" ? "checked" : "" %>>
+                <label class="form-check-label" for="normS5">Semestre 5</label>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <h6 class="fw-semibold text-primary mb-2">Session de rattrapage</h6>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="session" id="ratS1" value="SR_S1" <%= reclamation.session === "SR_S1" ? "checked" : "" %>>
+                <label class="form-check-label" for="ratS1">Semestre 1</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="session" id="ratS2" value="SR_S2" <%= reclamation.session === "SR_S2" ? "checked" : "" %>>
+                <label class="form-check-label" for="ratS2">Semestre 2</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="session" id="ratS3" value="SR_S3" <%= reclamation.session === "SR_S3" ? "checked" : "" %>>
+                <label class="form-check-label" for="ratS3">Semestre 3</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="session" id="ratS4" value="SR_S4" <%= reclamation.session === "SR_S4" ? "checked" : "" %>>
+                <label class="form-check-label" for="ratS4">Semestre 4</label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="radio" name="session" id="ratS5" value="SR_S5" <%= reclamation.session === "SR_S5" ? "checked" : "" %>>
+                <label class="form-check-label" for="ratS5">Semestre 5</label>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <!-- Motif -->
+    <div class="mb-4">
+        <h5 class="fw-bold mb-3">Motif de la réclamation</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" name="motif" id="motifSaisi" value="saisie" <%= reclamation.motif === 'saisie' ? 'checked' : '' %>>
+                    <label class="form-check-label" for="motifSaisi">Erreur de saisie de note</label>
+                </div>
+                
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" name="motif" id="motifCalcul" value="calcul" <%= reclamation.motif === 'calcul' ? 'checked' : '' %>>
+                    <label class="form-check-label" for="motifCalcul">Erreur de calcul</label>
+                </div>
+                
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="motif" id="motifAbsence" value="absence" <%= reclamation.motif === 'absence' ? 'checked' : '' %>>
+                    <label class="form-check-label" for="motifAbsence">Absence de prise en compte d'un devoir/examen</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Statut -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <label class="form-label fw-semibold">Statut de la demande</label>
+            <select class="form-select" name="statut">
+                <option value="En attente" <%= reclamation.statut === 'En attente' ? 'selected' : '' %>>En attente</option>
+                <option value="validee" <%= reclamation.statut === 'validee' ? 'selected' : '' %>>Validée</option>
+                <option value="rejetee" <%= reclamation.statut === 'rejetee' ? 'selected' : '' %>>Rejetée</option>
+            </select>
+        </div>
+    </div>
+    
+   
+</form>

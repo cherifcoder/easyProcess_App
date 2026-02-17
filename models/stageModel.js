@@ -58,7 +58,8 @@ const stageSchema=new mongoose.Schema({
         type:String
     },
     duree:{
-        type:String
+        type:String,
+        enum:["2 Mois","3 Mois", "6 Mois"]
     },
     statut:{
         type:String,

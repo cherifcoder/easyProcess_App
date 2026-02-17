@@ -40,14 +40,20 @@ const reclamationSchema=new mongoose.Schema({
         type: String,
         require: true,
     },
-    session_concernee:{
+    session:{
         type:String,
         enum:["SN_S1","SN_S2","SN_S3","SN_S4","SN_S5","SR_S1","SR_S2","SR_S3","SR_S4","SR_S5"],
         
     },
+    matiere:{
+        type:String
+    },
+    professeur:{
+        type:String
+    },
     motif:{
         type:String,
-        enum:["calcul","saisie","abscence"]
+        enum:["calcul","saisie","absence"]
     },
     statut:{
         type:String,

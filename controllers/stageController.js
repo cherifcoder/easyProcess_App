@@ -1,10 +1,11 @@
-const Stage=require("../models/stageModel")
+const Stage = require("../models/stageModel");
 
-exports.createStage=async(req,res)=>{
-    try{
-        const {civilite,nom,prenom,filiere, niveau, promotion,matricule, type, entreprise,maitreDeStage,lieuDeStage,encadrant,duree,statut}=req.body
-   
-        const newStage=new Releve({
+// ✅ Créer un stage
+exports.createStage = async (req, res) => {
+    try {
+        const { civilite, nom, prenom, filiere, niveau, promotion, matricule, type, entreprise, maitreDeStage, lieuDeStage, encadrant, duree, statut } = req.body;
+
+        const newStage = new Stage({
             civilite,
             nom,
             prenom,
@@ -19,60 +20,134 @@ exports.createStage=async(req,res)=>{
             encadrant,
             duree,
             statut
-        })
-   
+        });
+
         await newStage.save();
-        res.send("Stage enregistre avec succes")
-    }catch(err){
-        console.log(err);
-        res.send(`Erreur lors de l'enregistrement: ${err}`)
+        res.send("Stage enregistré avec succès");
+    } catch (err) {
+        console.error(err);
+        res.send(`Erreur lors de l'enregistrement: ${err}`);
     }
-    
-}
+};
 
-exports.getStageById= async(req,res)=>{
-    try{
-        const releve=await Stage.findOne({identifiant:req.params.id})
-        if(!releve){
-            res.render("errors/404",{
-                title:"Erreur",
-                layout:"layouts/main"
-            })
+// ✅ Afficher tous les stages
+exports.getAllStages = async (req, res) => {
+    try {
+        const stages = await Stage.find();
+        stages.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
-        }res.render("demandes/stage/view",{
-            title:"Gestion des demandes - Afficher Stage",
-            layout:"layouts/main",
+        res.render("demandes/stage/list", {
+            title: "Gestion des demandes - Liste Stages",
+            layout: "layouts/main",
             breadcrumbs: [
                 { label: "Demandes", url: "#" },
                 { label: "Type de demande", url: "/demandes" },
-                { label: "Stage",url:"/demandes/stage"},
-                { label: "ID:", url: null }
-              ],
-              stage
-        })
-    }catch(err){
-        res.render("errors/404",{
-            title:"Erreur",
-            layout:"layouts/main"
-        })
+                { label: "Stage" },
+                { label: "Liste", url: null }
+            ],
+            stages
+        });
+    } catch (err) {
+        console.error(err);
+        res.render("errors/404", {
+            title: "Erreur",
+            layout: "layouts/main"
+        });
     }
-}
+};
 
+// ✅ Afficher un stage par ID
+exports.getStageById = async (req, res) => {
+    try {
+        const stage = await Stage.findOne({ identifiant: req.params.id });
+        if (!stage) {
+            return res.render("errors/404", {
+                title: "Erreur",
+                layout: "layouts/main"
+            });
+        }
 
-exports.deleteStage=async(req,res)=>{
-    try{
-        const stage=await Releve.findOneAndDelete({identifiant:req.params.id})
-        if(!stage){
-            res.render("errors/404",{
-                title:"Erreur",
-                layout:"layouts/main"
-            })
-        }res.redirect("/demandes/stage")
-    }catch(err){ 
-        res.render("errors/404",{
-            title:"Erreur",
-            layout:"layouts/main"
-        })
-        console.log(err)
+        res.render("demandes/stage/view", {
+            title: "Gestion des demandes - Afficher Stage",
+            layout: "layouts/main",
+            breadcrumbs: [
+                { label: "Demandes", url: "#" },
+                { label: "Type de demande", url: "/demandes" },
+                { label: "Stage", url: "/demandes/stage" },
+                { label: "Afficher", url: null }
+            ],
+            stage
+        });
+    } catch (err) {
+        console.error(err);
+        res.render("errors/404", {
+            title: "Erreur",
+            layout: "layouts/main"
+        });
     }
-}
+};
+
+// ✅ Supprimer un stage
+exports.deleteStage = async (req, res) => {
+    try {
+        const stage = await Stage.findOneAndDelete({ identifiant: req.params.id });
+        if (!stage) {
+            return res.render("errors/404", {
+                title: "Erreur",
+                layout: "layouts/main"
+            });
+        }
+        res.redirect("/demandes/stage");
+    } catch (err) {
+        console.error(err);
+        res.render("errors/404", {
+            title: "Erreur",
+            layout: "layouts/main"
+        });
+    }
+};
+
+// ✅ Formulaire d’édition
+exports.getStageEditForm = async (req, res) => {
+    try {
+        const stage = await Stage.findOne({ identifiant: req.params.id });
+        if (!stage) {
+            return res.status(404).send("Demande introuvable");
+        }
+
+        res.render("demandes/stage/edit", {
+            title: "Gestion des demandes - Modifier Stage",
+            layout: "layouts/main",
+            breadcrumbs: [
+                { label: "Demandes", url: "#" },
+                { label: "Type de demande", url: "/demandes" },
+                { label: "Stage", url: "/demandes/stage" },
+                { label: "Modifier", url: null }
+            ],
+            stage
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Erreur serveur");
+    }
+};
+
+// ✅ Mettre à jour un stage
+exports.updateStage = async (req, res) => {
+    try {
+        const stage = await Stage.findOneAndUpdate(
+            { identifiant: req.params.id },
+            req.body,
+            { new: true, runValidators: true }
+        );
+
+        if (!stage) {
+            return res.status(404).send("Demande introuvable");
+        }
+
+        res.redirect("/demandes/stage");
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Erreur lors de la modification");
+    }
+};

@@ -26,7 +26,6 @@ const etudiantSchema = new mongoose.Schema({
     telephone: {
         type: String,
         require: true,
-        match: [/^\+?[0-9]{7,15}$/, 'Numéro de téléphone invalide']
     },
     filiere: {
         type: String,

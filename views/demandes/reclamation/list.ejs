@@ -1,0 +1,115 @@
+<div class="container py-4">
+    <%-include("../../partials/filsDAriane.ejs")  %> 
+</div>
+    <%-include("../../partials/btnAjout") %>
+
+        <div class="form-section bg-white">
+            <div class="form-section-header border-info">
+                <h3 class="fw-bold text-primary">
+                    <i class="bi bi-award fs-1 me-2"></i>Demandes de diplome
+                </h3>
+            </div>
+
+            <table class="table table-borderless table-hover table-responsive text-center border-0 shadow p-5">
+                <thead class="bg-dark text-white">
+                    <th>Date</th>
+                    <th>Demande</th>
+                    <th>Demandeur</th>
+                    <th>Niveau</th>
+                    <th>Filiere</th>
+                    <th>Promotion</th>
+                    <th>Matricule</th>
+                    <th>periode</th>
+                    <th>Motif</th>
+                    <th>statut</th>
+                    <th>Actions</th>
+                </thead>
+                <tr>
+
+                    <% reclamations.forEach(reclamation=>{ %>
+                        <td><%= reclamation.date.toLocaleDateString("fr-FR") %></td>
+                        <td>
+                            <%= reclamation.identifiant %>
+                        </td>
+                        <td>
+                            <%= reclamation.prenom %>
+                                <%= reclamation.nom %>
+                        </td>
+                        <td>
+                            <%=reclamation.niveau %>
+                        </td>
+                        <td>
+                            <%=reclamation.filiere %>
+                        </td>
+                        <td>
+                            <%=reclamation.promotion %>
+                        </td>
+                        <td>
+                            <%=reclamation.matricule %>
+                        </td>
+                        <td>
+                            <%= reclamation.session %>
+                        </td>
+                        <td>
+                            <%=reclamation.motif %>
+                        </td>
+                        <td class="m-2 badge <%= reclamation.statut==="En attente"? "bg-primary-subtle text-primary"
+                            : reclamation.statut==="validee" ?"bg-success-subtle text-success":
+                            reclamation.statut==='rejetee' ?"bg-danger-subtle text-danger": "" %> "
+                            > <%=reclamation.statut %>
+                        </td>
+                        <td>
+                            <a href="/demandes/reclamation/view/<%= reclamation.identifiant %> "
+                                class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
+                                <i class="bi bi-eye fs-4"></i>
+                            </a>
+                            <a href="/demandes/edit/reclamation/<%=reclamation.identifiant %> "
+                                class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
+                                <i class="bi bi-pen fs-4"></i>
+                            </a>
+                            <a href="" class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                                <i class="bi bi-check2-circle fs-4"></i>
+                            </a>
+                            <a href="" class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                                <i class="bi bi-x-circle fs-4"></i>
+                            </a>
+
+                            <a action="/demandes/reclamation/delete/<%=reclamation.identifiant %> " method="POST"
+                                class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                                <button class="bi bi-trash fs-4 text-danger bg-danger-subtle" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal-<%= reclamation.identifiant %>"> <i></i> </button>
+
+                                <div class="modal fade" id="deleteModal-<%= reclamation.identifiant %>" tabindex="-1"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-danger text-white">
+                                                <h5 class="modal-title">Confirmation de suppression</h5>
+                                                <button type="button" class="btn-close btn-close-white text-primary"
+                                                    data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Voulez-vous vraiment supprimer la demande <strong>
+                                                        <%= reclamation.identifiant %>
+                                                    </strong> ?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="reset" class="btn btn-primary border-0"
+                                                    data-bs-dismiss="modal">Annuler</button>
+                                                <form
+                                                    action="/demandes/reclamation/delete/<%= reclamation.identifiant %>"
+                                                    method="POST">
+                                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </td>
+
+                </tr>
+                <% }) %>
+            </table>
+        </div>

@@ -1,0 +1,115 @@
+<div class="container py-4">
+    <%- include("../../partials/filsDArianeUsers.ejs") %>
+</div>
+
+<div class="">
+    <%- include("../../partials/btnAjout") %>
+        <div class="form-section bg-white">
+            <div class="form-section-header border-info">
+                <h3 class="fw-bold text-primary">
+                    <i class="bi bi-people fs-1 me-2"></i>Liste des étudiants
+                </h3>
+            </div>
+
+            <table class="table table-borderless table-hover table-responsive text-center border-0 shadow p-5">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th>Identifiant</th>
+                        <th>Prenom et nom</th>
+                        <th>Sexe</th>
+                        <th>Date de naissance</th>
+                        <th>Adresse</th>
+                        <th>Téléphone</th>
+                        <th>Email</th>
+                        <th>Filière</th>
+                        <th>Niveau</th>
+                        <th>Promotion</th>
+                        <th>Matricule</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% etudiants.forEach(etudiant=> { %>
+                        <tr>
+                            <td>
+                                <%= etudiant.identifiant %>
+                            </td>
+                            <td>
+                                <%= etudiant.prenom %>
+                                    <%= etudiant.nom %>
+                            </td>
+                            <td>
+                                <%= etudiant.sexe %>
+                            </td>
+                            <td>
+                                <%= etudiant.dateNaissance.toLocaleDateString("fr-FR") %>
+                            </td>
+                            <td>
+                                <%= etudiant.adresse %>
+                            </td>
+                            <td>
+                                <%= etudiant.telephone %>
+                            </td>
+                            <td>
+                                <%= etudiant.email %>
+                            </td>
+                            <td>
+                                <%= etudiant.filiere %>
+                            </td>
+                            <td>
+                                <%= etudiant.niveau %>
+                            </td>
+                            <td>
+                                <%= etudiant.promotion %>
+                            </td>
+                            <td>
+                                <%= etudiant.matricule %>
+                            </td>
+                            <td>
+                                <a href="/users/etd/view/<%= etudiant.identifiant %>"
+                                    class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
+                                    <i class="bi bi-eye fs-4"></i>
+                                </a>
+                                <a href="/users/etd/edit/<%= etudiant.identifiant %>"
+                                    class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
+                                    <i class="bi bi-pen fs-4"></i>
+                                </a>
+                                <a action="/demandes/etudiant/delete/<%=etudiant.identifiant %> " method="POST"
+                                    class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                                    <button class="bi bi-trash fs-4 text-danger bg-danger-subtle" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal-<%= etudiant.identifiant %>">  </button>
+    
+                                    <div class="modal fade" id="deleteModal-<%= etudiant.identifiant %>" tabindex="-1"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-danger text-white">
+                                                    <h5 class="modal-title">Confirmation de suppression</h5>
+                                                    <button type="button" class="btn-close btn-close-white text-primary"
+                                                        data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Voulez-vous vraiment supprimer l'etudiant <strong>
+                                                            <%= etudiant.identifiant %>
+                                                        </strong> ?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="reset" class="btn btn-primary border-0"
+                                                        data-bs-dismiss="modal">Annuler</button>
+                                                    <form
+                                                        action="/users/etd/delete/<%= etudiant.identifiant %>"
+                                                        method="POST">
+                                                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                               </a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+</div>

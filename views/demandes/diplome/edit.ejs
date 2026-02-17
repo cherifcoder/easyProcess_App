@@ -1,26 +1,116 @@
-<form class="bg-white px-4 py-4" method="POST" action="/demandes/diplome/edit/<%=diplome.identifiant%>">
-    <h1>Modifier le diplome</h1>
-    <%- include("../../partials/infoEtd.ejs") %>
+<div class="container py-4">
 
-        <div class="form-section bg-white">
-            <div class="form-section-header border-info">
-                <h3 class="fw-bold text-primary">
-                    <i class="bi bi-award fs-1 me-2"></i>Informations sur  demande d'Attestation
-                </h3>
+    <%- include("../../partials/filsDAriane.ejs") %>
+</div>
+<form class="bg-white px-4 py-4" method="POST" action="/demandes/edit/diplome/<%= diplome.identifiant %>">
+    <div class="row g-3">
+        <div class="form-section-header border-info d-flex justify-content-between">
+            <div class="">
+                 <h3 class="fw-bold text-primary">
+                <i class="bi bi-mortarboard-fill fs-1 me-2"></i>Informations sur l'etudiant
+            </h3>
             </div>
+           
+            <%- include("../../partials/btnEdit.ejs") %>
+        </div>
+    
+        <!-- Civilité -->
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Civilité</label>
+            <select name="civilite" id="civilite" class="form-select shadow-sm" required>
+                <option value="" selected disabled class="text-muted">Choisir</option>
+                <option value="M." <%= diplome.civilite === "M." ? "selected" : "" %>>M.</option>
+                <option value="Mme" <%= diplome.civilite === "Mme" ? "selected" : "" %>>Mme</option>
+                <option value="Mlle" <%= diplome.civilite === "Mlle" ? "selected" : "" %>>Mlle</option>
+            </select>
+        </div>
+    
+        <!-- Nom -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Nom</label>
+            <input type="text" name="nom" id="nom" class="form-control shadow-sm" placeholder="Entrez votre nom" required value="<%= diplome.nom %>">
+        </div>
+    
+        <!-- Prénom -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Prénom</label>
+            <input type="text" name="prenom" id="prenom" class="form-control shadow-sm" placeholder="Entrez votre prénom" value="<%= diplome.prenom %>" required>
+        </div>
+    
+        <!-- Filière -->
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Filière</label>
+            <select name="filiere" id="filiere" class="form-select shadow-sm" required>
+                <option value="" selected disabled class="text-muted">Choisir une filière</option>
+                <option value="AB" <%= diplome.filiere === "AB" ? "selected" : "" %>>AB</option>
+                <option value="AG" <%= diplome.filiere === "AG" ? "selected" : "" %>>AG</option>
+                <option value="CFA" <%= diplome.filiere === "CFA" ? "selected" : "" %>>CFA</option>
+                <option value="3ER" <%= diplome.filiere === "3ER" ? "selected" : "" %>>3ER</option>
+                <option value="GI" <%= diplome.filiere === "GI" ? "selected" : "" %>>GI</option>
+                <option value="HT" <%= diplome.filiere === "HT" ? "selected" : "" %>>HT</option>
+                <option value="MA" <%= diplome.filiere === "MA" ? "selected" : "" %>>MA</option>
+                <option value="MC" <%= diplome.filiere === "MC" ? "selected" : "" %>>MC</option>
+            </select>
+        </div>
+    
+        <!-- Niveau -->
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Niveau</label>
+            <select name="niveau" id="niveau" class="form-select shadow-sm" required>
+                <option value="" selected disabled class="text-muted">Niveau</option>
+                <option value="L1" <%= diplome.niveau === "L1" ? "selected" : "" %>>L1</option>
+                <option value="L2" <%= diplome.niveau === "L2" ? "selected" : "" %>>L2</option>
+                <option value="L3" <%= diplome.niveau === "L3" ? "selected" : "" %>>L3</option>
+            </select>
+        </div>
+      
+        <!-- Promotion -->
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Promotion</label>
+            <input type="number" name="promotion" id="promotion" class="form-control shadow-sm" placeholder="Entrez votre promotion" value="<%= diplome.promotion %>" required min="2015" max="2026" step="1">
+        </div>
+        
+        <!-- Matricule -->
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Numéro matricule</label>
+            <input type="text" name="matricule" id="matricule" class="form-control shadow-sm" placeholder="Numero Matricule" value="<%= diplome.matricule %>" required>
+        </div>
+    
+    </div>
+    <hr class="mx-4">
+    
+    <div class="form-section bg-white">
+        <div class="form-section-header border-info">
+            <h3 class="fw-bold text-primary">
+                <i class="bi bi-award fs-1 me-2"></i>Informations sur la demande d'Attestation
+            </h3>
+        </div>
 
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="mb-4">
-                        <label class="form-label fw-semibold">Diplome souhaité</label>
-                        <select class="form-select" required name="diplome">
-                            <option value="" selected disabled>Choisir un Diplome</option>
-                            <option value="DUT" <%= diplome.diplome === "DUT" ? "selected" : "" %>>DUT</option>
-                            <option value="Licence" <%= diplome.diplome === "Licence" ? "selected" : "" %>>LICENCE</option>
-                        </select>
-                    </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Diplome souhaité</label>
+                    <select class="form-select" required name="diplome">
+                        <option value="" selected disabled>Choisir un Diplome</option>
+                        <option value="DUT" <%= diplome.diplome === "DUT" ? "selected" : "" %>>DUT</option>
+                        <option value="Licence" <%= diplome.diplome === "Licence" ? "selected" : "" %>>LICENCE</option>
+                    </select>
                 </div>
             </div>
+            
+            <!-- Statut (ajouté car c'est dans votre modèle) -->
+            <div class="col-md-6">
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Statut</label>
+                    <select class="form-select" name="statut">
+                        <option value="En attente" <%= diplome.statut === "En attente" ? "selected" : "" %>>En attente</option>
+                        <option value="validee" <%= diplome.statut === "validee" ? "selected" : "" %>>Validée</option>
+                        <option value="rejetee" <%= diplome.statut === "rejetee" ? "selected" : "" %>>Rejetée</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+  
 </form>
-</div>

@@ -26,7 +26,7 @@ exports.createDiplome=async(req,res)=>{
 
 exports.getAllDiplome=async(req,res)=>{
     try {
-        const diplomes = await Diplome.find();
+        const diplomes = await Diplome.find().sort({createdAt:-1});
         diplomes.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         res.render("demandes/diplome/list", {
             title: "Gestion des demandes - Afficher Diplome",
@@ -70,24 +70,42 @@ exports.getDiplomeById=async(req,res)=>{
 
 
 exports.getDiplomeEditForm=async(req,res)=>{
-    const diplome=await Diplome.findOne({identifiant:req.params.id},{new:true})
+    const diplome=await Diplome.findOne({identifiant:req.params.id})
     res.render("demandes/diplome/edit",{
         title: "Gestion des demandes - Modifier Diplome",
             layout: "layouts/main",
+            breadcrumbs: [
+                { label: "Demandes", url: "#" },
+                { label: "Type de demande", url: "/demandes" },
+                { label: "Diplome"},
+                { label: "Modifier", url: null }
+              ],
             diplome 
     })
 }
 
 
 
-exports.updateDiplome=async(req,res)=>{
-    try{
-        const diplome=await Diplome.findOneAndUpdate({identifiant:req.params.id}, req.body)
-    }catch(err){
-        console.log(err)
-        res.status(500).send("Erreur lors de la modification")
+exports.updateDiplome = async (req, res) => {
+  try {
+    const diplome = await Diplome.findOneAndUpdate(
+      { identifiant: req.params.id },   // recherche par identifiant
+      req.body,                         // données envoyées depuis le formulaire
+      { new: true, runValidators: true } // retourne le document mis à jour et applique les validations du schéma
+    );
+
+    if (!diplome) {
+      return res.status(404).send("Demande introuvable");
     }
-}
+
+    // Après modification, on redirige vers la liste ou la vue détaillée
+    res.redirect("/demandes/diplome");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erreur lors de la modification du diplôme");
+  }
+};
+
 
 exports.deleteDiplome=async(req,res)=>{
     try{

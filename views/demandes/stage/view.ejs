@@ -1,81 +1,113 @@
 <div class="bg-white px-4 py-4">
-    <ol class="breadcrumb text-primary fs-5 d-flex  align-items-center ">
-        <% breadcrumbs.forEach(function(crumb, index) { %>
-            <% if(index===breadcrumbs.length - 1) { %>
-                <li class="" aria-current="page">
-                   <span href="#" class="text-decoration-none badge bg-dark-subtle text-primary  small mx-2">
-                    <%=stage.identifiant  %>
-                   </span> 
-                </li>
-                <% } else { %>
-                    <li class=""><a class="text-decoration-none badge bg-dark-subtle text-primary  small mx-2" href="<%= crumb.url %>">
-                            <%= crumb.label %>
-                        </a> 
-                    </li>
-                    <span class="fs-3 fw-light align-items-center"> >> </span>
-                    <% } %>
-                        <% }); %>
-    </ol>
+    <%- include("../../partials/filsDAriane.ejs") %> 
     <div class="row g-3">
         <div class="form-section-header border-info d-flex justify-content-between">
             <div class="">
-                 <h3 class="fw-bold text-primary">
-                <i class="bi bi-mortarboard-fill fs-1 me-2"></i>Informations sur l'etudiant
-            </h3>
-            </div>
-           
-        </div>
-    
-        <!-- Civilité -->
-        <div class="col-md-1">
-            <p class="form-label fw-semibold">Civilite : </p> <span><%=stage.civilite  %> </span>
-        </div>
-    
-        <!-- Nom -->
-        <div class="col-md-3">
-            <p class="form-label fw-semibold">Nom Complet : </p> <span><%=stage.prenom  %> <%=stage.nom  %> </span>
-        </div>
-    
-        <!-- Filière -->
-        <div class="col-md-2">
-            <p class="form-label fw-semibold">Filiere : </p> <span > <%=stage.filiere  %> </span>
-        </div>
-    
-        <!-- Niveau -->
-        <div class="col-md-2">
-            <p class="form-label fw-semibold">Niveau: </p> <span><%=stage.niveau %> </span>
-        </div>
-      <!-- Prénom -->
-      <div class="col-md-2">
-        <p class="form-label fw-semibold">Promotion: </p> <span><%=stage.promotion  %> </span>
-    </div>
-        <!-- Matricule -->
-        <div class="col-md-2">
-            <p class="form-label fw-semibold">Numéro matricule : </p> <span><%=stage.matricule  %> </span>
-        </div>
-    
-    </div>
-    <hr class="mx-4">
-        
-
-        <div class="form-section bg-white">
-            <div class="form-section-header border-info">
                 <h3 class="fw-bold text-primary">
-                    <i class="bi bi-award fs-1 me-2"></i>Informations sur  demande d'Attestation
+                    <i class="bi bi-mortarboard-fill fs-1 me-2"></i>Informations sur l'étudiant
                 </h3>
             </div>
+        </div>
 
+        <!-- Civilité -->
+        <div class="col-md-1">
+            <p class="form-label fw-semibold">Civilité :</p> 
+            <span><%= stage.civilite %></span>
+        </div>
 
-            <div class="row">
-               
-                    <div class="col-md-4">
-                        <p class="form-label fw-semibold">Id: </p> <span><%=stage.identifiant  %> </span>
-                    </div>
-                    <div class="mb-4">
-                        <p class="form-label fw-semibold">diplome : </p> <span><%=stage.diplome  %> </span>
-                    </div>
-                   
-            
+        <!-- Nom complet -->
+        <div class="col-md-3">
+            <p class="form-label fw-semibold">Nom Complet :</p> 
+            <span><%= stage.prenom %> <%= stage.nom %></span>
+        </div>
+
+        <!-- Filière -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Filière :</p> 
+            <span><%= stage.filiere %></span>
+        </div>
+
+        <!-- Niveau -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Niveau :</p> 
+            <span><%= stage.niveau %></span>
+        </div>
+
+        <!-- Promotion -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Promotion :</p> 
+            <span><%= stage.promotion %></span>
+        </div>
+
+        <!-- Matricule -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Numéro matricule :</p> 
+            <span><%= stage.matricule %></span>
+        </div>
+    </div>
+
+    <hr class="mx-4">
+
+    <div class="form-section bg-white">
+        <div class="form-section-header border-info">
+            <h3 class="fw-bold text-primary">
+                <i class="bi bi-award fs-1 me-2"></i>Informations sur le stage
+            </h3>
+        </div>
+
+        <div class="d-flex justify-content-around">
+            <!-- Identifiant -->
+            <div class="col-md-4">
+                <p class="form-label fw-semibold">Id :</p> 
+                <span><%= stage.identifiant %></span>
+            </div>
+
+            <!-- Type -->
+            <div class="mb-4">
+                <p class="form-label fw-semibold">Type :</p> 
+                <span><%= stage.type %></span>
+            </div>
+
+            <!-- Entreprise -->
+            <div class="mb-4">
+                <p class="form-label fw-semibold">Entreprise :</p> 
+                <span><%= stage.entreprise %></span>
+            </div>
+
+            <!-- Maître de stage -->
+            <div class="mb-4">
+                <p class="form-label fw-semibold">Maître de stage :</p> 
+                <span><%= stage.maitreDeStage %></span>
+            </div>
+
+            <!-- Lieu de stage -->
+            <div class="mb-4">
+                <p class="form-label fw-semibold">Lieu de stage :</p> 
+                <span><%= stage.lieuDeStage %></span>
+            </div>
+
+            <!-- Encadrant -->
+            <div class="mb-4">
+                <p class="form-label fw-semibold">Encadrant :</p> 
+                <span><%= stage.encadrant %></span>
+            </div>
+
+            <!-- Durée -->
+            <div class="mb-4">
+                <p class="form-label fw-semibold">Durée :</p> 
+                <span><%= stage.duree %></span>
+            </div>
+
+            <!-- Statut -->
+            <div class="mb-4">
+                <p class="form-label fw-semibold">Statut :</p> 
+                <span class="badge 
+                    <%= stage.statut==='En attente' ? 'bg-primary-subtle text-primary' 
+                    : stage.statut==='validee' ? 'bg-success-subtle text-success' 
+                    : stage.statut==='rejetee' ? 'bg-danger-subtle text-danger' : '' %>">
+                    <%= stage.statut %>
+                </span>
             </div>
         </div>
+    </div>
 </div>

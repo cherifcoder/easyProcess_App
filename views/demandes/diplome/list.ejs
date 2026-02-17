@@ -12,6 +12,7 @@
 
             <table class="table table-borderless table-hover table-responsive text-center border-0 shadow p-5">
                 <thead class="bg-dark text-white">
+                    <th>Date</th>
                     <th>Demande</th>
                     <th>Demandeur</th>
                     <th>Niveau</th>
@@ -25,6 +26,7 @@
                 <tr>
 
                     <% diplomes.forEach(diplome=> { %>
+                        <td><%= diplome.date.toLocaleDateString("fr-FR") %></td>
                         <td>
                             <%=diplome.identifiant %>
                         </td>
@@ -55,7 +57,7 @@
                             <a href="/demandes/diplome/view/<%= diplome.identifiant %> " class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
                                 <i class="bi bi-eye fs-4"></i>
                             </a>
-                            <a href="" class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
+                            <a href="/demandes/edit/diplome/<%= diplome.identifiant %>" class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
                                 <i class="bi bi-pen fs-4"></i>
                             </a>
                             <a href="" class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
@@ -95,8 +97,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </a>
-
+                           </a>
+ 
                         </td>
 
                 </tr>
