@@ -1,0 +1,45 @@
+<div class="container py-4">
+    <%- include("../partials/filsDAriane.ejs") %>
+        <h1 class="text-center mb-4">Creer un nouvel utilisateur</h1>
+        <p class="text-center text-muted mb-5">Sélectionnez le type de document dont vous avez besoin</p>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4 justify-content-center">
+
+            <!-- admin -->
+            <div class="col">
+                <a href="/users/create/admin" class="text-decoration-none">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="mb-3">
+                                <div
+                                    class="badge bg-info-subtle text-info rounded-circle p-3 d-inline-flex align-items-center justify-content-center">
+                                    <i class="bi bi-person-gear fs-1"></i>
+                                </div>
+                            </div>
+                            <h5 class="card-title mb-2">Utilisateur</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- ETD -->
+            <div class="col">
+                <a href="/register" class="text-decoration-none">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="mb-3">
+                                <div
+                                    class="badge bg-success-subtle text-success rounded-circle p-3 d-inline-flex align-items-center justify-content-center">
+                                    <i class="bi bi-person-vcard fs-1"></i>
+                                </div>
+                            </div>
+                            <h5 class="card-title mb-2">Etudiant</h5>
+                    </div>
+                </a>
+            </div>
+
+ 
+
+
+
+        </div>
+</div>

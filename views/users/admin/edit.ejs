@@ -1,0 +1,88 @@
+<div class="container py-4">
+    <%- include("../../partials/filsDArianeUsers.ejs") %>
+</div>
+
+<form class="bg-white px-4 py-4" method="POST" action="/users/admin/edit/<%= admin.identifiant %>">
+    <div class="row g-3">
+        <div class="form-section-header border-info d-flex justify-content-between">
+            <div>
+                <h3 class="fw-bold text-primary">
+                    <i class="bi bi-mortarboard-fill fs-1 me-2"></i>Informations sur l'étudiant
+                </h3>
+            </div>
+            <%- include("../../partials/btnEdit.ejs") %>
+        </div>
+
+        <!-- Nom -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Nom</label>
+            <input type="text" name="nom" class="form-control shadow-sm" required value="<%= admin.nom %>">
+        </div>
+
+        <!-- Prénom -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Prénom</label>
+            <input type="text" name="prenom" class="form-control shadow-sm" required value="<%= admin.prenom %>">
+        </div>
+
+        <!-- Date de naissance -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Date de naissance</label>
+            <input type="date" name="dateNaissance" class="form-control shadow-sm" 
+                   value="<%= admin.dateNaissance.toISOString().split('T')[0] %>" required>
+        </div>
+
+        <!-- Sexe -->
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Sexe</label>
+            <select name="sexe" class="form-select shadow-sm" required>
+                <option value="Homme" <%= admin.sexe === "Homme" ? "selected" : "" %>>Homme</option>
+                <option value="Femme" <%= admin.sexe === "Femme" ? "selected" : "" %>>Femme</option>
+            </select>
+        </div>
+
+        <!-- Adresse -->
+        <div class="col-md-6">
+            <label class="form-label fw-semibold">Adresse</label>
+            <input type="text" name="adresse" class="form-control shadow-sm" value="<%= admin.adresse %>">
+        </div>
+
+        <!-- Téléphone -->
+        <div class="col-md-6">
+            <label class="form-label fw-semibold">Téléphone</label>
+            <input type="tel" name="telephone" class="form-control shadow-sm" value="<%= admin.telephone %>">
+        </div>
+        <!-- Email -->
+        <div class="col-md-6">
+            <label class="form-label fw-semibold">Email</label>
+            <input type="email" name="email" class="form-control shadow-sm" value="<%= admin.email %>">
+        </div>
+
+<!-- Poste -->
+<div class="col-md-3">
+    <label class="form-label fw-semibold">Poste</label>
+    <select name="poste" class="form-select shadow-sm" required>
+        <option value="DG" <%= admin.poste === "DG" ? "selected" : "" %>>DG</option>
+        <option value="DGA" <%= admin.poste === "DGA" ? "selected" : "" %>>DGA</option>
+        <option value="Secretaire" <%= admin.poste === "Secretaire" ? "selected" : "" %>>Secretaire</option>
+    </select>
+</div>
+
+
+<!-- role -->
+<div class="col-md-3">
+    <label class="form-label fw-semibold">Role</label>
+    <select name="role" class="form-select shadow-sm" required>
+        <option value="Directeur" <%= admin.role === "Directeur" ? "selected" : "" %>>DG</option>
+        <option value="Directeur" <%= admin.role === "Directeur" ? "selected" : "" %>>DGA</option>
+        <option value="Secretaire" <%= admin.role === "Secretaire" ? "selected" : "" %>>Secretaire</option>
+    </select>
+</div>
+
+        <!-- Mot de passe -->
+        <div class="col-md-6">
+            <label class="form-label fw-semibold">Mot de passe</label>
+            <input type="password" name="motDePass" class="form-control shadow-sm" placeholder="Nouveau mot de passe (laisser vide si inchangé)">
+        </div>
+    </div>
+</form>

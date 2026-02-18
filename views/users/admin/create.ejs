@@ -1,0 +1,87 @@
+<div class="container py-4">
+    <%- include("../../partials/filsDArianeUsers.ejs") %>
+</div>
+
+<form class="bg-white px-4 py-4" method="POST" action="/users/create/admin">
+    <div class="row g-3">
+        <div class="form-section-header border-info d-flex justify-content-between">
+            <div>
+                <h3 class="fw-bold text-primary">
+                    <i class="bi bi-person-plus-fill fs-1 me-2"></i>Créer un compte utilisateur
+                </h3>
+            </div>
+            <%- include("../../partials/btnCreate.ejs") %>
+        </div>
+
+        <!-- Nom -->
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Nom</label>
+            <input type="text" name="nom" class="form-control shadow-sm" placeholder="Votre Nom" required>
+        </div>
+
+        <!-- Prénom -->
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Prénom</label>
+            <input type="text" name="prenom" class="form-control shadow-sm" placeholder="Votre Prénom" required>
+        </div>
+
+        <!-- Date de naissance -->
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Date de naissance</label>
+            <input type="date" name="dateNaissance" class="form-control shadow-sm" required>
+        </div>
+
+        <!-- Sexe -->
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Sexe</label>
+            <select name="sexe" class="form-select shadow-sm" required>
+                <option value="" disabled selected>-- Sélectionnez --</option>
+                <option value="Homme">Homme</option>
+                <option value="Femme">Femme</option>
+            </select>
+        </div>
+
+        <!-- Adresse -->
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Adresse</label>
+            <input type="text" name="adresse" class="form-control shadow-sm" placeholder="Votre adresse">
+        </div>
+
+        <!-- Téléphone -->
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Téléphone</label>
+            <input type="text" name="telephone" class="form-control shadow-sm" placeholder="+223 XXXXXXXX">
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Poste</label>
+            <select class="form-select" required name="poste"> 
+                <option value="" selected disabled>Selectionner le Poste</option>
+                <option value="DG">DG</option>
+                <option value="DGA">DGA</option>
+                <option value="Secretaire">Secretaire</option>
+            </select>
+        </div>
+        <!-- Email -->
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Email</label>
+            <input type="email" name="email" class="form-control shadow-sm" placeholder="Votre email">
+        </div>
+
+        <!-- Mot de passe -->
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Mot de passe</label>
+            <input type="password" name="motDePass" class="form-control shadow-sm" placeholder="Votre mot de passe">
+        </div>
+        <!-- Role -->
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Role</label>
+            <select class="form-select" required name="role"> 
+                <option value="" selected disabled>Attribuer un role</option>
+                <option value="Directeur">DG</option>
+                <option value="Directeur">DGA</option>
+                <option value="Secretaire">Secretaire</option>
+            </select>
+        </div>
+    </div>
+</form>
