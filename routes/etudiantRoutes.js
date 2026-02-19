@@ -1,6 +1,7 @@
 const express=require('express')
 const router=express.Router()
 const etudiantController=require("../controllers/etudiantController")
+const demandeController=require("../controllers/demandeController")
 
 router.get("/", (req,res)=>{
     const local={
@@ -28,13 +29,7 @@ router.get("/login", (req,res)=>{
 })
 router.post("/login", etudiantController.loginEtudiant)
 
-router.get("/dashboard",(req,res)=>{
-    const local={
-        title:"Dashboard",
-        layout:"./layouts/main"
-    }
-    res.render("pages/dashboard", local)
-})
+router.get("/dashboard",demandeController.getDashboardStats)
 
 router.get("/users/etd",etudiantController.getAllEtudiant,(req,res)=>{
     const local={

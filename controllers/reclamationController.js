@@ -31,7 +31,37 @@ exports.createReclamation = async (req, res) => {
 // ✅ Afficher toutes les réclamations
 exports.getAllReclamations = async (req, res) => {
     try {
-        const reclamations = await Reclamation.find();
+
+        const { q, filiere, statut, niveau } = req.query;
+          
+        let filter = {};
+    
+        // Recherche texte
+        if (q) {
+          filter.$or = [
+            { nom: new RegExp(q, "i") },
+            { prenom: new RegExp(q, "i") },
+            { promotion: new RegExp(q, "i") },
+            { matricule: new RegExp(q, "i") }
+          ];
+        }
+    
+        // Filtre par niveau
+        if (niveau) {
+          filter.niveau = niveau;
+        }
+    
+        // Filtre par filiere
+        if (filiere) {
+          filter.filiere = filiere;
+        }
+    
+        // Filtre par statut
+        if (statut) {
+          filter.statut = statut;
+        }
+
+        const reclamations = await Reclamation.find(filter);
         reclamations.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
         res.render("demandes/reclamation/list", {

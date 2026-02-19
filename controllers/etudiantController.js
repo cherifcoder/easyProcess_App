@@ -45,28 +45,77 @@ exports.loginEtudiant =async(req,res)=>{
     }
 }
 
-exports.getAllEtudiant=async(req,res)=>{
-    try{
-        const etudiants=await Etudiant.find().sort({createdAt:-1})
-        etudiants.sort((a,b)=>new Date(b.createdAt)- new Date(a.createdAt))
-        res.render("users/etd/list",
-            {
-                title: "Gestion des utilisateurs - Afficher Utilisateurs",
-                layout: "layouts/main",
-                breadcrumbs: [
-                    { label: "Utilisateurs", url: "#" },
-                    { label: "Etudiant", url: "/etd" },
-                    { label: "Liste", url:null},
-                  ],
-                etudiants
-            }
-        )
-    }catch(err){
-        console.error(err);
-        res.send("Erreur lors de la récupération des etudiants");
-    }
-}
+// exports.getAllEtudiant=async(req,res)=>{
+//     try{
+//         const etudiants=await Etudiant.find().sort({createdAt:-1})
+//         etudiants.sort((a,b)=>new Date(b.createdAt)- new Date(a.createdAt))
+//         res.render("users/etd/list",
+//             {
+//                 title: "Gestion des utilisateurs - Afficher Utilisateurs",
+//                 layout: "layouts/main",
+//                 breadcrumbs: [
+//                     { label: "Utilisateurs", url: "#" },
+//                     { label: "Etudiant", url: "/etd" },
+//                     { label: "Liste", url:null},
+//                   ],
+//                 etudiants
+//             }
+//         )
+//     }catch(err){
+//         console.error(err);
+//         res.send("Erreur lors de la récupération des etudiants");
+//     }
+// }
 
+exports.getAllEtudiant = async (req, res) => {
+    try {
+      const { q, filiere, promotion, niveau } = req.query;
+  
+      let filter = {};
+  
+      // Recherche texte
+      if (q) {
+        filter.$or = [
+          { nom: new RegExp(q, "i") },
+          { prenom: new RegExp(q, "i") },
+          { email: new RegExp(q, "i") },
+          { matricule: new RegExp(q, "i") }
+        ];
+      }
+  
+      // Filtre par filière
+      if (filiere) {
+        filter.filiere = filiere;
+      }
+  
+      // Filtre par promotion
+      if (promotion) {
+        filter.promotion = promotion;
+      }
+  
+      // Filtre par niveau
+      if (niveau) {
+        filter.niveau = niveau;
+      }
+  
+      const etudiants = await Etudiant.find(filter).sort({ createdAt: -1 });
+  
+      res.render("users/etd/list", {
+        title: "Gestion des utilisateurs - Afficher Utilisateurs",
+        layout: "layouts/main",
+        breadcrumbs: [
+          { label: "Utilisateurs", url: "#" },
+          { label: "Etudiant", url: "/etd" },
+          { label: "Liste", url: null },
+        ],
+        etudiants
+      });
+    } catch (err) {
+      console.error(err);
+      res.send("Erreur lors de la récupération des étudiants");
+    }
+  };
+  
 
 
 exports.getEtudiantById = async (req, res) => {

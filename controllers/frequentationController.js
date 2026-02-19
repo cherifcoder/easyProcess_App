@@ -28,7 +28,37 @@ exports.createFrequentation=async(req,res)=>{
 
 exports.getAllfrequentation=async(req,res)=>{
     try{
-        const frequentations= await Frequentation.find();
+
+        const { q, filiere, statut, niveau } = req.query;
+          
+        let filter = {};
+    
+        // Recherche texte
+        if (q) {
+          filter.$or = [
+            { nom: new RegExp(q, "i") },
+            { prenom: new RegExp(q, "i") },
+            { promotion: new RegExp(q, "i") },
+            { matricule: new RegExp(q, "i") }
+          ];
+        }
+    
+        // Filtre par niveau
+        if (niveau) {
+          filter.niveau = niveau;
+        }
+    
+        // Filtre par filiere
+        if (filiere) {
+          filter.filiere = filiere;
+        }
+    
+        // Filtre par statut
+        if (statut) {
+          filter.statut = statut;
+        }
+
+        const frequentations= await Frequentation.find(filter);
         frequentations.sort((a,b)=>new Date(b.createdAt) - new Date(a.createdAt))
         res.render("demandes/frequentation/list",{
             title:"Gestion des demandes - Afficher Diplome",

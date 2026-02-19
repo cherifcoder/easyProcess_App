@@ -1,7 +1,69 @@
 <div class="container py-4">
-    <%-include("../../partials/filsDAriane.ejs")  %> 
+    <%- include("../../partials/filsDAriane.ejs") %>
+    <h4 class="mt-5 mb-3 text-primary">Appliquer un filtre</h4>
+    <div class="d-flex justify-content-between " >
+        <div class="mb-3 d-flex gap-3">
+            <!-- Barre de recherche -->
+            <form action="/demandes/reclamation" method="GET" class="d-flex gap-2">
+                <div class="col-md-4">
+                    <label class="form-label fw-semibold">Rechercher </label>
+                    <input type="text" name="q" class="form-control" placeholder="Rechercher par nom, prénom, email...">
+                </div>
+
+                <!-- Filtre par filière -->
+
+                <div class="col-md-2">
+                    <label class="form-label fw-semibold">Filiere </label>
+                    <select name="filiere" class="form-select">
+                        <option value="">Toutes</option>
+                        <option value="3ER">3ER</option>
+                        <option value="AB">AB</option>
+                        <option value="AG">AG</option>
+                        <option value="CFA">CFA</option>
+                        <option value="GI">GI</option>
+                        <option value="HT">HT</option>
+                        <option value="MA">MA</option>
+                        <option value="MC">MC</option>
+                    </select>
+                </div>
+
+                <!-- Filtre par promotion -->
+                <div class="col-md-2">
+                    <label class="form-label fw-semibold">Statut </label>
+                    <select name="statut" class="form-select">
+                        <option value="">Tous</option>
+                        <option value="En attente">En attente</option>
+                        <option value="Validee">Validee</option>
+                        <option value="Rejetee">Rejetee</option>
+                        
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <label class="form-label fw-semibold">Niveau </label>
+                    <select name="niveau" class="form-select">
+                        <option value="">Tous</option>
+                        <option value="L1">L1</option>
+                        <option value="L2">L2</option>
+                        <option value="L3">L3</option>
+                    </select>
+                </div>
+
+                <div class="col-md-1 d-flex flex-column justify-content-end">
+                    <button type="submit" class="btn btn-primary border-0">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+        <div class="align-content-center">
+             <%- include("../../partials/btnAjout") %>
+        </div>
+       
+    </div>
+        
 </div>
-    <%-include("../../partials/btnAjout") %>
 
         <div class="form-section bg-white">
             <div class="form-section-header border-info">

@@ -1,9 +1,59 @@
 <div class="container py-4">
     <%- include("../../partials/filsDArianeUsers.ejs") %>
+    <h4 class="mt-5 mb-3 text-primary">Appliquer un filtre</h4>
+    <div class="d-flex justify-content-between " >
+        <div class="mb-3 d-flex gap-3">
+            <!-- Barre de recherche -->
+            <form action="/users/etd" method="GET" class="d-flex gap-2">
+                <div class="col-md-5">
+                    <label class="form-label fw-semibold">Rechercher </label>
+                    <input type="text" name="q" class="form-control" placeholder="Rechercher par nom, prénom, email...">
+                </div>
+
+                <!-- Filtre par filière -->
+
+                <div class="col-md-4">
+                    <label class="form-label fw-semibold">Filiere </label>
+                    <select name="filiere" class="form-select">
+                        <option value="">Toutes les filières</option>
+                        <option value="3ER">3ER</option>
+                        <option value="AB">AB</option>
+                        <option value="AG">AG</option>
+                        <option value="CFA">CFA</option>
+                        <option value="GI">GI</option>
+                        <option value="HT">HT</option>
+                        <option value="MA">MA</option>
+                        <option value="MC">MC</option>
+                    </select>
+                </div>
+
+                <!-- Filtre par promotion -->
+                <div class="col-md-3">
+                    <label class="form-label fw-semibold">Promo </label>
+                    <select name="promotion" class="form-select">
+                        <option value="">Toutes les promos</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                    </select>
+                </div>
+                <div class="col-md-1 d-flex flex-column justify-content-end">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+        <div class="align-content-center">
+             <%- include("../../partials/btnAjout") %>
+        </div>
+       
+    </div>
+        
 </div>
 
 <div class="">
-    <%- include("../../partials/btnAjout") %>
         <div class="form-section bg-white">
             <div class="form-section-header border-info">
                 <h3 class="fw-bold text-primary">
@@ -77,8 +127,8 @@
                                 <a action="/demandes/etudiant/delete/<%=etudiant.identifiant %> " method="POST"
                                     class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
                                     <button class="bi bi-trash fs-4 text-danger bg-danger-subtle" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal-<%= etudiant.identifiant %>">  </button>
-    
+                                        data-bs-target="#deleteModal-<%= etudiant.identifiant %>"> </button>
+
                                     <div class="modal fade" id="deleteModal-<%= etudiant.identifiant %>" tabindex="-1"
                                         aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -96,8 +146,7 @@
                                                 <div class="modal-footer">
                                                     <button type="reset" class="btn btn-primary border-0"
                                                         data-bs-dismiss="modal">Annuler</button>
-                                                    <form
-                                                        action="/users/etd/delete/<%= etudiant.identifiant %>"
+                                                    <form action="/users/etd/delete/<%= etudiant.identifiant %>"
                                                         method="POST">
                                                         <button type="submit" class="btn btn-danger">Supprimer</button>
                                                     </form>
@@ -105,7 +154,7 @@
                                             </div>
                                         </div>
                                     </div>
-                               </a>
+                                </a>
                             </td>
                         </tr>
                         <% }) %>

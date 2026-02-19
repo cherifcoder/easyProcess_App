@@ -45,7 +45,32 @@ exports.loginAdmin =async(req,res)=>{
 
 exports.getAllAdmin=async(req,res)=>{
     try{
-        const admins=await Admin.find().sort({createdAt:-1})
+
+         const { q, role, poste } = req.query;
+          
+              let filter = {};
+          
+              // Recherche texte
+              if (q) {
+                filter.$or = [
+                  { role: new RegExp(q, "i") },
+                  { poste: new RegExp(q, "i") },
+                  { nom: new RegExp(q, "i") }
+                ];
+              }
+          
+              // Filtre par filière
+              if (role) {
+                filter.role = role;
+              }
+          
+              // Filtre par promotion
+              if (poste) {
+                filter.poste = poste;
+              }
+          
+
+        const admins=await Admin.find(filter).sort({createdAt:-1})
         admins.sort((a,b)=>new Date(b.createdAt)- new Date(a.createdAt))
         res.render("users/admin/list",
             {

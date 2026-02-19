@@ -33,7 +33,37 @@ exports.createStage = async (req, res) => {
 // ✅ Afficher tous les stages
 exports.getAllStages = async (req, res) => {
     try {
-        const stages = await Stage.find();
+
+        const { q, filiere, statut, niveau } = req.query;
+          
+        let filter = {};
+    
+        // Recherche texte
+        if (q) {
+          filter.$or = [
+            { nom: new RegExp(q, "i") },
+            { prenom: new RegExp(q, "i") },
+            { promotion: new RegExp(q, "i") },
+            { matricule: new RegExp(q, "i") }
+          ];
+        }
+    
+        // Filtre par niveau
+        if (niveau) {
+          filter.niveau = niveau;
+        }
+    
+        // Filtre par filiere
+        if (filiere) {
+          filter.filiere = filiere;
+        }
+    
+        // Filtre par statut
+        if (statut) {
+          filter.statut = statut;
+        }
+
+        const stages = await Stage.find(filter);
         stages.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
         res.render("demandes/stage/list", {
