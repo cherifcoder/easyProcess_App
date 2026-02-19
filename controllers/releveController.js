@@ -18,7 +18,7 @@ exports.createReleve = async (req, res) => {
         });
 
         await newReleve.save();
-        res.send("Relevé enregistré avec succès");
+        res.redirect("/demandes/releve")
     } catch (err) {
         console.error(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`);

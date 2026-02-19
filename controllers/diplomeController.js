@@ -15,7 +15,7 @@ exports.createDiplome=async(req,res)=>{
             statut
         })
         await newDiplome.save()
-        res.send("Diplome enregistre avec succes ")
+        res.redirect("/demandes/diplome")
     }catch(err){
         console.log(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`)

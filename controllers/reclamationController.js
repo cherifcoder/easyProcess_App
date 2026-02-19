@@ -21,7 +21,7 @@ exports.createReclamation = async (req, res) => {
         });
 
         await newReclamation.save();
-        res.send("Réclamation enregistrée avec succès");
+        res.redirect("/demandes/reclamation")
     } catch (err) {
         console.error(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`);

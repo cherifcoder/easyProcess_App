@@ -23,7 +23,7 @@ exports.createStage = async (req, res) => {
         });
 
         await newStage.save();
-        res.send("Stage enregistré avec succès");
+        res.redirect("/demandes/stage")
     } catch (err) {
         console.error(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`);

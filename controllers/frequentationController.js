@@ -18,7 +18,7 @@ exports.createFrequentation=async(req,res)=>{
         })
 
         await newFrequentaion.save()
-        res.send("Frequentation enregistre avec succes")
+        res.redirect("/demandes/frequentation")
     }catch(err){
         console.log(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`)

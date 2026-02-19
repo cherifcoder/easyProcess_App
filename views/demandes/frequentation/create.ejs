@@ -1,5 +1,9 @@
-<div class="container py-4">
-    <%-include("../../partials/filsDAriane.ejs")  %> 
+<div class="container-fluid py-4">
+
+    <%- include("../../partials/filsDAriane.ejs") %>
+</div>
+<div class="container-fluid py-4">
+<div class=" py-4">
     <form class="bg-white px-4 py-4" action="/demandes/create/frequentation" method="POST">
         <%- include("../../partials/infoEtd.ejs") %>
             <div class="form-section bg-white shadow-sm" id="form-frequentation">
@@ -121,4 +125,5 @@
 
             </div>
     </form>
+</div>
 </div>

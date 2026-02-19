@@ -20,7 +20,7 @@ exports.createAdmin=async(req,res)=>{
 
 
         await newAdmin.save();
-        res.send('Utilisateur enregistre avec succes')
+        res.redirect("/users/admin")
     }catch(err){
         console.log(err);
         res.send(`Erreur lors de l'enregistrement : ${err}`)

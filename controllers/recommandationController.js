@@ -23,7 +23,7 @@ exports.createRecommandation = async (req, res) => {
         });
 
         await newRecommandation.save();
-        res.send("Recommandation enregistrée avec succès");
+        res.redirect("/demandes/recommandation")
     } catch (err) {
         console.error(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`);
