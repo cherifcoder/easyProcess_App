@@ -3,7 +3,7 @@ const router = express.Router();
 
 const stageController = require("../controllers/stageController");
 
-// ✅ Formulaire de création
+// Formulaire de création
 router.get("/demandes/create/stage", (req, res) => {
     const local = {
         title: "Gestion des demandes - Créer Stage",
@@ -18,22 +18,22 @@ router.get("/demandes/create/stage", (req, res) => {
     res.render("demandes/stage/create", local);
 });
 
-// ✅ Création
+// Création
 router.post("/demandes/create/stage", stageController.createStage);
 
-// ✅ Liste des stages
+// Liste des stages
 router.get("/demandes/stage", stageController.getAllStages);
 
-// ✅ Affichage d’un stage par ID
+// Affichage d’un stage par ID
 router.get("/demandes/stage/view/:id", stageController.getStageById);
 
-// ✅ Suppression
+// Suppression
 router.post("/demandes/stage/delete/:id", stageController.deleteStage);
 
-// ✅ Formulaire d’édition
+// Formulaire d’édition
 router.get("/demandes/edit/stage/:id", stageController.getStageEditForm);
 
-// ✅ Mise à jour
+// Mise à jour
 router.post("/demandes/edit/stage/:id", stageController.updateStage);
 
 

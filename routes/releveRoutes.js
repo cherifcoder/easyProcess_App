@@ -3,7 +3,7 @@ const router = express.Router();
 
 const releveController = require("../controllers/releveController");
 
-// ✅ Formulaire de création
+// Formulaire de création
 router.get("/demandes/create/releve", (req, res) => {
     const local = {
         title: "Gestion des demandes - Créer Relevé",
@@ -18,22 +18,22 @@ router.get("/demandes/create/releve", (req, res) => {
     res.render("demandes/releve/create", local);
 });
 
-// ✅ Création
+// Création
 router.post("/demandes/create/releve", releveController.createReleve);
 
-// ✅ Liste des relevés
+// Liste des relevés
 router.get("/demandes/releve", releveController.getAllReleves);
 
-// ✅ Affichage d’un relevé par ID
+// Affichage d’un relevé par ID
 router.get("/demandes/releve/view/:id", releveController.getReleveById);
 
-// ✅ Suppression
+// Suppression
 router.post("/demandes/releve/delete/:id", releveController.deleteReleve);
 
-// ✅ Formulaire d’édition
+// Formulaire d’édition
 router.get("/demandes/edit/releve/:id", releveController.getReleveEditForm);
 
-// ✅ Mise à jour
+// Mise à jour
 router.post("/demandes/edit/releve/:id", releveController.updateReleve);
 
 router.get("/demandes/releve/valider/:identifiant", releveController.validerReleve); 

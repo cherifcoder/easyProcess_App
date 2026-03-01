@@ -18,21 +18,6 @@ router.get("/users/create/admin",
     
 )
 router.post("/users/create/admin", adminController.createAdmin)
-router.get("/login", (req,res)=>{
-    const local={
-        title:"Connexion" 
-    }
-    res.render('./auth/login', local)
-})
-router.post("/login", adminController.loginAdmin)
-
-router.get("/dashboard",(req,res)=>{
-    const local={
-        title:"Dashboard",
-        layout:"./layouts/main"
-    }
-    res.render("pages/dashboard", local)
-})
 
 router.get("/users/admin",adminController.getAllAdmin,(req,res)=>{
     const local={
@@ -42,6 +27,11 @@ router.get("/users/admin",adminController.getAllAdmin,(req,res)=>{
     }
     res.render("users/admin/list", local)
 })
+
+
+const demandeController = require("../controllers/demandeController");
+
+router.get("/dashboard", demandeController.getDashboardStats);
 
 
 router.get("/users/admin/view/:id", adminController.getAdminById,

@@ -31,19 +31,19 @@ exports.registerEtudiant=async(req,res)=>{
     }
 };
 
-exports.loginEtudiant =async(req,res)=>{
-    try{
-        const {email, motDePass}=req.body;
-        const etudiant=await Etudiant.findOne({ email });
-        if(!etudiant) return res.send("Etudiant non trouve")
-        const isMatch=await bcrypt.compare(motDePass, etudiant.motDePass)
-        if(!isMatch) return res.send("Mot de pass incorect")
+// exports.loginEtudiant =async(req,res)=>{
+//     try{
+//         const {email, motDePass}=req.body;
+//         const etudiant=await Etudiant.findOne({ email });
+//         if(!etudiant) return res.send("Etudiant non trouve")
+//         const isMatch=await bcrypt.compare(motDePass, etudiant.motDePass)
+//         if(!isMatch) return res.send("Mot de pass incorect")
         
-            res.redirect("/dashboard")
-    }catch(err){
-        res.send(`Erreur lorsde la connexion : ${err}`)
-    }
-}
+//             res.redirect("/dashboard")
+//     }catch(err){
+//         res.send(`Erreur lorsde la connexion : ${err}`)
+//     }
+// }
 
 // exports.getAllEtudiant=async(req,res)=>{
 //     try{

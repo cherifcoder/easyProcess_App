@@ -3,7 +3,7 @@ const router = express.Router();
 
 const recommandationController = require("../controllers/recommandationController");
 
-// ✅ Formulaire de création
+// Formulaire de création
 router.get("/demandes/create/recommandation", (req, res) => {
     const local = {
         title: "Gestion des demandes - Créer Recommandation",
@@ -18,22 +18,22 @@ router.get("/demandes/create/recommandation", (req, res) => {
     res.render("demandes/recommandation/create", local);
 });
 
-// ✅ Création
+//  Création
 router.post("/demandes/create/recommandation", recommandationController.createRecommandation);
 
-// ✅ Liste des recommandations
+//  Liste des recommandations
 router.get("/demandes/recommandation", recommandationController.getAllRecommandations);
 
-// ✅ Affichage d’une recommandation par ID
+//  Affichage d’une recommandation par ID
 router.get("/demandes/recommandation/view/:id", recommandationController.getRecommandationById);
 
-// ✅ Suppression
+//  Suppression
 router.post("/demandes/recommandation/delete/:id", recommandationController.deleteRecommandation);
 
-// ✅ Formulaire d’édition
+// Formulaire d’édition
 router.get("/demandes/edit/recommandation/:id", recommandationController.getRecommandationEditForm);
 
-// ✅ Mise à jour
+//  Mise à jour
 router.post("/demandes/edit/recommandation/:id", recommandationController.updateRecommandation);
 
 

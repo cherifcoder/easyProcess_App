@@ -6,20 +6,20 @@ const nodemailer = require('nodemailer');
 const { getModelByType } = require('../utils/modelMapper');
 
 exports.traiterDemande = async (typeDemande, identifiant) => {
-  // 1. Récupération MongoDB
+  // Récupération Liaison mongo MongoDB
   const Model = getModelByType(typeDemande);
   const demande = await Model.findOne({ identifiant });
 
   if (!demande) throw new Error("Demande introuvable");
 
-  // 2. Génération HTML via EJS
+  // Génération HTML via EJS
   const templatePath = path.join(__dirname, `../views/templates/${typeDemande}.ejs`);
   const html = await ejs.renderFile(templatePath, { demande });
 
-  // 3. Conversion PDF avec Puppeteer
+  // Conversion EN PDF avec Puppeteer
   const browser = await puppeteer.launch({
     headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'] // utile sur certains serveurs
+    args: ['--no-sandbox', '--disable-setuid-sandbox'] 
   });
   const page = await browser.newPage();
   await page.setContent(html, { waitUntil: 'networkidle0' });
@@ -36,8 +36,7 @@ demande.pdfBuffer = pdfBuffer;
 demande.statut = "Signee";
 await demande.save();
 
-
-  // 5. Envoi par email (Gmail mot de passe d’application)
+//transfert email
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {

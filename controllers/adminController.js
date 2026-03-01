@@ -29,19 +29,19 @@ exports.createAdmin=async(req,res)=>{
 };
 
 
-exports.loginAdmin =async(req,res)=>{
-    try{
-        const {email, motDePass}=req.body;
-        const admin=await Admin.findOne({ email });
-        if(!admin) return res.send("Utilisateur non trouve")
-        const isMatch=await bcrypt.compare(motDePass, admin.motDePass)
-        if(!isMatch) return res.send("Mot de pass incorect")
+// exports.loginAdmin =async(req,res)=>{
+//     try{
+//         const {email, motDePass}=req.body;
+//         const admin=await Admin.findOne({ email });
+//         if(!admin) return res.send("Utilisateur non trouve")
+//         const isMatch=await bcrypt.compare(motDePass, admin.motDePass)
+//         if(!isMatch) return res.send("Mot de pass incorect")
         
-            res.redirect("/dashboard")
-    }catch(err){
-        res.send(`Erreur lorsde la connexion : ${err}`)
-    }
-}
+//             res.redirect("/dashboard")
+//     }catch(err){
+//         res.send(`Erreur lorsde la connexion : ${err}`)
+//     }
+// }
 
 exports.getAllAdmin=async(req,res)=>{
     try{

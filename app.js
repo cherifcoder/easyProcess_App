@@ -15,6 +15,10 @@ const recommandationRoutes=require("./routes/recommandationRoutes")
 const releveRoutes=require("./routes/releveRoutes")
 const stageRoutes=require("./routes/stageRoutes")
 const adminRoutes = require('./routes/adminRoutes')
+const authRoutes = require("./routes/authRoutes");
+
+
+
 
 
 const expressLayout=require('express-ejs-layouts')
@@ -41,6 +45,7 @@ app.use("/",recommandationRoutes)
 app.use("/",releveRoutes)
 app.use("/",stageRoutes)
 app.use('/', adminRoutes)
+app.use("/", authRoutes);
 app.listen(PORT ,(err)=>{
     if(!err){
         console.log(`App listen on http://localhost:${PORT}`)

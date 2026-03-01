@@ -21,40 +21,11 @@ router.get("/register",
     
 )
 router.post("/register", etudiantController.registerEtudiant)
-router.get("/login", (req,res)=>{
-    const local={
-        title:"Connexion" 
-    }
-    res.render('./auth/login', local)
-})
-router.post("/login", etudiantController.loginEtudiant)
-
-router.get("/dashboard",demandeController.getDashboardStats)
-
-router.get("/users/etd",etudiantController.getAllEtudiant,(req,res)=>{
-    const local={
-        title:" Gestion des utilisateurs - Afficher Etudiant",
-        layout:"layouts/main",
-       
-    }
-    res.render("users/etd/list", local)
-})
 
 
-router.get("/users/etd/view/:id", etudiantController.getEtudiantById,
-    (req,res)=>{
-        const local={
-            title:"Gestion des Utilisateurs - Afficher etudiant",
-            layout:"layouts/main",
-            breadcrumbs: [
-                { label: "Utilisateurs", url: "#" },
-                { label: "Etudiant", url: "/etd" },
-                { label: "Afficher"},
-              ]
-        }
-    }
+router.get("/users/etd",etudiantController.getAllEtudiant)
 
-);
+router.get("/users/etd/view/:id", etudiantController.getEtudiantById);
 
 
 

@@ -3,7 +3,7 @@ const router = express.Router();
 
 const reclamationController = require("../controllers/reclamationController");
 
-// ✅ Formulaire de création
+// Formulaire de création
 router.get("/demandes/create/reclamation", (req, res) => {
     const local = {
         title: "Gestion des demandes - Créer Réclamation",
@@ -18,22 +18,22 @@ router.get("/demandes/create/reclamation", (req, res) => {
     res.render("demandes/reclamation/create", local);
 });
 
-// ✅ Création
+// Création
 router.post("/demandes/create/reclamation", reclamationController.createReclamation);
 
-// ✅ Liste des réclamations
+// Liste des réclamations
 router.get("/demandes/reclamation", reclamationController.getAllReclamations);
 
-// ✅ Affichage d’une réclamation par ID
+// Affichage d’une réclamation par ID
 router.get("/demandes/reclamation/view/:id", reclamationController.getReclamationById);
 
-// ✅ Suppression
+// Suppression
 router.post("/demandes/reclamation/delete/:id", reclamationController.deleteReclamation);
 
-// ✅ Formulaire d’édition
+// Formulaire d’édition
 router.get("/demandes/edit/reclamation/:id", reclamationController.getReclamationEditForm);
 
-// ✅ Mise à jour
+// Mise à jour
 router.post("/demandes/edit/reclamation/:id", reclamationController.updateReclamation);
 
 router.get("/demandes/reclamation/valider/:identifiant", reclamationController.validerReclamation); 
