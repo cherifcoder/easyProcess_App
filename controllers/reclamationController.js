@@ -3,7 +3,7 @@ const Reclamation = require("../models/reclamationModel");
 // ✅ Créer une réclamation
 exports.createReclamation = async (req, res) => {
     try {
-        const { civilite, nom, prenom, filiere, niveau, promotion, matricule, matiere, professeur, motif, session, statut } = req.body;
+        const { civilite, nom, prenom, filiere, niveau, promotion, matricule, matiere, professeur, motif, email, session, statut } = req.body;
 
         const newReclamation = new Reclamation({
             civilite,
@@ -15,6 +15,7 @@ exports.createReclamation = async (req, res) => {
             matricule,
             matiere,
             professeur,
+            email,
             motif,
             session,
             statut
@@ -179,3 +180,94 @@ exports.updateReclamation = async (req, res) => {
         res.status(500).send("Erreur lors de la modification");
     }
 };
+
+
+
+exports.validerReclamation = async (req, res) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const reclamation = await Reclamation.findOne({ identifiant });
+
+    if (!reclamation) return res.status(404).send("Demande introuvable");
+
+    // Mise à jour statut
+    reclamation.statut = "Validee";
+    await reclamation.save();
+
+    res.redirect("/demandes/reclamation");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors de la validation");
+  }
+};
+
+exports.rejeterReclamation= async (req, res) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const reclamation = await Reclamation.findOne({ identifiant });
+
+    if (!reclamation) return res.status(404).send("Demande introuvable");
+
+    // Mise à jour statut
+    reclamation.statut = "Rejetee";
+    await reclamation.save();
+
+    res.redirect("/demandes/reclamation");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors de la validation");
+  }
+};
+
+const mailer = require("../services/mailer");
+
+exports.uploadAndSend = async (req, res) => {
+    try {
+      const reclamation = await Reclamation.findOne({ identifiant: req.params.id });
+      if (!reclamation) {
+        return res.status(404).send("Réclamation introuvable");
+      }
+  
+      if (!req.file) {
+        return res.status(400).send("Aucun fichier reçu");
+      }
+  
+      // Sauvegarde du PDF dans MongoDB
+      reclamation.pdfFile = req.file.buffer;
+      reclamation.statut = "Corrigee";
+      await reclamation.save();
+  
+      // Envoi par email avec le PDF
+      await mailer.sendPdf(
+        reclamation.email,
+        "Correction de votre demande " + reclamation.identifiant,
+        `Bonjour ${reclamation.prenom},\n\nVeuillez trouver ci-joint la correction de votre demande.`,
+        reclamation.pdfFile,
+        "Correction.pdf"
+      );
+  
+      res.redirect("/demandes/reclamation/");
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Erreur lors de l’upload et l’envoi");
+    }
+  };
+  
+
+exports.downloadPdf = async (req, res) => {
+    try {
+      const reclamation = await Reclamation.findOne({ identifiant: req.params.identifiant });
+  
+      if (!reclamation || !reclamation.pdfFile) {
+        return res.status(404).send("Fichier introuvable");
+      }
+  
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", `attachment; filename=${reclamation.identifiant}.pdf`);
+      res.send(reclamation.pdfFile);
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Erreur lors du téléchargement");
+    }
+  };
+  

@@ -55,16 +55,22 @@ const reclamationSchema=new mongoose.Schema({
         type:String,
         enum:["calcul","saisie","absence"]
     },
+     email: {
+        type: String,
+        require: true,
+    },
+
     statut:{
         type:String,
         require:true,
-        enum:["En attente", "Validee", "Rejetee"],
+        enum:["En attente", "Validee", "Rejetee","Corrigee"],
         default:"En attente"
     },
     date: { 
         type: Date, 
         default: Date.now 
-    }
+    },
+    pdfFile: { type: Buffer }
 },{timestamps:true})
 
 compteur(reclamationSchema,'reclamation',(seq)=>{

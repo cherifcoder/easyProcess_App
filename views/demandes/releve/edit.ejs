@@ -18,9 +18,9 @@
             <label class="form-label fw-semibold">Civilité</label>
             <select name="civilite" class="form-select shadow-sm" required>
                 <option value="" disabled>Choisir</option>
-                <option value="M." <%= releve.civilite === "M." ? "selected" : "" %>>M.</option>
-                <option value="Mme" <%= releve.civilite === "Mme" ? "selected" : "" %>>Mme</option>
-                <option value="Mlle" <%= releve.civilite === "Mlle" ? "selected" : "" %>>Mlle</option>
+                <option value="M." <%=releve.civilite==="M." ? "selected" : "" %>>M.</option>
+                <option value="Mme" <%=releve.civilite==="Mme" ? "selected" : "" %>>Mme</option>
+                <option value="Mlle" <%=releve.civilite==="Mlle" ? "selected" : "" %>>Mlle</option>
             </select>
         </div>
 
@@ -51,7 +51,13 @@
         <!-- Promotion -->
         <div class="col-md-2">
             <label class="form-label fw-semibold">Promotion</label>
-            <input type="number" name="promotion" class="form-control shadow-sm" required value="<%= releve.promotion %>">
+            <input type="number" name="promotion" class="form-control shadow-sm" required
+                value="<%= releve.promotion %>">
+        </div>
+        <!-- Email -->
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Email</label>
+            <input type="email" name="email" class="form-control shadow-sm" required value="<%= releve.email %>">
         </div>
 
         <!-- Matricule -->
@@ -80,47 +86,47 @@
                         <div class="border rounded p-3 h-100">
                             <h6 class="fw-bold text-center mb-3">Licence 1</h6>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="semestre" value="S1" id="releveL1S1"
-                                    <%= releve.semestre.includes("S1") ? "checked" : "" %>>
+                                <input class="form-check-input" type="checkbox" name="semestre" value="S1"
+                                    id="releveL1S1" <%=releve.semestre.includes("S1") ? "checked" : "" %>>
                                 <label class="form-check-label" for="releveL1S1">Semestre 1</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="semestre" value="S2" id="releveL1S2"
-                                    <%= releve.semestre.includes("S2") ? "checked" : "" %>>
+                                <input class="form-check-input" type="checkbox" name="semestre" value="S2"
+                                    id="releveL1S2" <%=releve.semestre.includes("S2") ? "checked" : "" %>>
                                 <label class="form-check-label" for="releveL1S2">Semestre 2</label>
                             </div>
                         </div>
                     </div>
-    
+
                     <!-- Licence 2 -->
                     <div class="col-md-3 col-6">
                         <div class="border rounded p-3 h-100">
                             <h6 class="fw-bold text-center mb-3">Licence 2</h6>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="semestre" value="S3" id="releveL2S1"
-                                    <%= releve.semestre.includes("S3") ? "checked" : "" %>>
+                                <input class="form-check-input" type="checkbox" name="semestre" value="S3"
+                                    id="releveL2S1" <%=releve.semestre.includes("S3") ? "checked" : "" %>>
                                 <label class="form-check-label" for="releveL2S1">Semestre 3</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="semestre" value="S4" id="releveL2S2"
-                                    <%= releve.semestre.includes("S4") ? "checked" : "" %>>
+                                <input class="form-check-input" type="checkbox" name="semestre" value="S4"
+                                    id="releveL2S2" <%=releve.semestre.includes("S4") ? "checked" : "" %>>
                                 <label class="form-check-label" for="releveL2S2">Semestre 4</label>
                             </div>
                         </div>
                     </div>
-    
+
                     <!-- Licence 3 -->
                     <div class="col-md-3 col-6">
                         <div class="border rounded p-3 h-100">
                             <h6 class="fw-bold text-center mb-3">Licence 3</h6>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="semestre" value="S5" id="releveL3S1"
-                                    <%= releve.semestre.includes("S5") ? "checked" : "" %>>
+                                <input class="form-check-input" type="checkbox" name="semestre" value="S5"
+                                    id="releveL3S1" <%=releve.semestre.includes("S5") ? "checked" : "" %>>
                                 <label class="form-check-label" for="releveL3S1">Semestre 5</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="semestre" value="S6" id="releveL3S2"
-                                    <%= releve.semestre.includes("S6") ? "checked" : "" %>>
+                                <input class="form-check-input" type="checkbox" name="semestre" value="S6"
+                                    id="releveL3S2" <%=releve.semestre.includes("S6") ? "checked" : "" %>>
                                 <label class="form-check-label" for="releveL3S2">Semestre 6</label>
                             </div>
                         </div>
@@ -132,9 +138,9 @@
             <div class="col-md-6">
                 <label class="form-label fw-semibold">Statut</label>
                 <select class="form-select" name="statut">
-                    <option value="En attente" <%= releve.statut === "En attente" ? "selected" : "" %>>En attente</option>
-                    <option value="validee" <%= releve.statut === "validee" ? "selected" : "" %>>Validée</option>
-                    <option value="rejetee" <%= releve.statut === "rejetee" ? "selected" : "" %>>Rejetée</option>
+                    <option value="En attente" <%=releve.statut==="En attente" ? "selected" : "" %>>En attente</option>
+                    <option value="validee" <%=releve.statut==="validee" ? "selected" : "" %>>Validée</option>
+                    <option value="rejetee" <%=releve.statut==="rejetee" ? "selected" : "" %>>Rejetée</option>
                 </select>
             </div>
         </div>

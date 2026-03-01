@@ -3,6 +3,22 @@
 </div>
 <form class="bg-white px-4 py-4" method="POST" action="/demandes/create/diplome">
     <%- include("../../partials/infoEtd.ejs") %>
+    <div class="d-flex gap-4">
+         <!-- datede naissance -->
+
+     <div class="col-md-3">
+        <label class="form-label fw-semibold">Date de naissance</label>
+        <input type="date" name="dateNaissance" id="dateNaissance" class="form-control shadow-sm" placeholder="Entrez votre date de naissance"
+            required>
+    </div>
+      <!-- lieu de naissance -->
+      <div class="col-md-3">
+        <label class="form-label fw-semibold">Lieu de naissance</label>
+        <input type="text" name="lieu" id="lieu" class="form-control shadow-sm" placeholder="Entrez votre lieu de naissance"
+            required>
+    </div>
+    </div>
+    
         <div class="form-section bg-white">
             <div class="form-section-header border-info">
                 <h3 class="fw-bold text-primary">

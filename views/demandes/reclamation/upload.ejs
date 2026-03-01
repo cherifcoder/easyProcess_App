@@ -1,0 +1,39 @@
+
+
+<div class="container mt-4">
+  <h2 class="mb-3">Uploader la correction de réclamation</h2>
+
+  <% if (reclamation) { %>
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Demandeur : <%= reclamation.nom %> <%= reclamation.prenom %></h5>
+        <p class="card-text">
+          Identifiant : <strong><%= reclamation.identifiant %></strong><br>
+          Filière : <%= reclamation.filiere %> - Niveau : <%= reclamation.niveau %><br>
+          Promotion : <%= reclamation.promotion %><br>
+          Statut actuel : <span class="badge bg-secondary"><%= reclamation.statut %></span>
+        </p>
+
+        <% if (reclamation.statut === "Validee") { %>
+          <form action="/demandes/reclamation/upload/<%= reclamation.identifiant %>" 
+                method="POST" 
+                enctype="multipart/form-data" 
+                class="mt-3">
+            <div class="mb-3">
+              <label for="pdfCorrection" class="form-label">Choisir le fichier PDF corrigé :</label>
+              <input type="file" class="form-control" id="pdfCorrection" name="pdfCorrection" accept="application/pdf" required>
+            </div>
+            <button type="submit" class="btn btn-info">
+              <i class="bi bi-upload"></i> Uploader et Envoyer
+            </button>
+          </form>
+        <% } else { %>
+          <p class="text-muted">Cette réclamation n’est pas encore signée. L’upload est désactivé.</p>
+        <% } %>
+      </div>
+    </div>
+  <% } else { %>
+    <div class="alert alert-danger">Réclamation introuvable.</div>
+  <% } %>
+</div>
+

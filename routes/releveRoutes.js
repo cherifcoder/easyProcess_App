@@ -36,4 +36,22 @@ router.get("/demandes/edit/releve/:id", releveController.getReleveEditForm);
 // ✅ Mise à jour
 router.post("/demandes/edit/releve/:id", releveController.updateReleve);
 
+router.get("/demandes/releve/valider/:identifiant", releveController.validerReleve); 
+router.get("/demandes/releve/rejeter/:identifiant", releveController.rejeterReleve); 
+
+
+const multer = require("multer");
+
+
+const storage = multer.memoryStorage(); // stocke en mémoire pour sauvegarde en DB
+const upload = multer({ storage });
+
+router.post(
+  "/demandes/releve/upload/:id",
+  upload.single("pdfCorrection"),
+  releveController.sendReleve
+);
+
+router.get("/demandes/releve/download/:identifiant", releveController.downloadPdf); 
+
 module.exports = router;

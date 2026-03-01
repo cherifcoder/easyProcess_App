@@ -36,4 +36,14 @@ router.get("/demandes/edit/stage/:id", stageController.getStageEditForm);
 // ✅ Mise à jour
 router.post("/demandes/edit/stage/:id", stageController.updateStage);
 
+
+router.get("/demandes/stage/valider/:identifiant", stageController.validerStage); 
+router.get("/demandes/stage/rejeter/:identifiant", stageController.rejeterStage); 
+router.get("/demandes/stage/signer/:identifiant", stageController.signerStage,
+    (req, res) => { demandeController.genererEtEnvoyerPDF(req, res, 'Stage'); }); 
+
+router.get("/demandes/stage/download/:identifiant", stageController.downloadStage);
+
+module.exports = router;
+
 module.exports = router;

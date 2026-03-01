@@ -3,7 +3,7 @@ const Frequentation=require("../models/frequentationModel")
 exports.createFrequentation=async(req,res)=>{
     try{
 
-        const{civilite,nom, prenom,filiere,niveau,promotion,matricule,periode,destination,statut}=req.body
+        const{civilite,nom, prenom,filiere,niveau,promotion,matricule,periode,email,destination,statut}=req.body
         const newFrequentaion=new Frequentation({
             civilite,
             nom,
@@ -13,6 +13,7 @@ exports.createFrequentation=async(req,res)=>{
             promotion,
             matricule,
             periode,
+            email,
             destination,
             statut
         })
@@ -61,7 +62,7 @@ exports.getAllfrequentation=async(req,res)=>{
         const frequentations= await Frequentation.find(filter);
         frequentations.sort((a,b)=>new Date(b.createdAt) - new Date(a.createdAt))
         res.render("demandes/frequentation/list",{
-            title:"Gestion des demandes - Afficher Diplome",
+            title:"Gestion des demandes - Afficher Frequentation",
             layout:"layouts/main",
             breadcrumbs: [
                 { label: "Demandes", url: "#" },
@@ -170,3 +171,75 @@ exports.updateFrequentation = async (req, res) => {
         res.status(500).send("Erreur lors de la modification");
     }
 }
+
+
+exports.validerFrequentation = async (req, res) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const frequentation = await Frequentation.findOne({ identifiant });
+
+    if (!frequentation) return res.status(404).send("Demande introuvable");
+
+    // Mise à jour statut
+    frequentation.statut = "Validee";
+    await frequentation.save();
+
+    res.redirect("/demandes/frequentation");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors de la validation");
+  }
+};
+
+exports.rejeterFrequentation = async (req, res) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const frequentation = await Frequentation.findOne({ identifiant });
+
+    if (!frequentation) return res.status(404).send("Demande introuvable");
+
+    // Mise à jour statut
+    frequentation.statut = "Rejetee";
+    await frequentation.save();
+
+    res.redirect("/demandes/frequentation");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors de la validation");
+  }
+};
+
+
+
+
+const { genererEtEnvoyerPDF } = require("./demandeController");
+
+exports.signerFrequentation = async (req, res) => {
+  await genererEtEnvoyerPDF(req, res, "Frequentation", "demandes/frequentation/pdfTemplate");
+};
+
+
+exports.downloadFrequentation = async (req, res) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const frequentation = await Frequentation.findOne({ identifiant });
+
+    if (!frequentation) {
+      return res.status(404).send("Demande introuvable");
+    }
+    if (!frequentation.pdfBuffer) {
+      return res.status(404).send("PDF introuvable pour cette demande");
+    }
+
+    // Définir les headers pour forcer le téléchargement
+    res.set({
+      "Content-Type": "application/pdf",
+      "Content-Disposition": `attachment; filename="Frequentation-${identifiant}.pdf"`,
+    });
+
+    res.send(Frequentation.pdfBuffer); // ✅ utiliser pdfBuffer
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erreur lors du téléchargement de la frequentation");
+  }
+};

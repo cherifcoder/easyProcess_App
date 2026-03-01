@@ -20,6 +20,14 @@ const diplomeSchema= new mongoose.Schema({
         type: String,
         require: true,
     },
+    dateNaissance: {
+        type: Date,
+        require: true
+    },
+    lieu:{
+        type: String,
+        require: true
+    },
     filiere: {
         type: String,
         enum: ['AB', 'AG', 'CFA', '3ER', 'GI', 'HT', 'MA', 'MC'],
@@ -40,18 +48,26 @@ const diplomeSchema= new mongoose.Schema({
         type: String,
         require: true,
     },
+    email: {
+        type: String,
+        require: true,
+    },
     diplome:{
         type:String,
         enum:["DUT","Licence"]
     },
+
     statut:{
         type:String,
-        enum:["En attente", "Validee","Rejetee" ],
+        enum:["En attente", "Validee","Rejetee","Signee" ],
         default:"En attente"
     },
     date: { 
         type: Date, 
         default: Date.now 
+    },
+    pdfBuffer: { 
+        type: Buffer 
     }
     
 },{timestamps:true}

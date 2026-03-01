@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Attestation de réussite - IUFP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f5f5;
+            font-family: "Times New Roman", serif;
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Format paysage - Remplit toute la page */
+        .page {
+            width: 1200px;
+            height: 900px; /* Format paysage standard */
+            margin: 0 auto;
+            background: #fff;
+            border: 8px solid #d4af37;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* HEADER - Plus compact mais visible */
+        .header {
+            background: #1f4d2b;
+            color: #f5d06f;
+            padding: 12px 20px;
+            text-align: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .header img {
+            position: absolute;
+            left: 25px;
+            top: 8px;
+            height: 70px;
+            width: auto;
+        }
+
+        .header small {
+            display: block;
+            color: #fff;
+            font-size: 13px;
+            line-height: 1.3;
+        }
+
+        .header strong {
+            font-size: 15px;
+        }
+
+        .header .fs-4 {
+            font-size: 1.4rem !important;
+            margin-top: 5px !important;
+        }
+
+        /* CONTENT - Prend tout l'espace disponible */
+        .content {
+            padding: 20px 50px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .diplome-titre {
+            text-align: center;
+            font-size: 52px;
+            font-weight: bold;
+            color: #1f4d2b;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin: 10px 0 5px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .diplome-sous-titre {
+            text-align: center;
+            font-size: 24px;
+            color: #d4af37;
+            font-style: italic;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 8px;
+        }
+
+        .mention {
+            text-align: center;
+            font-size: 22px;
+            margin: 15px 0 10px 0;
+            font-weight: 500;
+        }
+
+        .student-name {
+            text-align: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: #1f4d2b;
+            margin: 15px 0;
+            text-transform: uppercase;
+            border-top: 4px double #d4af37;
+            border-bottom: 4px double #d4af37;
+            padding: 18px 10px;
+            letter-spacing: 3px;
+            line-height: 1.3;
+            word-wrap: break-word;
+            background: rgba(245, 208, 111, 0.05);
+        }
+
+        .info-diplome {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0 15px 0;
+            font-size: 18px;
+        }
+
+        .info-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #1f4d2b;
+            text-transform: uppercase;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 22px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 5px;
+            min-width: 220px;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .info-lieu {
+            font-size: 18px;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .text-center.fs-3 {
+            font-size: 1.8rem !important;
+            margin: 15px 0 !important;
+            line-height: 1.4;
+        }
+
+        .text-center.fs-2 {
+            font-size: 2.2rem !important;
+            margin: 10px 0 !important;
+            color: #1f4d2b;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 8px 0;
+            border-radius: 50px;
+        }
+
+        .text-center.fs-5 {
+            font-size: 1.3rem !important;
+            margin: 10px 0 !important;
+            font-weight: 500;
+        }
+
+        .signatures {
+            display: flex;
+            justify-content: center;
+            margin: 25px 0 15px 0;
+            gap: 100px;
+        }
+
+        .signature-box {
+            text-align: center;
+            width: 300px;
+        }
+
+        .signature-line {
+            border-top: 2px solid #000;
+            margin-top: 40px;
+            padding-top: 10px;
+        }
+
+        .signature-line strong {
+            font-size: 18px;
+        }
+
+        .signature-line br + span {
+            font-size: 16px;
+        }
+
+        .cachet-section {
+            display: flex;
+            justify-content: center;
+            margin: 5px 0;
+        }
+
+        .cachet-circle {
+            width: 130px;
+            height: 130px;
+            border: 4px solid #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #1f4d2b;
+            transform: rotate(-5deg);
+            background: rgba(245, 208, 111, 0.15);
+            font-size: 16px;
+            text-align: center;
+            line-height: 1.3;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .numero-diplome {
+            position: absolute;
+            bottom: 70px;
+            right: 40px;
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+            background: white;
+            padding: 3px 10px;
+            border: 1px solid #d4af37;
+            border-radius: 20px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #1f4d2b;
+            color: #f5d06f;
+            text-align: center;
+            padding: 10px;
+            font-size: 13px;
+            flex-shrink: 0;
+            border-top: 2px solid #d4af37;
+        }
+
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 120px;
+            opacity: 0.03;
+            color: #1f4d2b;
+            font-weight: bold;
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 1;
+            text-transform: uppercase;
+        }
+
+        /* Pour l'impression */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                display: block;
+            }
+            .page {
+                width: 100%;
+                height: 100vh;
+                margin: 0;
+                border: 8px solid #d4af37;
+                box-shadow: none;
+                page-break-after: avoid;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page position-relative">
+
+    <!-- Filigrane -->
+    <div class="watermark">UNIVERSITÉ DE SÉGOU</div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <strong>Ministère de l’Enseignement Supérieur et de la Recherche Scientifique</strong>
+        <small>RÉPUBLIQUE DU MALI</small>
+        <small><strong>UN PEUPLE – UN BUT – UNE FOI</strong></small>
+
+        <div class="mt-2 fs-4">
+            Institut Universitaire de Formation Professionnelle (IUFP) de Ségou
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content position-relative">
+
+        <!-- Titre principal -->
+        <div class="diplome-titre">
+            ATTESTATION DE RÉUSSITE
+        </div>
+
+        <div class="diplome-sous-titre">
+            <!-- Sous-titre vide mais conservé pour le style -->
+        </div>
+
+        <!-- Il est certifié que -->
+        <div class="mention">
+            Le Conseil de l'Université, sur proposition du jury, certifie que
+        </div>
+
+        <!-- Nom de l'étudiant -->
+        <div class="student-name">
+            <%= demande.civilite %> <%= demande.prenom %> <%= demande.nom %>
+        </div>
+
+        <!-- Informations -->
+        <div class="info-diplome">
+            <div class="info-item">
+                <div class="info-label">Né(e) le</div>
+                <div class="info-value">
+                    <%= new Date(demande.dateNaissance).toLocaleDateString("fr-FR", { 
+                        day: "2-digit", 
+                        month: "long", 
+                        year: "numeric" 
+                    }) %>
+                </div>
+                <div class="info-lieu">à <%= demande.lieu%></div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Matricule</div>
+                <div class="info-value"><%= demande.matricule %></div>
+            </div>
+        </div>
+
+        <!-- Mention et filière -->
+        <div class="text-center fs-3 my-4">
+            a subi avec succès le programme de formation et obtenu le diplôme de
+        </div>
+        
+        <div class="text-center fs-3 fw-bold" style="color: #1f4d2b;">
+            <% if (demande.diplome === "DUT") { %>
+                DIPLÔME UNIVERSITAIRE DE TECHNOLOGIE (DUT)
+            <% } %>
+            <% if (demande.diplome === "Licence") { %>
+                LICENCE PROFESSIONNELLE
+            <% } %>
+        </div>
+
+        <div class="text-center fs-2 fw-bold text-success my-3">
+            <%= demande.filiere %>
+        </div>
+
+        <div class="text-center fs-5 my-4">
+            <span style="background: #f5f5f5; padding: 5px 20px; border-radius: 30px; border: 1px solid #d4af37;">
+                Promotion <%= demande.promotion %>
+            </span>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <p class="fw-bold">Fait à Segou, le <script>document.write(new Date().toLocaleDateString("fr-FR", { day: "2-digit", month: "long", year: "numeric" }));</script>.</p>
+            </div>
+            <div class="signature-line text-center">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fd144mzi0q5mijx.cloudfront.net%2Fimg%2FA%2FU%2FAuthorized_Signature1.png&f=1&nofb=1&ipt=b4a935fcb155b9868dc9b54694098f900892522e7d7fbb038a22582ad7287588" 
+                     alt="Signature Dr Koita" 
+                     width="150" 
+                     style="display: block; margin: 0 auto 5px auto;">
+                <strong>Dr Mahamadou Koita</strong><br>
+                <span>DGA IUFP-Ségou</span>
+            </div>
+        </div>
+       
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        INSTITUT UNIVERSITAIRE DE FORMATION PROFESSIONNELLE (IUFP) — UNIVERSITÉ DE SÉGOU<br>
+        Sebougou, près de l’IFP — Tél : +223 20 22 33 44 — Email : scolarite@iufp-segou.edu.ml
+    </div>
+
+</div>
+
+<!-- Script de fallback pour le logo -->
+<script>
+    // Si l'image ne charge pas, on ne l'affiche pas
+    document.querySelectorAll('img').forEach(img => {
+        img.onerror = function() {
+            this.style.display = 'none';
+        };
+    });
+</script>
+
+</body>
+</html>

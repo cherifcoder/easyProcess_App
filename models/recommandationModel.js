@@ -54,16 +54,23 @@ const recommandationSchema=new mongoose.Schema({
     },
     professeur:{
         type:String
+    }
+    ,email: {
+        type: String,
+        require: true,
     },
     statut:{
         type:String,
         require:true,
-        enum:["En attente", "Validee", "Rejetee"],
+        enum:["En attente", "Validee", "Rejetee","Signee"],
         default:"En attente"
     },
     date: { 
         type: Date, 
         default: Date.now 
+    },
+    pdfBuffer: { 
+        type: Buffer 
     }
 },{timestamps:true})
 

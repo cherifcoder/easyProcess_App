@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Attestation de fréquentation - IUFP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f5f5f5;
+            font-family: "Times New Roman", serif;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 30px auto;
+            background: #fff;
+            border: 1px solid #d4af37;
+        }
+
+        /* HEADER */
+        .header {
+            background: #1f4d2b;
+            color: #f5d06f;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header img {
+            position: absolute;
+            left: 20px;
+            top: 10px;
+            height: 80px;
+        }
+
+        .header small {
+            display: block;
+            color: #fff;
+        }
+
+        /* CONTENT */
+        .content {
+            padding: 40px;
+        }
+
+        .info-etablissement {
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .date-objet {
+            margin-bottom: 30px;
+        }
+
+        .objet {
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 20px 0;
+            border-bottom: 1px solid #d4af37;
+            padding-bottom: 5px;
+        }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 22px;
+            margin: 25px 0;
+            border-top: 2px solid #d4af37;
+            border-bottom: 2px solid #d4af37;
+            padding: 10px 0;
+        }
+
+        .student-box {
+            border: 1px solid #1f4d2b;
+            margin: 30px 0;
+        }
+
+        .student-box-header {
+            background: #1f4d2b;
+            color: #fff;
+            font-weight: bold;
+            padding: 6px 10px;
+            font-size: 14px;
+        }
+
+        .student-box-body {
+            padding: 15px;
+            font-size: 15px;
+        }
+
+        .info-row {
+            margin-bottom: 12px;
+            display: flex;
+        }
+
+        .info-label {
+            font-weight: bold;
+            min-width: 200px;
+        }
+
+        .info-value {
+            flex: 1;
+        }
+
+        .signature {
+            margin-top: 50px;
+            text-align: right;
+        }
+
+        .signature-ligne {
+            margin-top: 60px;
+            border-top: 1px solid #000;
+            width: 250px;
+            margin-left: auto;
+            text-align: center;
+            padding-top: 8px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #1f4d2b;
+            color: #f5d06f;
+            text-align: center;
+            padding: 10px;
+            font-size: 13px;
+        }
+        
+        .cachet {
+            margin-top: 20px;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <div class="header">
+        <!-- Logo (remplace le src par ton logo) -->
+        <img src="/public/img/logoUSegou.png" alt="Logo IUFP">
+
+        <strong>Ministère de l’Enseignement Supérieur et de la Recherche Scientifique</strong>
+        <small>RÉPUBLIQUE DU MALI</small>
+        <small><strong>UN PEUPLE – UN BUT – UNE FOI</strong></small>
+
+        <div class="mt-2">
+            Université de Ségou<br>
+            Institut Universitaire de Formation Professionnelle (IUFP)
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- Coordonnées de l'établissement -->
+        <div class="info-etablissement">
+            <strong>INSTITUT UNIVERSITAIRE DE FORMATION PROFESSIONNELLE (IUFP)</strong><br>
+            Sebougou, près de l'IFP – BP : 123 Ségou, Mali<br>
+            Tél : +223 20 22 33 44 – Email : contact@iufp-segou.edu.ml
+        </div>
+
+        <!-- Date et Objet -->
+        <div class="row date-objet">
+            <div class="col-md-6">
+                <div><strong>Réf :</strong> AT-FRQ-2026/001</div>
+            </div>
+            <div class="col-md-6 text-end">
+                <div><strong>Nouakchott, le 28 Février 2026</strong></div>
+            </div>
+        </div>
+
+        <!-- Objet -->
+        <div class="objet">
+            Objet : Attestation de fréquentation
+        </div>
+
+        <!-- Corps de l'attestation -->
+        <div class="mt-4">
+            <p class="fw-bold">Je soussigné(e), <strong>Dr Solemane Coulibaly</strong>, Enseignant chercheur et Chef du département Génie Informatique, certifie par la présente que l'étudiant(e) :</p>
+        </div>
+
+        <!-- Informations étudiant -->
+        <div class="student-box">
+            <div class="student-box-header">IDENTITÉ DE L'ÉTUDIANT(E)</div>
+            <div class="student-box-body">
+                <div class="info-row">
+                    <span class="info-label">Nom et prénom :</span>
+                    <span class="info-value"><strong>   </strong></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Date et lieu de naissance :</span>
+                    <span class="info-value">15/06/2000, Ségou</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Matricule / Numéro d'inscription :</span>
+                    <span class="info-value">W001BX7HD1</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Suite du texte -->
+        <p>est régulièrement inscrit(e) au sein de <strong>l'Institut Universitaire de Formation Professionnelle (IUFP)</strong> pour l'année académique <strong>2025-2026</strong>.</p>
+        
+        <p>Il/elle suit effectivement les cours dans la filière <strong>Génie Informatique (GI), niveau L3</strong> depuis le <strong>15 Octobre 2025</strong> et demeure assidu(e) aux activités pédagogiques.</p>
+        
+        <p>La présente attestation est délivrée à la demande de l'intéressé(e) pour servir et valoir ce que de droit.</p>
+        
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <p class="fw-bold">Fait à Nouakchott, le 28 Février 2026.</p>
+            </div>
+            <div class="col-md-6 signature">
+                <div class="signature-ligne">
+                    <strong>Dr Solemane Coulibaly</strong><br>
+                    Enseignant chercheur<br>
+                    Chef de département GI
+                </div>
+                <div class="cachet mt-3">
+                    Signature et cachet de l'établissement
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        INSTITUT UNIVERSITAIRE DE FORMATION PROFESSIONNELLE (IUFP)<br>
+        UNIVERSITÉ DE SÉGOU – Sebougou, près de l’IFP<br>
+        www.iufp-segou.edu.ml
+    </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -36,7 +36,16 @@
             <label class="form-label fw-semibold">Prénom</label>
             <input type="text" name="prenom" id="prenom" class="form-control shadow-sm" placeholder="Entrez votre prénom" value="<%= diplome.prenom %>" required>
         </div>
-    
+      <!-- dateNaissance -->
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">Date de naissance</label>
+        <input type="date" name="dateNaissance" id="dateNaissance" class="form-control shadow-sm" placeholder="ddn" value="<%= diplome.dateNaissance %>" required>
+    </div>
+      <!-- Lieu -->
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">Date de naissance</label>
+        <input type="lieu" name="lieu" id="dateNaissance" class="form-control shadow-sm" placeholder="ddn" value="<%= diplome.lieu %>" required>
+    </div>
         <!-- Filière -->
         <div class="col-md-2">
             <label class="form-label fw-semibold">Filière</label>
@@ -75,7 +84,12 @@
             <label class="form-label fw-semibold">Numéro matricule</label>
             <input type="text" name="matricule" id="matricule" class="form-control shadow-sm" placeholder="Numero Matricule" value="<%= diplome.matricule %>" required>
         </div>
-    
+         <!-- Email -->
+         <div class="col-md-4">
+            <label class="form-label fw-semibold">Email</label>
+            <input type="email" name="email" id="email" class="form-control shadow-sm" placeholder="email" value="<%= diplome.email %>" required>
+        </div>
+        
     </div>
     <hr class="mx-4">
     

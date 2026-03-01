@@ -2,7 +2,7 @@ const Diplome=require("../models/diplomeModel")
 
 exports.createDiplome=async(req,res)=>{
     try{
-        const{civilite,nom,prenom,filiere,niveau,promotion,matricule,diplome,statut}=req.body
+        const{civilite,nom,prenom,filiere,niveau,promotion,matricule,email,dateNaissance,lieu,diplome,statut}=req.body
         const newDiplome=new Diplome({
             civilite,
             nom,
@@ -11,6 +11,9 @@ exports.createDiplome=async(req,res)=>{
             niveau,
             promotion,
             matricule,
+            dateNaissance,
+            lieu,
+            email,
             diplome,
             statut
         })
@@ -157,3 +160,76 @@ exports.deleteDiplome=async(req,res)=>{
         console.log(err)
     }
 }
+
+
+
+exports.validerDiplome = async (req, res) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const diplome = await Diplome.findOne({ identifiant });
+
+    if (!diplome) return res.status(404).send("Demande introuvable");
+
+    // Mise à jour statut
+    diplome.statut = "Validee";
+    await diplome.save();
+
+    res.redirect("/demandes/diplome");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors de la validation");
+  }
+};
+
+exports.rejeterDiplome = async (req, res) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const diplome = await Diplome.findOne({ identifiant });
+
+    if (!diplome) return res.status(404).send("Demande introuvable");
+
+    // Mise à jour statut
+    diplome.statut = "Rejetee";
+    await diplome.save();
+
+    res.redirect("/demandes/diplome");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors de la validation");
+  }
+};
+
+
+
+
+const { genererEtEnvoyerPDF } = require("./demandeController");
+
+exports.signerDiplome = async (req, res) => {
+  await genererEtEnvoyerPDF(req, res, "Diplome", "demandes/diplome/pdfTemplate");
+};
+
+
+exports.downloadDiplome = async (req, res) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const diplome = await Diplome.findOne({ identifiant });
+
+    if (!diplome) {
+      return res.status(404).send("Demande introuvable");
+    }
+    if (!diplome.pdfBuffer) {
+      return res.status(404).send("PDF introuvable pour cette demande");
+    }
+
+    // Définir les headers pour forcer le téléchargement
+    res.set({
+      "Content-Type": "application/pdf",
+      "Content-Disposition": `attachment; filename="Diplome-${identifiant}.pdf"`,
+    });
+
+    res.send(diplome.pdfBuffer); // ✅ utiliser pdfBuffer
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erreur lors du téléchargement du diplôme");
+  }
+};

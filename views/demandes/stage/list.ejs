@@ -96,21 +96,53 @@
                         <td><%= stage.matricule %></td>
                         <td><%= stage.type %></td>
                         <td><%= stage.duree %></td>
-                        <td class="z-0 m-2 badge 
-                            <%= stage.statut==='En attente' ? 'bg-primary-subtle text-primary' 
-                            : stage.statut==='validee' ? 'bg-success-subtle text-success' 
-                            : stage.statut==='rejetee' ? 'bg-danger-subtle text-danger' : '' %>">
-                            <%= stage.statut %>
-                        </td>
-                        <td>
-                            <a href="/demandes/stage/view/<%= stage.identifiant %>" 
-                               class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
-                                <i class="bi bi-eye fs-4"></i>
-                            </a>
-                            <a href="/demandes/edit/stage/<%= stage.identifiant %>" 
-                               class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
-                                <i class="bi bi-pen fs-4"></i>
-                            </a>
+                        <td class=" badge 
+                            <%=
+                            stage.statut==='En attente'?'bg-info-subtle text-info':
+                            stage.statut==='Validee'? 'bg-primary-subtle text-primary':
+                            stage.statut==='Signee'?'bg-success-subtle text-success':
+                            stage.statut==='Rejetee'?'bg-danger-subtle text-danger':''
+                            %> 
+                            ">
+                    <%=stage.statut %>
+                </td>
+                <td>
+                    <a href="/demandes/stage/view/<%= stage.identifiant %> "
+                        class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
+                        <i class="bi bi-eye fs-4"></i>
+                    </a>
+                    <a href="/demandes/edit/stage/<%= stage.identifiant %>"
+                        class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
+                        <i class="bi bi-pen fs-4"></i>
+                    </a>
+
+                    <% if (stage.statut==="En attente" || stage.statut==="Rejetee" ) { %>
+                        <a href="/demandes/stage/valider/<%= stage.identifiant %>"
+                            class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                            <i class="bi bi-check2-circle fs-4"></i>
+                        </a>
+                        <% } %>
+                            <% if (stage.statut==="Validee" ) { %>
+                                <a href="/demandes/stage/signer/<%= stage.identifiant %>"
+                                    class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                                    <i class="bi-file-earmark-text fs-4"></i>
+                                </a>
+                                <% } %>
+                                    <% if (stage.statut==="Signee" ) { %>
+                                        <a href="/demandes/stage/download/<%= stage.identifiant %>"
+                                            class="badge bg-info-subtle text-info rounded-3 px-1 py-1" download>
+                                            <i class="bi bi-download fs-4"></i>
+                                        </a>
+                                        <% } %>
+
+
+                                            <% if (stage.statut==="En attente" || stage.statut==="Validee" )
+                                                { %>
+                                                <a href="/demandes/stage/rejeter/<%= stage.identifiant %>"
+                                                    class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                                                    <i class="bi bi-x-circle fs-4"></i>
+                                                </a>
+                                                <% } %>
                             <a action="/demandes/stage/delete/<%= stage.identifiant %>" method="POST"
                                class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
                                 <button class="bi bi-trash fs-4 text-danger bg-danger-subtle" 

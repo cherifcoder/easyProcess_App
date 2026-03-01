@@ -94,21 +94,62 @@
                         <td><%= releve.promotion %></td>
                         <td><%= releve.matricule %></td>
                         <td><%= releve.semestre %></td>
-                        <td class="z-0 m-2 badge 
-                            <%= releve.statut==='En attente' ? 'bg-primary-subtle text-primary' 
-                            : releve.statut==='validee' ? 'bg-success-subtle text-success' 
-                            : releve.statut==='rejetee' ? 'bg-danger-subtle text-danger' : '' %>">
-                            <%= releve.statut %>
-                        </td>
-                        <td>
-                            <a href="/demandes/releve/view/<%= releve.identifiant %>" 
-                               class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
-                                <i class="bi bi-eye fs-4"></i>
-                            </a>
-                            <a href="/demandes/edit/releve/<%= releve.identifiant %>" 
-                               class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
-                                <i class="bi bi-pen fs-4"></i>
-                            </a>
+                        <td class=" badge 
+                            <%=
+                            releve.statut==='En attente'?'bg-info-subtle text-info':
+                            releve.statut==='Validee'? 'bg-primary-subtle text-primary':
+                            releve.statut==='Signee'?'bg-success-subtle text-success':
+                            releve.statut==='Rejetee'?'bg-danger-subtle text-danger':''
+                            %> 
+                            ">
+                    <%=releve.statut %>
+                </td>
+                <td>
+                    <a href="/demandes/releve/view/<%= releve.identifiant %> "
+                        class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
+                        <i class="bi bi-eye fs-4"></i>
+                    </a>
+                    <a href="/demandes/edit/releve/<%= releve.identifiant %>"
+                        class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
+                        <i class="bi bi-pen fs-4"></i>
+                    </a>
+
+                    <% if (releve.statut==="En attente" || releve.statut==="Rejetee" ) { %>
+                        <a href="/demandes/releve/valider/<%= releve.identifiant %>"
+                            class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                            <i class="bi bi-check2-circle fs-4"></i>
+                        </a>
+                        <% } %>
+                           
+                        <% if (releve.statut==="Validee" ) { %>
+                            <form method="POST" action="/demandes/releve/upload/<%= releve.identifiant %>"
+                                enctype="multipart/form-data" style="display:inline;">
+
+                                <label class="badge bg-info-subtle text-info rounded-3 px-1 py-1"
+                                    style="cursor:pointer;">
+                                    <i class="bi bi-upload fs-4"></i>
+                                    <input type="file" name="pdfCorrection" accept="application/pdf" required
+                                        style="display:none;" onchange="this.form.submit()">
+                                </label>
+                            </form>
+                            <% } %>
+
+                            
+                                    <% if (releve.statut==="Signee" ) { %>
+                                        <a href="/demandes/releve/download/<%= releve.identifiant %>"
+                                            class="badge bg-info-subtle text-info rounded-3 px-1 py-1" download>
+                                            <i class="bi bi-download fs-4"></i>
+                                        </a>
+                                        <% } %>
+
+
+                                            <% if (releve.statut==="En attente" || releve.statut==="Validee" )
+                                                { %>
+                                                <a href="/demandes/releve/rejeter/<%= releve.identifiant %>"
+                                                    class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                                                    <i class="bi bi-x-circle fs-4"></i>
+                                                </a>
+                                                <% } %>
                             <a action="/demandes/releve/delete/<%= releve.identifiant %>" method="POST"
                                class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
                                 <button class="bi bi-trash fs-4 text-danger bg-danger-subtle" 

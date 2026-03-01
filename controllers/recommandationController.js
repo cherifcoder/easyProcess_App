@@ -3,7 +3,7 @@ const Recommandation = require("../models/recommandationModel");
 // ✅ Créer une recommandation
 exports.createRecommandation = async (req, res) => {
     try {
-        const { civilite, nom, prenom, filiere, niveau, promotion, matricule, semestre, type, destinataire, programme, professeur, infoSupplementaire, statut } = req.body;
+        const { civilite, nom, prenom, filiere, niveau, promotion, matricule, semestre, type, destinataire, programme, professeur,email, infoSupplementaire, statut } = req.body;
 
         const newRecommandation = new Recommandation({
             civilite,
@@ -18,6 +18,7 @@ exports.createRecommandation = async (req, res) => {
             destinataire,
             programme,
             professeur,
+            email,
             infoSupplementaire,
             statut
         });
@@ -180,4 +181,76 @@ exports.updateRecommandation = async (req, res) => {
         console.error(err);
         res.status(500).send("Erreur lors de la modification");
     }
+};
+
+
+exports.validerRecommandation = async (req, res) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const recommandation = await Recommandation.findOne({ identifiant });
+
+    if (!recommandation) return res.status(404).send("Demande introuvable");
+
+    // Mise à jour statut
+    recommandation.statut = "Validee";
+    await recommandation.save();
+
+    res.redirect("/demandes/recommandation");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors de la validation");
+  }
+};
+
+exports.rejeterRecommandation = async (req, res) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const recommandation = await Recommandation.findOne({ identifiant });
+
+    if (!recommandation) return res.status(404).send("Demande introuvable");
+
+    // Mise à jour statut
+    recommandation.statut = "Rejetee";
+    await recommandation.save();
+
+    res.redirect("/demandes/recommandation");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors de la validation");
+  }
+};
+
+
+
+
+const { genererEtEnvoyerPDF } = require("./demandeController");
+
+exports.signerRecommandation = async (req, res) => {
+  await genererEtEnvoyerPDF(req, res, "Recommandation", "demandes/recommandation/pdfTemplate");
+};
+
+
+exports.downloadRecommandation = async (req, res) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const recommandation = await Recommandation.findOne({ identifiant });
+
+    if (!recommandation) {
+      return res.status(404).send("Demande introuvable");
+    }
+    if (!recommandation.pdfBuffer) {
+      return res.status(404).send("PDF introuvable pour cette demande");
+    }
+
+    // Définir les headers pour forcer le téléchargement
+    res.set({
+      "Content-Type": "application/pdf",
+      "Content-Disposition": `attachment; filename="Recommandation-${identifiant}.pdf"`,
+    });
+
+    res.send(recommandation.pdfBuffer); // ✅ utiliser pdfBuffer
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erreur lors du téléchargement de la Recommandation");
+  }
 };

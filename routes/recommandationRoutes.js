@@ -36,4 +36,12 @@ router.get("/demandes/edit/recommandation/:id", recommandationController.getReco
 // ✅ Mise à jour
 router.post("/demandes/edit/recommandation/:id", recommandationController.updateRecommandation);
 
+
+router.get("/demandes/recommandation/valider/:identifiant", recommandationController.validerRecommandation); 
+router.get("/demandes/recommandation/rejeter/:identifiant", recommandationController.rejeterRecommandation); 
+router.get("/demandes/recommandation/signer/:identifiant", recommandationController.signerRecommandation,
+    (req, res) => { demandeController.genererEtEnvoyerPDF(req, res, 'Recommandation'); }); 
+
+router.get("/demandes/recommandation/download/:identifiant", recommandationController.downloadRecommandation);
+
 module.exports = router;

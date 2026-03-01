@@ -23,12 +23,20 @@
             <span><%= diplome.prenom %> <%= diplome.nom %></span>
         </div>
  
+        <div class="col-md-3">
+            <p class="form-label fw-semibold">Date de naissance :</p> 
+            <span><%= diplome.dateNaissance %> </span>
+        </div>
+        <div class="col-md-3">
+            <p class="form-label fw-semibold">Lieu de naissance :</p> 
+            <span><%= diplome.lieu %> </span>
+        </div>
         <!-- Filière -->
         <div class="col-md-2">
             <p class="form-label fw-semibold">Filière :</p> 
             <span><%= diplome.filiere %></span>
         </div>
- 
+        
         <!-- Niveau -->
         <div class="col-md-2">
             <p class="form-label fw-semibold">Niveau :</p> 
@@ -45,6 +53,11 @@
         <div class="col-md-2">
             <p class="form-label fw-semibold">Numéro matricule :</p> 
             <span><%= diplome.matricule %></span>
+        </div>
+         <!-- Email -->
+         <div class="col-md-2">
+            <p class="form-label fw-semibold">Email</p> 
+            <span><%= diplome.email %></span>
         </div>
     </div>
  

@@ -42,5 +42,11 @@ router.get("/demandes/edit/frequentation/:id", frequentationController.getFreque
 // Route pour la mise à jour des fréquentations
 router.post("/demandes/edit/frequentation/:id", frequentationController.updateFrequentation);
 
+router.get("/demandes/frequentation/valider/:identifiant", frequentationController.validerFrequentation); 
+router.get("/demandes/frequentation/rejeter/:identifiant", frequentationController.rejeterFrequentation); 
+router.get("/demandes/frequentation/signer/:identifiant", frequentationController.signerFrequentation,
+    (req, res) => { demandeController.genererEtEnvoyerPDF(req, res, 'Frequentation'); }); 
+
+router.get("/demandes/frequentation/download/:identifiant", frequentationController.downloadFrequentation);
 
 module.exports=router

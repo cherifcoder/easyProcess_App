@@ -48,13 +48,20 @@ const releveSchema=new mongoose.Schema({
     statut:{
         type:String,
         require:true,
-        enum:["En attente", "Validee", "Rejetee"],
+        enum:["En attente", "Validee", "Rejetee","Signee"],
         default:"En attente"
+    },
+    email:{
+        type:String
     },
     date: { 
         type: Date, 
         default: Date.now 
+    },
+    pdfFile: { 
+        type: String 
     }
+
 },{timestamps:true})
 
 conteur(releveSchema,"releve",(seq)=>{

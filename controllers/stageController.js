@@ -3,7 +3,7 @@ const Stage = require("../models/stageModel");
 // ✅ Créer un stage
 exports.createStage = async (req, res) => {
     try {
-        const { civilite, nom, prenom, filiere, niveau, promotion, matricule, type, entreprise, maitreDeStage, lieuDeStage, encadrant, duree, statut } = req.body;
+        const { civilite, nom, prenom, filiere, niveau, promotion, matricule,email, type, entreprise, maitreDeStage, lieuDeStage, encadrant, duree, statut } = req.body;
 
         const newStage = new Stage({
             civilite,
@@ -13,6 +13,7 @@ exports.createStage = async (req, res) => {
             niveau,
             promotion,
             matricule,
+            email,
             type,
             entreprise,
             maitreDeStage,
@@ -180,4 +181,76 @@ exports.updateStage = async (req, res) => {
         console.error(err);
         res.status(500).send("Erreur lors de la modification");
     }
+};
+
+
+exports.validerStage = async (req, res) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const stage = await Stage.findOne({ identifiant });
+
+    if (!stage) return res.status(404).send("Demande introuvable");
+
+    // Mise à jour statut
+    stage.statut = "Validee";
+    await stage.save();
+
+    res.redirect("/demandes/stage");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors de la validation");
+  }
+};
+
+exports.rejeterStage = async (req, res) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const stage = await Stage.findOne({ identifiant });
+
+    if (!stage) return res.status(404).send("Demande introuvable");
+
+    // Mise à jour statut
+    stage.statut = "Rejetee";
+    await stage.save();
+
+    res.redirect("/demandes/stage");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors de la validation");
+  }
+};
+
+
+
+
+const { genererEtEnvoyerPDF } = require("./demandeController");
+
+exports.signerStage = async (req, res) => {
+  await genererEtEnvoyerPDF(req, res, "Stage", "demandes/stage/pdfTemplate");
+};
+
+
+exports.downloadStage= async (req, res) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const stage = await Stage.findOne({ identifiant });
+
+    if (!stage) {
+      return res.status(404).send("Demande introuvable");
+    }
+    if (!stage.pdfBuffer) {
+      return res.status(404).send("PDF introuvable pour cette demande");
+    }
+
+    // Définir les headers pour forcer le téléchargement
+    res.set({
+      "Content-Type": "application/pdf",
+      "Content-Disposition": `attachment; filename="Stage-${identifiant}.pdf"`,
+    });
+
+    res.send(stage.pdfBuffer); // ✅ utiliser pdfBuffer
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erreur lors du téléchargement du Fiche de stage");
+  }
 };

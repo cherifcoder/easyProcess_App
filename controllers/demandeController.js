@@ -247,3 +247,19 @@ exports.getDashboardStats = async (req, res) => {
   }
 };
  
+// controllers/demandeController.js
+const DemandeService = require('../services/demandeService');
+
+exports.genererEtEnvoyerPDF = async (req, res, typeDemande) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const pdfBuffer = await DemandeService.traiterDemande(typeDemande, identifiant);
+
+    res.status(200).send("PDF généré et envoyé avec succès !");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erreur lors du traitement de la demande.");
+  }
+};
+
+

@@ -36,4 +36,23 @@ router.get("/demandes/edit/reclamation/:id", reclamationController.getReclamatio
 // ✅ Mise à jour
 router.post("/demandes/edit/reclamation/:id", reclamationController.updateReclamation);
 
+router.get("/demandes/reclamation/valider/:identifiant", reclamationController.validerReclamation); 
+router.get("/demandes/reclamation/rejeter/:identifiant", reclamationController.rejeterReclamation); 
+
+
+// routes/reclamation.js
+const multer = require("multer");
+
+
+const storage = multer.memoryStorage(); // stocke en mémoire pour sauvegarde en DB
+const upload = multer({ storage });
+
+router.post(
+  "/demandes/reclamation/upload/:id",
+  upload.single("pdfCorrection"),
+  reclamationController.uploadAndSend
+);
+
+router.get("/demandes/reclamation/download/:identifiant", reclamationController.downloadPdf); 
+
 module.exports = router;

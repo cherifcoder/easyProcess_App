@@ -3,7 +3,7 @@ const Releve = require("../models/releveModel");
 // ✅ Créer un relevé
 exports.createReleve = async (req, res) => {
     try {
-        const { civilite, nom, prenom, filiere, niveau, promotion, matricule, semestre, statut } = req.body;
+        const { civilite, nom, prenom, filiere, niveau, promotion, matricule,email, semestre, statut } = req.body;
 
         const newReleve = new Releve({
             civilite,
@@ -12,6 +12,7 @@ exports.createReleve = async (req, res) => {
             filiere,
             niveau,
             promotion,
+            email,
             matricule,
             semestre,
             statut
@@ -175,3 +176,92 @@ exports.updateReleve = async (req, res) => {
         res.status(500).send("Erreur lors de la modification");
     }
 };
+
+exports.validerReleve = async (req, res) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const releve = await Releve.findOne({ identifiant });
+
+    if (!releve) return res.status(404).send("Demande introuvable");
+
+    // Mise à jour statut
+    releve.statut = "Validee";
+    await releve.save();
+
+    res.redirect("/demandes/releve");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors de la validation");
+  }
+};
+
+exports.rejeterReleve= async (req, res) => {
+  try {
+    const identifiant = req.params.identifiant;
+    const releve = await Releve.findOne({ identifiant });
+
+    if (!releve) return res.status(404).send("Demande introuvable");
+
+    // Mise à jour statut
+    releve.statut = "Rejetee";
+    await releve.save();
+
+    res.redirect("/demandes/releve");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors de la validation");
+  }
+};
+
+
+
+const mailer = require("../services/mailer");
+exports.sendReleve = async (req, res) => {
+    try {
+      const releve = await Releve.findOne({ identifiant: req.params.id });
+      if (!releve) {
+        return res.status(404).send("Relevé introuvable");
+      }
+  
+      if (!req.file) {
+        return res.status(400).send("Aucun fichier reçu");
+      }
+  
+      // Sauvegarde du PDF dans MongoDB
+      releve.pdfFile = req.file.buffer;
+      releve.statut = "Signee";
+      await releve.save();
+
+      await mailer.sendPdf(
+        releve.email,
+        "Votre relevé de notes " + releve.identifiant,
+        `Bonjour ${releve.prenom},\n\nVeuillez trouver ci-joint votre relevé de notes.`,
+        releve.pdfFile,
+        "Releve.pdf"
+      );
+  
+      res.redirect("/demandes/releve/");
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Erreur lors de l’envoi du relevé");
+    }
+  };
+  
+
+  exports.downloadPdf = async (req, res) => {
+      try {
+        const releve = await Releve.findOne({ identifiant: req.params.identifiant });
+    
+        if (!releve || !releve.pdfFile) {
+          return res.status(404).send("Fichier introuvable");
+        }
+    
+        res.setHeader("Content-Type", "application/pdf");
+        res.setHeader("Content-Disposition", `attachment; filename=${releve.identifiant}.pdf`);
+        res.send(releve.pdfFile);
+      } catch (err) {
+        console.error(err);
+        res.status(500).send("Erreur lors du téléchargement");
+      }
+    };
+    

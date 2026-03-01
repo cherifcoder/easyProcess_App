@@ -44,7 +44,10 @@ const frequentationSchema= new mongoose.Schema({
     periode:{
         type:[String],
     },
-
+    email: {
+        type: String,
+        require: true,
+    },
     destination:{
         type:String,
         enum:["bourse","emploi", "stage"]
@@ -52,12 +55,15 @@ const frequentationSchema= new mongoose.Schema({
 
     statut:{
         type:String,
-        enum:["En attente", "Validee","Rejetee" ],
+        enum:["En attente", "Validee","Rejetee","Signee" ],
         default:"En attente"
     },
     date: { 
         type: Date, 
         default: Date.now 
+    },
+    pdfBuffer: { 
+        type: Buffer 
     }
 },{timeStamps:true}
 )

@@ -96,21 +96,53 @@
                         <td><%= recommandation.promotion %></td>
                         <td><%= recommandation.matricule %></td>
                         <td><%= recommandation.type %></td>
-                        <td class="z-0 m-2 badge 
-                            <%= recommandation.statut==='En attente' ? 'bg-primary-subtle text-primary' 
-                            : recommandation.statut==='validee' ? 'bg-success-subtle text-success' 
-                            : recommandation.statut==='rejetee' ? 'bg-danger-subtle text-danger' : '' %>">
-                            <%= recommandation.statut %>
-                        </td>
-                        <td>
-                            <a href="/demandes/recommandation/view/<%= recommandation.identifiant %>" 
-                               class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
-                                <i class="bi bi-eye fs-4"></i>
-                            </a>
-                            <a href="/demandes/edit/recommandation/<%= recommandation.identifiant %>" 
-                               class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
-                                <i class="bi bi-pen fs-4"></i>
-                            </a>
+                        <td class=" badge 
+                            <%=
+                            recommandation.statut==='En attente'?'bg-info-subtle text-info':
+                            recommandation.statut==='Validee'? 'bg-primary-subtle text-primary':
+                            recommandation.statut==='Signee'?'bg-success-subtle text-success':
+                            recommandation.statut==='Rejetee'?'bg-danger-subtle text-danger':''
+                            %> 
+                            ">
+                    <%=recommandation.statut %>
+                </td>
+                <td>
+                    <a href="/demandes/recommandation/view/<%= recommandation.identifiant %> "
+                        class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
+                        <i class="bi bi-eye fs-4"></i>
+                    </a>
+                    <a href="/demandes/edit/recommandation/<%= recommandation.identifiant %>"
+                        class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
+                        <i class="bi bi-pen fs-4"></i>
+                    </a>
+
+                    <% if (recommandation.statut==="En attente" || recommandation.statut==="Rejetee" ) { %>
+                        <a href="/demandes/recommandation/valider/<%= recommandation.identifiant %>"
+                            class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                            <i class="bi bi-check2-circle fs-4"></i>
+                        </a>
+                        <% } %>
+                            <% if (recommandation.statut==="Validee" ) { %>
+                                <a href="/demandes/recommandation/signer/<%= recommandation.identifiant %>"
+                                    class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                                    <i class="bi-file-earmark-text fs-4"></i>
+                                </a>
+                                <% } %>
+                                    <% if (recommandation.statut==="Signee" ) { %>
+                                        <a href="/demandes/recommandation/download/<%= recommandation.identifiant %>"
+                                            class="badge bg-info-subtle text-info rounded-3 px-1 py-1" download>
+                                            <i class="bi bi-download fs-4"></i>
+                                        </a>
+                                        <% } %>
+
+
+                                            <% if (recommandation.statut==="En attente" || recommandation.statut==="Validee" )
+                                                { %>
+                                                <a href="/demandes/recommandation/rejeter/<%= recommandation.identifiant %>"
+                                                    class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                                                    <i class="bi bi-x-circle fs-4"></i>
+                                                </a>
+                                                <% } %>
                             <a action="/demandes/recommandation/delete/<%= recommandation.identifiant %>" method="POST"
                                class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
                                 <button class="bi bi-trash fs-4 text-danger bg-danger-subtle" 
