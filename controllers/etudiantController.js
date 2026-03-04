@@ -23,7 +23,7 @@ exports.registerEtudiant=async(req,res)=>{
 
 
         await newEtudiant.save();
-        res.send('Etudiant enregistre avec succes')
+        res.redirect("/mesDemandes/list?status=successetd")
     }catch(err){
         console.log(err);
         res.send(`Erreur lors de l'enregistrement : ${err}`)
@@ -180,6 +180,7 @@ exports.updateEtudiant = async (req, res) => {
 
     // Après modification, on redirige vers la liste ou la vue détaillée
     res.redirect("/users/etd");
+    res.redirect("/users/etd?status=updatedetd");
   } catch (err) {
     console.error(err);
     res.status(500).send("Erreur lors de la modification des information de l'etudiant");
@@ -194,7 +195,8 @@ exports.deleteEtudiant=async(req,res)=>{
                 title:"Erreur",
                 layout:"layouts/main"
             })
-        }res.redirect("/users/etd")
+        }
+        res.redirect("/users/etd?status=deletedetd");
     }catch(err){ 
         res.render("errors/404",{
             title:"Erreur",

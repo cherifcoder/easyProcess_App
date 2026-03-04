@@ -20,7 +20,7 @@ exports.createReleve = async (req, res) => {
         });
 
         await newReleve.save();
-        res.redirect("/mesDemandes/list")
+        res.redirect("/mesDemandes/list?status=success")
     } catch (err) {
         console.error(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`);
@@ -123,7 +123,7 @@ exports.deleteReleve = async (req, res) => {
                 layout: "layouts/main"
             });
         }
-        res.redirect("/demandes/releve");
+        res.redirect("/demandes/releve?status=deleted");
     } catch (err) {
         console.error(err);
         res.render("errors/404", {
@@ -170,8 +170,7 @@ exports.updateReleve = async (req, res) => {
         if (!releve) {
             return res.status(404).send("Demande introuvable");
         }
-
-        res.redirect("/demandes/releve");
+        res.redirect("/demandes/releve?status=updated");
     } catch (err) {
         console.error(err);
         res.status(500).send("Erreur lors de la modification");

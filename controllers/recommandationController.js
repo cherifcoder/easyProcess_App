@@ -25,7 +25,7 @@ exports.createRecommandation = async (req, res) => {
         });
 
         await newRecommandation.save();
-        res.redirect("/mesDemandes/list")
+        res.redirect("/mesDemandes/list?status=success")
     } catch (err) {
         console.error(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`);
@@ -129,7 +129,7 @@ exports.deleteRecommandation = async (req, res) => {
                 layout: "layouts/main"
             });
         }
-        res.redirect("/demandes/recommandation");
+        res.redirect("/demandes/recommandation?status=deleted");
     } catch (err) {
         console.error(err);
         res.render("errors/404", {
@@ -176,8 +176,7 @@ exports.updateRecommandation = async (req, res) => {
         if (!recommandation) {
             return res.status(404).send("Demande introuvable");
         }
-
-        res.redirect("/demandes/recommandation");
+        res.redirect("/demandes/recommandation?status=updated");
     } catch (err) {
         console.error(err);
         res.status(500).send("Erreur lors de la modification");

@@ -19,7 +19,8 @@ exports.createDiplome=async(req,res)=>{
             createdBy: req.session.user._id
         })
         await newDiplome.save()
-        res.redirect("/mesDemandes/list")
+        res.redirect("/mesDemandes/list?status=success")
+
     }catch(err){
         console.log(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`)
@@ -136,7 +137,7 @@ exports.updateDiplome = async (req, res) => {
     }
 
     // Après modification, on redirige vers la liste ou la vue détaillée
-    res.redirect("/demandes/diplome");
+    res.redirect("/demandes/diplome?status=updated");
   } catch (err) {
     console.error(err);
     res.status(500).send("Erreur lors de la modification du diplôme");
@@ -152,7 +153,8 @@ exports.deleteDiplome=async(req,res)=>{
                 title:"Erreur",
                 layout:"layouts/main"
             })
-        }res.redirect("/demandes/diplome")
+        }
+        res.redirect("/demandes/diplome?status=deleted");
     }catch(err){ 
         res.render("errors/404",{
             title:"Erreur",
@@ -207,6 +209,7 @@ const { genererEtEnvoyerPDF } = require("./demandeController");
 
 exports.signerDiplome = async (req, res) => {
   await genererEtEnvoyerPDF(req, res, "Diplome", "demandes/diplome/pdfTemplate");
+  
 };
 
 

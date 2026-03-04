@@ -23,7 +23,7 @@ exports.createReclamation = async (req, res) => {
         });
 
         await newReclamation.save();
-        res.redirect("/mesDemandes/list")
+        res.redirect("/mesDemandes/list?status=success")
     } catch (err) {
         console.error(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`);
@@ -127,7 +127,7 @@ exports.deleteReclamation = async (req, res) => {
                 layout: "layouts/main"
             });
         }
-        res.redirect("/demandes/reclamation");
+        res.redirect("/demandes/reclamation?status=deleted");
     } catch (err) {
         console.error(err);
         res.render("errors/404", {
@@ -174,8 +174,7 @@ exports.updateReclamation = async (req, res) => {
         if (!reclamation) {
             return res.status(404).send("Demande introuvable");
         }
-
-        res.redirect("/demandes/reclamation");
+        res.redirect("/demandes/reclamation?status=updated");
     } catch (err) {
         console.error(err);
         res.status(500).send("Erreur lors de la modification");

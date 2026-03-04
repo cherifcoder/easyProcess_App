@@ -21,7 +21,7 @@ exports.createAdmin=async(req,res)=>{
 
 
         await newAdmin.save();
-        res.redirect("/users/admin")
+        res.redirect("/users/admin?status=successadm");
     }catch(err){
         console.log(err);
         res.send(`Erreur lors de l'enregistrement : ${err}`)
@@ -154,7 +154,7 @@ exports.updateAdmin = async (req, res) => {
     }
 
     // Après modification, on redirige vers la liste ou la vue détaillée
-    res.redirect("/users/admin");
+    res.redirect("/users/admin?status=updatedadm");
   } catch (err) {
     console.error(err);
     res.status(500).send("Erreur lors de la modification des information de l'utilisateur  ");
@@ -169,7 +169,7 @@ exports.deleteAdmin=async(req,res)=>{
                 title:"Erreur",
                 layout:"layouts/main"
             })
-        }res.redirect("/users/admin")
+        }res.redirect("/users/admin?status=deletedadm");
     }catch(err){ 
         res.render("errors/404",{
             title:"Erreur",

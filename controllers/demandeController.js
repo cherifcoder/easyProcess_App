@@ -254,8 +254,8 @@ exports.genererEtEnvoyerPDF = async (req, res, typeDemande) => {
   try {
     const identifiant = req.params.identifiant;
     const pdfBuffer = await DemandeService.traiterDemande(typeDemande, identifiant);
+    res.redirect(`/demandes/${typeDemande}/?status=sent`);
 
-    res.status(200).send("PDF généré et envoyé avec succès !");
   } catch (err) {
     console.error(err);
     res.status(500).send("Erreur lors du traitement de la demande.");

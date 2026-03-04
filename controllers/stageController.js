@@ -25,7 +25,7 @@ exports.createStage = async (req, res) => {
         });
 
         await newStage.save();
-        res.redirect("/mesDemandes/list")
+        res.redirect("/mesDemandes/list?status=success")
     } catch (err) {
         console.error(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`);
@@ -129,7 +129,7 @@ exports.deleteStage = async (req, res) => {
                 layout: "layouts/main"
             });
         }
-        res.redirect("/demandes/stage");
+        res.redirect("/demandes/stage?status=deleted");
     } catch (err) {
         console.error(err);
         res.render("errors/404", {
@@ -176,8 +176,7 @@ exports.updateStage = async (req, res) => {
         if (!stage) {
             return res.status(404).send("Demande introuvable");
         }
-
-        res.redirect("/demandes/stage");
+        res.redirect("/demandes/stage?status=updated");
     } catch (err) {
         console.error(err);
         res.status(500).send("Erreur lors de la modification");
