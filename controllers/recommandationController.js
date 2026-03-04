@@ -20,11 +20,12 @@ exports.createRecommandation = async (req, res) => {
             professeur,
             email,
             infoSupplementaire,
-            statut
+            statut,
+            createdBy: req.session.user._id
         });
 
         await newRecommandation.save();
-        res.redirect("/demandes/recommandation")
+        res.redirect("/mesDemandes/list")
     } catch (err) {
         console.error(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`);

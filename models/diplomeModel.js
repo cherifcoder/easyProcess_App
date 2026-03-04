@@ -68,8 +68,13 @@ const diplomeSchema= new mongoose.Schema({
     },
     pdfBuffer: { 
         type: Buffer 
-    }
-    
+    },
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+      }
+      
 },{timestamps:true}
 )
 

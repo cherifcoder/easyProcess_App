@@ -1,8 +1,8 @@
 const express=require("express")
 const router=express.Router()
 const demandeController = require('../controllers/demandeController');
-
-router.get("/demandes",(req,res)=>{
+const { isAuthenticated, isAdmin, isEtudiant } = require("../middleware/auth");
+router.get("/demandes",isAuthenticated,(req,res)=>{
     const local={
         title:"Gestion des demandes - Choix de demande",
         layout:"layouts/main",
@@ -15,7 +15,8 @@ router.get("/demandes",(req,res)=>{
     res.render("demandes/demandes",local)
 }) 
 
-router.get("/demandes/list", demandeController.getAllDemandes);
+router.get("/demandes/list", demandeController.getAllDemandes ,isAuthenticated,isAdmin);
 
+router.get("/mesDemandes/list", isAuthenticated, demandeController.getMyDemandes,isAuthenticated);
 
 module.exports=router

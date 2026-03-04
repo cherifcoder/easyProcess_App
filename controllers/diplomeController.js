@@ -15,10 +15,11 @@ exports.createDiplome=async(req,res)=>{
             lieu,
             email,
             diplome,
-            statut
+            statut,
+            createdBy: req.session.user._id
         })
         await newDiplome.save()
-        res.redirect("/demandes/diplome")
+        res.redirect("/mesDemandes/list")
     }catch(err){
         console.log(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`)
@@ -73,7 +74,7 @@ exports.getAllDiplome=async(req,res)=>{
                 { label: "Diplome", url:null},
                 { label: "Liste", url: null }
               ],
-            diplomes 
+            diplomes, user: req.session.user 
         });
     } catch (err) {
         console.error(err);

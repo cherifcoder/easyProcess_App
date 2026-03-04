@@ -144,11 +144,13 @@
                             <i class="bi bi-check2-circle fs-4"></i>
                         </a>
                         <% } %>
+                        <% if (user && user.role === "Directeur") { %>
                             <% if (frequentation.statut==="Validee" ) { %>
                                 <a href="/demandes/frequentation/signer/<%= frequentation.identifiant %>"
                                     class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
                                     <i class="bi-file-earmark-text fs-4"></i>
                                 </a>
+                                <% } %>
                                 <% } %>
                                     <% if (frequentation.statut==="Signee" ) { %>
                                         <a href="/demandes/frequentation/download/<%= frequentation.identifiant %>"

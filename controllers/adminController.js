@@ -3,7 +3,7 @@ const Admin=require("../models/adminModel")
 
 exports.createAdmin=async(req,res)=>{
     try{
-        const {nom, prenom, dateNaissance, sexe, adresse, telephone,poste,email, motDePass}=req.body;
+        const {nom, prenom, dateNaissance, sexe, adresse, telephone,poste,email, role, motDePass}=req.body;
         const hasedpassword=await bcrypt.hash(motDePass,10)
         
         const newAdmin=new Admin({
@@ -15,6 +15,7 @@ exports.createAdmin=async(req,res)=>{
             telephone, 
             poste,
             email,
+            role,
             motDePass:hasedpassword
         });
 

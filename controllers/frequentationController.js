@@ -15,11 +15,12 @@ exports.createFrequentation=async(req,res)=>{
             periode,
             email,
             destination,
-            statut
+            statut,
+            createdBy: req.session.user._id
         })
 
         await newFrequentaion.save()
-        res.redirect("/demandes/frequentation")
+        res.redirect("/mesDemandes/list")
     }catch(err){
         console.log(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`)

@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-
+const { isAuthenticated, isAdmin, isDirecteur } = require("../middleware/auth");
 const releveController = require("../controllers/releveController");
 
 // Formulaire de création
-router.get("/demandes/create/releve", (req, res) => {
+router.get("/demandes/create/releve",isAuthenticated, (req, res) => {
     const local = {
         title: "Gestion des demandes - Créer Relevé",
         layout: "layouts/main",
@@ -19,25 +19,25 @@ router.get("/demandes/create/releve", (req, res) => {
 });
 
 // Création
-router.post("/demandes/create/releve", releveController.createReleve);
+router.post("/demandes/create/releve", releveController.createReleve ,isAuthenticated);
 
 // Liste des relevés
-router.get("/demandes/releve", releveController.getAllReleves);
+router.get("/demandes/releve", releveController.getAllReleves ,isAuthenticated);
 
 // Affichage d’un relevé par ID
-router.get("/demandes/releve/view/:id", releveController.getReleveById);
+router.get("/demandes/releve/view/:id", releveController.getReleveById ,isAuthenticated);
 
 // Suppression
-router.post("/demandes/releve/delete/:id", releveController.deleteReleve);
+router.post("/demandes/releve/delete/:id", releveController.deleteReleve ,isAuthenticated);
 
 // Formulaire d’édition
-router.get("/demandes/edit/releve/:id", releveController.getReleveEditForm);
+router.get("/demandes/edit/releve/:id", releveController.getReleveEditForm ,isAuthenticated);
 
 // Mise à jour
-router.post("/demandes/edit/releve/:id", releveController.updateReleve);
+router.post("/demandes/edit/releve/:id", releveController.updateReleve ,isAuthenticated);
 
-router.get("/demandes/releve/valider/:identifiant", releveController.validerReleve); 
-router.get("/demandes/releve/rejeter/:identifiant", releveController.rejeterReleve); 
+router.get("/demandes/releve/valider/:identifiant", releveController.validerReleve ,isAuthenticated,isAdmin); 
+router.get("/demandes/releve/rejeter/:identifiant", releveController.rejeterReleve ,isAuthenticated,isAdmin); 
 
 
 const multer = require("multer");
@@ -52,6 +52,6 @@ router.post(
   releveController.sendReleve
 );
 
-router.get("/demandes/releve/download/:identifiant", releveController.downloadPdf); 
+router.get("/demandes/releve/download/:identifiant", releveController.downloadPdf ,isAuthenticated); 
 
 module.exports = router;

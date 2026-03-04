@@ -20,11 +20,12 @@ exports.createStage = async (req, res) => {
             lieuDeStage,
             encadrant,
             duree,
-            statut
+            statut,
+            createdBy: req.session.user._id
         });
 
         await newStage.save();
-        res.redirect("/demandes/stage")
+        res.redirect("/mesDemandes/list")
     } catch (err) {
         console.error(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`);

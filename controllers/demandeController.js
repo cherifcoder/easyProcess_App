@@ -263,3 +263,46 @@ exports.genererEtEnvoyerPDF = async (req, res, typeDemande) => {
 };
 
 
+exports.getMyDemandes = async (req, res) => {
+  try {
+    const userId = req.session.user._id;
+
+    const diplomes = await Diplome.find({ createdBy: userId });
+    const stages = await Stage.find({ createdBy: userId });
+    const reclamations = await Reclamation.find({ createdBy: userId });
+    const frequentations = await Frequentation.find({ createdBy: userId });
+    const releves = await Releve.find({ createdBy: userId });
+    const recommandations = await Recommandation.find({ createdBy: userId });
+  
+
+    
+    // Fusionner toutes les demandes
+    const allDemandes = [
+      ...diplomes.map(d => ({ type: "Diplome", ...d.toObject() })),
+      ...stages.map(s => ({ type: "Stage", ...s.toObject() })),
+      ...reclamations.map(r => ({ type: "Reclamation", ...r.toObject() })),
+      ...frequentations.map(r => ({ type: "Frequentation", ...r.toObject() })),
+      ...releves.map(r => ({ type: "Releve", ...r.toObject() })),
+      ...recommandations.map(r => ({ type: "Recommandation", ...r.toObject() })),
+ 
+    ];
+
+    // Tri par date
+    allDemandes.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+    res.render("demandes/mesDemandes", {
+      title: "Mes demandes",
+      layout: "layouts/main",
+      demandes: allDemandes,
+      user: req.session.user,
+      breadcrumbs: [
+        { label: "Demandes", url: "#" },
+        { label: "Mes demandes", url: null }
+      ]
+    });
+    
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erreur lors de la récupération de vos demandes");
+  }
+};

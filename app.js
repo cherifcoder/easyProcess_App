@@ -16,6 +16,8 @@ const releveRoutes=require("./routes/releveRoutes")
 const stageRoutes=require("./routes/stageRoutes")
 const adminRoutes = require('./routes/adminRoutes')
 const authRoutes = require("./routes/authRoutes");
+const session = require("express-session");
+
 
 
 
@@ -32,6 +34,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views')); 
 app.use(bodyparser.urlencoded({extend:true}))
 
+app.use(session({
+    secret:process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false } // mettre true si HTTPS
+  }));
+  app.use((req, res, next) => {
+    res.locals.user = req.session.user || null;
+    next();
+  });
+  app.use((req, res, next) => {
+    res.locals.user = req.session.user || null;
+    next();
+  });
+  
 
 connectDB()
 

@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-
+const { isAuthenticated, isAdmin, isDirecteur } = require("../middleware/auth");
 const recommandationController = require("../controllers/recommandationController");
 
 // Formulaire de création
-router.get("/demandes/create/recommandation", (req, res) => {
+router.get("/demandes/create/recommandation",isAuthenticated, (req, res) => {
     const local = {
         title: "Gestion des demandes - Créer Recommandation",
         layout: "layouts/main",
@@ -19,29 +19,29 @@ router.get("/demandes/create/recommandation", (req, res) => {
 });
 
 //  Création
-router.post("/demandes/create/recommandation", recommandationController.createRecommandation);
+router.post("/demandes/create/recommandation", recommandationController.createRecommandation ,isAuthenticated);
 
 //  Liste des recommandations
-router.get("/demandes/recommandation", recommandationController.getAllRecommandations);
+router.get("/demandes/recommandation", recommandationController.getAllRecommandations ,isAuthenticated);
 
 //  Affichage d’une recommandation par ID
-router.get("/demandes/recommandation/view/:id", recommandationController.getRecommandationById);
+router.get("/demandes/recommandation/view/:id", recommandationController.getRecommandationById ,isAuthenticated);
 
 //  Suppression
-router.post("/demandes/recommandation/delete/:id", recommandationController.deleteRecommandation);
+router.post("/demandes/recommandation/delete/:id", recommandationController.deleteRecommandation ,isAuthenticated);
 
 // Formulaire d’édition
-router.get("/demandes/edit/recommandation/:id", recommandationController.getRecommandationEditForm);
+router.get("/demandes/edit/recommandation/:id", recommandationController.getRecommandationEditForm ,isAuthenticated);
 
 //  Mise à jour
-router.post("/demandes/edit/recommandation/:id", recommandationController.updateRecommandation);
+router.post("/demandes/edit/recommandation/:id", recommandationController.updateRecommandation ,isAuthenticated);
 
 
-router.get("/demandes/recommandation/valider/:identifiant", recommandationController.validerRecommandation); 
-router.get("/demandes/recommandation/rejeter/:identifiant", recommandationController.rejeterRecommandation); 
-router.get("/demandes/recommandation/signer/:identifiant", recommandationController.signerRecommandation,
+router.get("/demandes/recommandation/valider/:identifiant", recommandationController.validerRecommandation ,isAuthenticated,isAdmin); 
+router.get("/demandes/recommandation/rejeter/:identifiant", recommandationController.rejeterRecommandation ,isAuthenticated,isAdmin); 
+router.get("/demandes/recommandation/signer/:identifiant", recommandationController.signerRecommandation,isAuthenticated,isAdmin,isDirecteur,
     (req, res) => { demandeController.genererEtEnvoyerPDF(req, res, 'Recommandation'); }); 
 
-router.get("/demandes/recommandation/download/:identifiant", recommandationController.downloadRecommandation);
+router.get("/demandes/recommandation/download/:identifiant", recommandationController.downloadRecommandation ,isAuthenticated);
 
 module.exports = router;

@@ -1,20 +1,20 @@
-const mongoose=require("mongoose")
-const compteur=require("../middleware/conteur")
+const mongoose = require("mongoose")
+const compteur = require("../middleware/conteur")
 
-const reclamationSchema=new mongoose.Schema({
-    identifiant:{
-        type:String,
-        unique:true
-    },
-    civilite:{
+const reclamationSchema = new mongoose.Schema({
+    identifiant: {
         type: String,
-        require:true,
-        enum:["M.", "Mme", "Mlle"]
+        unique: true
     },
-    
-    nom:{
-    type:String,
-    require:true
+    civilite: {
+        type: String,
+        require: true,
+        enum: ["M.", "Mme", "Mlle"]
+    },
+
+    nom: {
+        type: String,
+        require: true
     },
     prenom: {
         type: String,
@@ -30,52 +30,60 @@ const reclamationSchema=new mongoose.Schema({
         enum: ['L1', 'L2', 'L3'],
         required: true
     },
-    promotion:{
+    promotion: {
         type: String,
         require: true,
-        min:2015,
-        max:2026
+        min: 2015,
+        max: 2026
     },
     matricule: {
         type: String,
         require: true,
     },
-    session:{
-        type:String,
-        enum:["SN_S1","SN_S2","SN_S3","SN_S4","SN_S5","SR_S1","SR_S2","SR_S3","SR_S4","SR_S5"],
-        
+    session: {
+        type: String,
+        enum: ["SN_S1", "SN_S2", "SN_S3", "SN_S4", "SN_S5", "SR_S1", "SR_S2", "SR_S3", "SR_S4", "SR_S5"],
+
     },
-    matiere:{
-        type:String
+    matiere: {
+        type: String
     },
-    professeur:{
-        type:String
+    professeur: {
+        type: String
     },
-    motif:{
-        type:String,
-        enum:["calcul","saisie","absence"]
+    motif: {
+        type: String,
+        enum: ["calcul", "saisie", "absence"]
     },
-     email: {
+    email: {
         type: String,
         require: true,
     },
 
-    statut:{
-        type:String,
-        require:true,
-        enum:["En attente", "Validee", "Rejetee","Corrigee"],
-        default:"En attente"
+    statut: {
+        type: String,
+        require: true,
+        enum: ["En attente", "Validee", "Rejetee", "Corrigee"],
+        default: "En attente"
     },
-    date: { 
-        type: Date, 
-        default: Date.now 
+    date: {
+        type: Date,
+        default: Date.now
     },
-    pdfFile: { type: Buffer }
-},{timestamps:true})
+    pdfFile: {
+        type: Buffer
+    },
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    }
 
-compteur(reclamationSchema,'reclamation',(seq)=>{
-    const numFormat=String(seq).padStart(3,"0")
+}, { timestamps: true })
+
+compteur(reclamationSchema, 'reclamation', (seq) => {
+    const numFormat = String(seq).padStart(3, "0")
     return `DMD-RECL-${numFormat}`
 })
 
-module.exports=mongoose.model("Reclamation",reclamationSchema)
+module.exports = mongoose.model("Reclamation", reclamationSchema)

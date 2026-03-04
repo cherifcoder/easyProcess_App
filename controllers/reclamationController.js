@@ -18,11 +18,12 @@ exports.createReclamation = async (req, res) => {
             email,
             motif,
             session,
-            statut
+            statut,
+            createdBy: req.session.user._id
         });
 
         await newReclamation.save();
-        res.redirect("/demandes/reclamation")
+        res.redirect("/mesDemandes/list")
     } catch (err) {
         console.error(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`);

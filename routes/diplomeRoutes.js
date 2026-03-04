@@ -1,8 +1,8 @@
 const express=require("express")
 const router=express.Router()
 const diplomeController=require("../controllers/diplomeController")
-
-router.get("/demandes/create/diplome",(req,res)=>{
+const { isAuthenticated, isAdmin, isDirecteur } = require("../middleware/auth");
+router.get("/demandes/create/diplome",isAuthenticated,(req,res)=>{
     const local={
         title:"Gestion des demandes - creer Diplome",
         layout:"layouts/main",
@@ -16,32 +16,32 @@ router.get("/demandes/create/diplome",(req,res)=>{
     
     res.render("demandes/diplome/create",local)
 })
-router.post("/demandes/create/diplome",diplomeController.createDiplome)
+router.post("/demandes/create/diplome",diplomeController.createDiplome ,isAuthenticated)
  
 
-router.get("/demandes/diplome",diplomeController.getAllDiplome)
+router.get("/demandes/diplome",diplomeController.getAllDiplome ,isAuthenticated,isAdmin)
 
 
-router.get("/demandes/diplome/view/:id",diplomeController.getDiplomeById)
+router.get("/demandes/diplome/view/:id",diplomeController.getDiplomeById ,isAuthenticated)
 
 
-router.get("/demandes/edit/diplome/:id",diplomeController.getDiplomeEditForm)
-
-
-
-
-router.post("/demandes/edit/diplome/:id", diplomeController.updateDiplome);
+router.get("/demandes/edit/diplome/:id",diplomeController.getDiplomeEditForm ,isAuthenticated)
 
 
 
-router.post("/demandes/diplome/delete/:id",diplomeController.deleteDiplome)
+
+router.post("/demandes/edit/diplome/:id", diplomeController.updateDiplome,isAuthenticated);
 
 
-router.get("/demandes/diplome/valider/:identifiant", diplomeController.validerDiplome); 
-router.get("/demandes/diplome/rejeter/:identifiant", diplomeController.rejeterDiplome); 
-router.get("/demandes/diplome/signer/:identifiant", diplomeController.signerDiplome,
+
+router.post("/demandes/diplome/delete/:id",diplomeController.deleteDiplome ,isAuthenticated)
+
+
+router.get("/demandes/diplome/valider/:identifiant", diplomeController.validerDiplome,isAuthenticated,isAdmin); 
+router.get("/demandes/diplome/rejeter/:identifiant", diplomeController.rejeterDiplome,isAuthenticated,isAdmin); 
+router.get("/demandes/diplome/signer/:identifiant", diplomeController.signerDiplome,isAuthenticated,isAdmin, isDirecteur,
     (req, res) => { demandeController.genererEtEnvoyerPDF(req, res, 'Diplome'); }); 
 
-router.get("/demandes/diplome/download/:identifiant", diplomeController.downloadDiplome);
+router.get("/demandes/diplome/download/:identifiant", diplomeController.downloadDiplome ,isAuthenticated);
 
 module.exports=router

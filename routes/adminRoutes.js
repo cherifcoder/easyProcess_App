@@ -1,8 +1,8 @@
 const express=require('express')
 const router=express.Router()
 const adminController=require("../controllers/adminController")
-
-router.get("/users/create/admin",
+const { isAuthenticated, isAdmin, isEtudiant } = require("../middleware/auth");
+router.get("/users/create/admin", isAuthenticated,isAdmin,
     (req,res)=>{
         const local={
             title:"Gestion des Utilisateur - creer Admin",
@@ -17,9 +17,9 @@ router.get("/users/create/admin",
     }
     
 )
-router.post("/users/create/admin", adminController.createAdmin)
+router.post("/users/create/admin", adminController.createAdmin,isAuthenticated,isAdmin)
 
-router.get("/users/admin",adminController.getAllAdmin,(req,res)=>{
+router.get("/users/admin",adminController.getAllAdmin,isAuthenticated,isAdmin,(req,res)=>{
     const local={
         title:" Gestion des utilisateurs - Afficher Utilisateur",
         layout:"layouts/main",
@@ -31,10 +31,10 @@ router.get("/users/admin",adminController.getAllAdmin,(req,res)=>{
 
 const demandeController = require("../controllers/demandeController");
 
-router.get("/dashboard", demandeController.getDashboardStats);
+router.get("/dashboard", demandeController.getDashboardStats,isAuthenticated,isAdmin);
 
 
-router.get("/users/admin/view/:id", adminController.getAdminById,
+router.get("/users/admin/view/:id", adminController.getAdminById,isAuthenticated,isAdmin,
     (req,res)=>{
         const local ={
             title:"Gestion des Utilisateurs - Afficher utilisateur",
@@ -52,14 +52,14 @@ router.get("/users/admin/view/:id", adminController.getAdminById,
 
 
 
-router.get("/users/admin/edit/:id", adminController.getAdminEditForm);
+router.get("/users/admin/edit/:id", adminController.getAdminEditForm, isAuthenticated,isAdmin);
 // Exemple : /users/etd/edit/ETD-001-GI-25
-router.post("/users/admin/edit/:id", adminController.updateAdmin);
+router.post("/users/admin/edit/:id", adminController.updateAdmin,isAuthenticated,isAdmin);
 
 
-router.post("/users/admin/delete/:id", adminController.deleteAdmin);
+router.post("/users/admin/delete/:id", adminController.deleteAdmin,isAuthenticated,isAdmin);
 
-router.get("/users/create", (req,res)=>{
+router.get("/users/create",isAuthenticated,isAdmin, (req,res)=>{
     const local ={
         title:"Gestion des Utilisateurs - Afficher utilisateur",
         layout:"layouts/main",

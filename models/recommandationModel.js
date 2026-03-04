@@ -1,20 +1,20 @@
-const mongoose=require("mongoose")
-const compteur=require("../middleware/conteur")
+const mongoose = require("mongoose")
+const compteur = require("../middleware/conteur")
 
-const recommandationSchema=new mongoose.Schema({
-    identifiant:{
-        type:String,
-        unique:true
-    },
-    civilite:{
+const recommandationSchema = new mongoose.Schema({
+    identifiant: {
         type: String,
-        require:true,
-        enum:["M.", "Mme", "Mlle"]
+        unique: true
     },
-    
-    nom:{
-    type:String,
-    require:true
+    civilite: {
+        type: String,
+        require: true,
+        enum: ["M.", "Mme", "Mlle"]
+    },
+
+    nom: {
+        type: String,
+        require: true
     },
     prenom: {
         type: String,
@@ -30,53 +30,58 @@ const recommandationSchema=new mongoose.Schema({
         enum: ['L1', 'L2', 'L3'],
         required: true
     },
-    promotion:{
+    promotion: {
         type: String,
         require: true,
-        min:2015,
-        max:2026
+        min: 2015,
+        max: 2026
     },
     matricule: {
         type: String,
         require: true,
     },
-    type:{
-        type:String,
+    type: {
+        type: String,
     },
-    destinataire:{
-        type:String
+    destinataire: {
+        type: String
     },
-    programme:{
-        type:String
+    programme: {
+        type: String
     },
-    infoSupplementaire:{
-        type:String
+    infoSupplementaire: {
+        type: String
     },
-    professeur:{
-        type:String
+    professeur: {
+        type: String
     }
-    ,email: {
+    , email: {
         type: String,
         require: true,
     },
-    statut:{
-        type:String,
-        require:true,
-        enum:["En attente", "Validee", "Rejetee","Signee"],
-        default:"En attente"
+    statut: {
+        type: String,
+        require: true,
+        enum: ["En attente", "Validee", "Rejetee", "Signee"],
+        default: "En attente"
     },
-    date: { 
-        type: Date, 
-        default: Date.now 
+    date: {
+        type: Date,
+        default: Date.now
     },
-    pdfBuffer: { 
-        type: Buffer 
+    pdfBuffer: {
+        type: Buffer
+    },
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true
     }
-},{timestamps:true})
+}, { timestamps: true })
 
-compteur(recommandationSchema,'recommandation',(seq)=>{
-    const numFormat=String(seq).padStart(3,"0")
+compteur(recommandationSchema, 'recommandation', (seq) => {
+    const numFormat = String(seq).padStart(3, "0")
     return `DMD-RECOM-${numFormat}`
 })
 
-  module.exports=mongoose.model("Recommandation", recommandationSchema)
+module.exports = mongoose.model("Recommandation", recommandationSchema)

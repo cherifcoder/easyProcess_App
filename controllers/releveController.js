@@ -15,11 +15,12 @@ exports.createReleve = async (req, res) => {
             email,
             matricule,
             semestre,
-            statut
+            statut,
+            createdBy: req.session.user._id
         });
 
         await newReleve.save();
-        res.redirect("/demandes/releve")
+        res.redirect("/mesDemandes/list")
     } catch (err) {
         console.error(err);
         res.send(`Erreur lors de l'enregistrement: ${err}`);

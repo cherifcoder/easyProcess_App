@@ -64,7 +64,12 @@ const frequentationSchema= new mongoose.Schema({
     },
     pdfBuffer: { 
         type: Buffer 
-    }
+    },
+        createdBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            required: true
+          }
 },{timeStamps:true}
 )
 conteur(frequentationSchema,"frequentation", (seq)=>{

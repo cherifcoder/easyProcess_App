@@ -75,7 +75,7 @@
                 <th>Demande</th>
                 <th>Date </th>
                 <th>Statut </th>
-                <th class="">Action </th>
+                <!-- <th class="">Action </th> -->
             </thead>
 
             <tbody>
@@ -100,7 +100,7 @@
                             class="z-0 m-2 badge <%=demande.statut==='En attente'? 'bg-primary-subtle text-primary':demande.statut==='validee'?'bg-success-subtle text-success':demande.statut==='rejetee'?'bg-danger-subtle text-danger':''%> ">
                             <%=demande.statut %>
                         </td>
-                        <td>
+                        <!-- <td>
                             <a href="/demandes/<%= demande.type %>/view/<%= demande.identifiant %> "
                                 class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
                                 <i class="bi bi-eye fs-4"></i>
@@ -147,7 +147,7 @@
                                 </div>
                             </a>
 
-                        </td>
+                        </td> -->
                     </tr>
                     <% }) %>
             </tbody>
