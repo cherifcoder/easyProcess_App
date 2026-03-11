@@ -195,7 +195,7 @@ exports.validerStage = async (req, res) => {
     stage.statut = "Validee";
     await stage.save();
 
-    res.redirect("/demandes/stage");
+    res.redirect("/demandes/stage?status=validee");
   } catch (error) {
     console.error(error);
     res.status(500).send("Erreur lors de la validation");
@@ -213,7 +213,7 @@ exports.rejeterStage = async (req, res) => {
     stage.statut = "Rejetee";
     await stage.save();
 
-    res.redirect("/demandes/stage");
+    res.redirect("/demandes/stage?status=rejetee");
   } catch (error) {
     console.error(error);
     res.status(500).send("Erreur lors de la validation");

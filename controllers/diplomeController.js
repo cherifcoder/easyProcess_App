@@ -176,8 +176,7 @@ exports.validerDiplome = async (req, res) => {
     // Mise à jour statut
     diplome.statut = "Validee";
     await diplome.save();
-
-    res.redirect("/demandes/diplome");
+    res.redirect("/demandes/diplome?status=validee");
   } catch (error) {
     console.error(error);
     res.status(500).send("Erreur lors de la validation");
@@ -194,8 +193,7 @@ exports.rejeterDiplome = async (req, res) => {
     // Mise à jour statut
     diplome.statut = "Rejetee";
     await diplome.save();
-
-    res.redirect("/demandes/diplome");
+    res.redirect("/demandes/diplome?status=rejetee");
   } catch (error) {
     console.error(error);
     res.status(500).send("Erreur lors de la validation");

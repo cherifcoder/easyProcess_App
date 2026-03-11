@@ -50,7 +50,7 @@ const frequentationSchema= new mongoose.Schema({
     },
     destination:{
         type:String,
-        enum:["bourse","emploi", "stage"]
+        enum:["bourse","emploi", "stage","admin"]
     },
 
     statut:{
@@ -70,7 +70,7 @@ const frequentationSchema= new mongoose.Schema({
             ref: "User",
             required: true
           }
-},{timeStamps:true}
+},{timestamps:true}
 )
 conteur(frequentationSchema,"frequentation", (seq)=>{
     const numFormat=String(seq).padStart(3,"0")

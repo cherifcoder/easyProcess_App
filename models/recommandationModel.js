@@ -40,7 +40,7 @@ const recommandationSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
-    type: {
+    types: {
         type: String,
     },
     destinataire: {

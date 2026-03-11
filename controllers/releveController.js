@@ -188,7 +188,7 @@ exports.validerReleve = async (req, res) => {
     releve.statut = "Validee";
     await releve.save();
 
-    res.redirect("/demandes/releve");
+    res.redirect("/demandes/releve?status=validee");
   } catch (error) {
     console.error(error);
     res.status(500).send("Erreur lors de la validation");
@@ -205,8 +205,8 @@ exports.rejeterReleve= async (req, res) => {
     // Mise à jour statut
     releve.statut = "Rejetee";
     await releve.save();
-
-    res.redirect("/demandes/releve");
+    
+    res.redirect("/demandes/releve?status=rejetee");
   } catch (error) {
     console.error(error);
     res.status(500).send("Erreur lors de la validation");
@@ -239,8 +239,7 @@ exports.sendReleve = async (req, res) => {
         releve.pdfFile,
         "Releve.pdf"
       );
-  
-      res.redirect("/demandes/releve/");
+      res.redirect("/demandes/releve?status=sent");
     } catch (err) {
       console.error(err);
       res.status(500).send("Erreur lors de l’envoi du relevé");

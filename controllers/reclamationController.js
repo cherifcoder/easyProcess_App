@@ -194,7 +194,7 @@ exports.validerReclamation = async (req, res) => {
     reclamation.statut = "Validee";
     await reclamation.save();
 
-    res.redirect("/demandes/reclamation");
+    res.redirect("/demandes/reclamation?status=validee");
   } catch (error) {
     console.error(error);
     res.status(500).send("Erreur lors de la validation");
@@ -212,7 +212,7 @@ exports.rejeterReclamation= async (req, res) => {
     reclamation.statut = "Rejetee";
     await reclamation.save();
 
-    res.redirect("/demandes/reclamation");
+    res.redirect("/demandes/reclamation?status=rejetee");
   } catch (error) {
     console.error(error);
     res.status(500).send("Erreur lors de la validation");
@@ -246,7 +246,7 @@ exports.uploadAndSend = async (req, res) => {
         "Correction.pdf"
       );
   
-      res.redirect("/demandes/reclamation/");
+      res.redirect("/demandes/reclamation?status=sent");
     } catch (err) {
       console.error(err);
       res.status(500).send("Erreur lors de l’upload et l’envoi");

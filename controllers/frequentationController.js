@@ -185,7 +185,7 @@ exports.validerFrequentation = async (req, res) => {
     frequentation.statut = "Validee";
     await frequentation.save();
 
-    res.redirect("/demandes/frequentation");
+    res.redirect("/demandes/frequentation?status=validee");
   } catch (error) {
     console.error(error);
     res.status(500).send("Erreur lors de la validation");
@@ -203,7 +203,7 @@ exports.rejeterFrequentation = async (req, res) => {
     frequentation.statut = "Rejetee";
     await frequentation.save();
 
-    res.redirect("/demandes/frequentation");
+    res.redirect("/demandes/frequentation?status=rejetee");
   } catch (error) {
     console.error(error);
     res.status(500).send("Erreur lors de la validation");

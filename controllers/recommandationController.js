@@ -3,7 +3,7 @@ const Recommandation = require("../models/recommandationModel");
 // ✅ Créer une recommandation
 exports.createRecommandation = async (req, res) => {
     try {
-        const { civilite, nom, prenom, filiere, niveau, promotion, matricule, semestre, type, destinataire, programme, professeur,email, infoSupplementaire, statut } = req.body;
+        const { civilite, nom, prenom, filiere, niveau, promotion, matricule, semestre, types, destinataire, programme, professeur,email, infoSupplementaire, statut } = req.body;
 
         const newRecommandation = new Recommandation({
             civilite,
@@ -14,7 +14,7 @@ exports.createRecommandation = async (req, res) => {
             promotion,
             matricule,
             semestre,
-            type,
+            types,
             destinataire,
             programme,
             professeur,
@@ -195,7 +195,7 @@ exports.validerRecommandation = async (req, res) => {
     recommandation.statut = "Validee";
     await recommandation.save();
 
-    res.redirect("/demandes/recommandation");
+    res.redirect("/demandes/recommandation?status=validee");
   } catch (error) {
     console.error(error);
     res.status(500).send("Erreur lors de la validation");
@@ -213,7 +213,7 @@ exports.rejeterRecommandation = async (req, res) => {
     recommandation.statut = "Rejetee";
     await recommandation.save();
 
-    res.redirect("/demandes/recommandation");
+    res.redirect("/demandes/recommandation?status=rejetee");
   } catch (error) {
     console.error(error);
     res.status(500).send("Erreur lors de la validation");
