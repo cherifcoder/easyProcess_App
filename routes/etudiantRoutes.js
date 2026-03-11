@@ -11,7 +11,7 @@ router.get("/", (req,res)=>{
     res.render('./auth/login',local)
 })
 
-router.get("/register",isAuthenticated,isAdmin,
+router.get("/register",
     (req,res)=>{
         const local={
             title:"Inscription"
@@ -20,7 +20,7 @@ router.get("/register",isAuthenticated,isAdmin,
     }
     
 )
-router.post("/register", etudiantController.registerEtudiant ,isAuthenticated,isAdmin)
+router.post("/register", etudiantController.registerEtudiant)
 
 
 router.get("/users/etd",etudiantController.getAllEtudiant ,isAuthenticated,isAdmin)
