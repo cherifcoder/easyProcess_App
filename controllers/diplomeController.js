@@ -88,7 +88,9 @@ exports.getDiplomeById=async(req,res)=>{
     try{
         const diplome=await Diplome.findOne({identifiant:req.params.id})
         if(!diplome){
-            return res.status(404).send("Demande introuvable");
+            return res.status(404).render("errors/404", {
+              title: "Gestion des demandes - Afficher Diplome",
+              layout: "layouts/main"});
         }
         res.render("demandes/diplome/view",{
             title: "Gestion des demandes - Afficher Diplome",
@@ -133,7 +135,9 @@ exports.updateDiplome = async (req, res) => {
     );
 
     if (!diplome) {
-      return res.status(404).send("Demande introuvable");
+      return res.status(404).render("errors/404", {
+        title: "Gestion des demandes - Afficher Diplome",
+        layout: "layouts/main"});
     }
 
     // Après modification, on redirige vers la liste ou la vue détaillée
@@ -188,7 +192,9 @@ exports.rejeterDiplome = async (req, res) => {
     const identifiant = req.params.identifiant;
     const diplome = await Diplome.findOne({ identifiant });
 
-    if (!diplome) return res.status(404).send("Demande introuvable");
+    if (!diplome) return res.status(404).render("errors/404", {
+      title: "Gestion des demandes - Afficher Diplome",
+      layout: "layouts/main"});
 
     // Mise à jour statut
     diplome.statut = "Rejetee";
@@ -217,10 +223,14 @@ exports.downloadDiplome = async (req, res) => {
     const diplome = await Diplome.findOne({ identifiant });
 
     if (!diplome) {
-      return res.status(404).send("Demande introuvable");
+      return res.status(404).render("errors/404", {
+        title: "Gestion des demandes - Afficher Diplome",
+        layout: "layouts/main"});
     }
     if (!diplome.pdfBuffer) {
-      return res.status(404).send("PDF introuvable pour cette demande");
+      return res.status(404).render("errors/404", {
+        title: "Gestion des demandes - Afficher Diplome",
+        layout: "layouts/main"});
     }
 
     // Définir les headers pour forcer le téléchargement

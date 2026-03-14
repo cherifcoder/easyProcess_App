@@ -1,6 +1,45 @@
 <div class="bg-white px-4 py-4">
     <%- include("../../partials/filsDArianeUsers.ejs") %> 
-
+    <div class="d-flex gap-2 justify-content-end p-2">
+        <!-- Bouton Modifier -->
+        <a href="/users/admin/edit/<%= admin.identifiant %>"
+            class="badge bg-warning-subtle text-warning rounded-3 px-2 py-1 text-decoration-none d-flex align-items-center">
+            <i class="bi bi-pen fs-5"></i> <span class="fs-6 px-1">Modifier</span>
+        </a>
+    
+        
+        <!-- Bouton Supprimer -->
+        <div class="badge bg-danger-subtle text-danger rounded-3 px-2 py-1 d-flex align-items-center">
+            <button class="btn btn-link text-danger p-0 border-0 bg-danger-subtle d-flex align-items-center" 
+                    style="text-decoration: none;"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#deleteModal-<%= admin.identifiant %>">
+                <i class="bi bi-trash fs-5"></i>
+                <span class="fs-6 px-1">Supprimer</span>
+            </button>
+        </div>
+    
+        <!-- Modal de suppression -->
+        <div class="modal fade" id="deleteModal-<%= admin.identifiant %>" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title">Confirmation de suppression</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Voulez-vous vraiment supprimer l'utilisateur <strong><%= admin.identifiant %></strong> ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <form action="/users/admin/delete/<%= admin.identifiant %>" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row g-3">
         <div class="form-section-header border-info d-flex justify-content-between">
             <div>
@@ -60,26 +99,4 @@
       
     </div>
 
-    <hr class="mx-4">
-
-    <div class="form-section bg-white">
-        <div class="form-section-header border-info">
-            <h3 class="fw-bold text-primary">
-                <i class="bi bi-gear fs-1 me-2"></i>Actions
-            </h3>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12 d-flex justify-content-start gap-3">
-                <a href="/users/etd/edit/<%= admin.identifiant %>" class="btn btn-warning">
-                    <i class="bi bi-pen"></i> Modifier
-                </a>
-                <form action="/users/etd/delete/<%= admin.identifiant %>" method="POST" class="d-inline">
-                    <button type="submit" class="btn btn-danger">
-                        <i class="bi bi-trash"></i> Supprimer
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
 </div>
