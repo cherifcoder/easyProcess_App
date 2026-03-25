@@ -38,5 +38,9 @@ router.post("/users/etd/edit/:id", etudiantController.updateEtudiant ,isAuthenti
 router.post("/users/etd/delete/:id", etudiantController.deleteEtudiant ,isAuthenticated,isAdmin);
 
 
+// API pour auto-complétion par matricule
+router.get("/api/etudiants/:matricule", etudiantController.getEtudiantByMatricule);
+
+
 
 module.exports=router

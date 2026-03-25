@@ -8,7 +8,12 @@
        
         <%-include("../partials/btn.ejs") %>
     </div>
-
+     <!-- Matricule -->
+     <div class="col-md-4">
+        <label class="form-label fw-semibold">Numéro matricule</label>
+        <input type="text" name="matricule" id="matricule" class="form-control shadow-sm" placeholder="Numero Matricule"
+            required>
+    </div>
     <!-- Civilité -->
     <div class="col-md-2">
         <label class="form-label fw-semibold">Civilité</label>
@@ -66,20 +71,63 @@
     <input type="number" name="promotion" id="promotion" class="form-control shadow-sm" placeholder="Entrez votre promotion"
         required min="2015" max="2026" step="1">
 </div>
-    <!-- Matricule -->
-    <div class="col-md-4">
-        <label class="form-label fw-semibold">Numéro matricule</label>
-        <input type="text" name="matricule" id="matricule" class="form-control shadow-sm" placeholder="Numero Matricule"
-            required>
-    </div>
+   
     <!-- email -->
      <div class="col-md-4">
         <label class="form-label fw-semibold">email</label>
-        <input type="email" name="email" id="matricule" class="form-control shadow-sm" placeholder="email"
+        <input type="email" name="email" id="email" class="form-control shadow-sm" placeholder="email"
             required>
     </div>
 
 </div>
 <hr class="mx-4">
+<script>
+    document.getElementById("matricule").addEventListener("blur", async function() {
+        let matricule = this.value;
+        if(matricule){
+            try {
+                let response = await fetch(`/api/etudiants/${matricule}`);
+                if(response.ok){
+                    let data = await response.json();
+                    document.getElementById("civilite").value = data.sexe === "Homme" ? "M." : "Mme";
+                    document.getElementById("nom").value = data.nom || "";
+                    document.getElementById("prenom").value = data.prenom || "";
+                    document.getElementById("filiere").value = data.filiere || "";
+                    document.getElementById("niveau").value = data.niveau || "";
+                    document.getElementById("promotion").value = data.promotion || "";
+                    document.getElementById("email").value = data.email || "";
+                    document.getElementById("dateNaissance").value = data.dateNaissance ? data.dateNaissance.substring(0,10) : "";
+                    document.getElementById("lieu").value = data.adresse || "";
+                } else {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Matricule introuvable',
+                        text: "Aucun étudiant n'est enregistré sous ce numéro matricule. Voulez-vous continuer quand même ?",
+                        showCancelButton: true,
+                        confirmButtonText: 'Oui, continuer',
+                        cancelButtonText: 'Annuler'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // L’utilisateur choisit de continuer malgré tout
+                            console.log("Utilisateur continue sans auto-complétion");
+                        } else {
+                            // L’utilisateur annule
+                            document.getElementById("matricule").value = "";
+                        }
+                    });
+                }
+            } catch (err) {
+                console.error(err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erreur serveur',
+                    text: 'Une erreur est survenue lors de la recherche de l’étudiant.'
+                });
+            }
+        }
+    });
+    </script>
+    
+    
 
 

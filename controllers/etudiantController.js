@@ -205,3 +205,19 @@ exports.deleteEtudiant=async(req,res)=>{
         console.log(err)
     }
 }
+
+exports.getEtudiantByMatricule = async (req, res) => {
+  try {
+    const { matricule } = req.params;
+    const etudiant = await Etudiant.findOne({ matricule });
+
+    if (!etudiant) {
+      return res.status(404).json({ message: "Etudiant introuvable" });
+    }
+
+    res.json(etudiant);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Erreur serveur" });
+  }
+};
