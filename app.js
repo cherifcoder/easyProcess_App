@@ -67,7 +67,7 @@ app.listen(PORT ,(err)=>{
     if(!err){
         console.log(`App listen on http://localhost:${PORT}`)
     }else{ 
-        console.log(`Erreur lors de l'ecoute du port ${PORT}`);
+        console.log(`Erreur lors de l'ecoute du port ${PORT} ${err}`);
         
     }
 }) 
