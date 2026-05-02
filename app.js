@@ -33,7 +33,7 @@ app.set("view engine", "ejs")
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views')); 
 app.use(bodyparser.urlencoded({extend:true}))
-
+const logger = require('./utils/logger');
 app.use(session({
     secret:process.env.SESSION_SECRET,
     resave: false,
@@ -48,7 +48,19 @@ app.use(session({
     res.locals.user = req.session.user || null;
     next();
   });
+  app.use((req, res, next) => {
+    logger.info(`Requête: ${req.method} ${req.url}`, { ip: req.ip });
+    next();
+  });
   
+  app.use((err, req, res, next) => {
+    logger.error(`Erreur: ${err.message}`, { stack: err.stack });
+    res.status(500).send('Erreur serveur');
+  });
+  app.use((req, res, next) => {
+    logger.info(`Requête: ${req.method} ${req.url}`, { ip: req.ip });
+    next();
+  });
 
 connectDB()
 

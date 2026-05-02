@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const Admin = require("../models/adminModel");
 const Etudiant = require("../models/etudiantModel");
+const logger = require("../utils/logger");
 
 exports.login = async (req, res) => {
   try {
@@ -12,12 +13,17 @@ exports.login = async (req, res) => {
     ]);
 
     const user = admin || etudiant;
-    if (!user) return res.send("Utilisateur introuvable");
+    if (!user) {
+      logger.warn(`Tentative de connexion échouée : utilisateur introuvable (${email})`);
+      return res.send("Utilisateur introuvable");
+    }
 
     const isMatch = await bcrypt.compare(motDePass, user.motDePass);
-    if (!isMatch) return res.send("Mot de passe incorrect");
+    if (!isMatch) {
+      logger.warn(`Mot de passe incorrect pour ${email}`);
+      return res.send("Mot de passe incorrect");
+    }
 
-    // Stocker l'utilisateur dans la session
     req.session.user = {
       _id: user._id,
       id: user.identifiant,
@@ -27,20 +33,26 @@ exports.login = async (req, res) => {
       type: admin ? "admin" : "etudiant"
     };
 
-    // Redirection selon le rôle
+    logger.info(`Connexion réussie : ${user.nom} ${user.prenom} (${user.role})`);
+
     if (user.role === "Directeur" || user.role === "Secretaire") {
       res.redirect("/dashboard");
     } else {
       res.redirect("/mesDemandes/list");
     }
   } catch (err) {
+    logger.error("Erreur lors de la connexion", { error: err.message });
     res.send(`Erreur lors de la connexion : ${err}`);
   }
 };
 
 exports.logout = (req, res) => {
   req.session.destroy(err => {
-    if (err) return res.send("Erreur lors de la déconnexion");
+    if (err) {
+      logger.error("Erreur lors de la déconnexion", { error: err.message });
+      return res.send("Erreur lors de la déconnexion");
+    }
+    logger.info("Déconnexion réussie");
     res.redirect("/");
   });
 };

@@ -1,0 +1,15 @@
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Requête: GET /","timestamp":"2026-05-02 12:08:13"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Requête: GET /","timestamp":"2026-05-02 12:08:14"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Requête: GET /favicon.ico","timestamp":"2026-05-02 12:08:16"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Requête: GET /favicon.ico","timestamp":"2026-05-02 12:08:16"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-02 12:08:22"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-02 12:08:22"}
+{"level":"info","message":"Connexion réussie : Admin . (Directeur)","timestamp":"2026-05-02 12:08:22"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Requête: GET /dashboard","timestamp":"2026-05-02 12:08:22"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Requête: GET /dashboard","timestamp":"2026-05-02 12:08:22"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Requête: GET /dashboard","timestamp":"2026-05-02 12:08:26"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Requête: GET /dashboard","timestamp":"2026-05-02 12:08:26"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Requête: GET /favicon.ico","timestamp":"2026-05-02 12:08:27"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Requête: GET /favicon.ico","timestamp":"2026-05-02 12:08:27"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Requête: GET /dashboard","timestamp":"2026-05-02 12:09:07"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Requête: GET /dashboard","timestamp":"2026-05-02 12:09:07"}
