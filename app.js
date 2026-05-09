@@ -27,7 +27,7 @@ const expressLayout=require('express-ejs-layouts')
 
   
 const app=express()
-app.set("layout","./layouts/auth") 
+app.set("layout","./layouts/auth")
 app.use(expressLayout)
 app.set("view engine", "ejs")
 app.use(express.static(path.join(__dirname, 'public')));
@@ -38,12 +38,9 @@ app.use(session({
     secret:process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false } // mettre true si HTTPS
+    cookie: { secure: false } 
   }));
-  app.use((req, res, next) => {
-    res.locals.user = req.session.user || null;
-    next();
-  });
+
   app.use((req, res, next) => {
     res.locals.user = req.session.user || null;
     next();
@@ -83,3 +80,4 @@ app.listen(PORT ,(err)=>{
         
     }
 }) 
+module.exports = app;

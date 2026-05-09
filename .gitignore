@@ -1,3 +1,5 @@
 node_modules
 seedDmd
 env
+.vercel
+.env*.local
