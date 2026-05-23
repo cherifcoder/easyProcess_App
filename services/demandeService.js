@@ -48,8 +48,8 @@ await demande.save();
   await transporter.sendMail({
     from: process.env.GMAIL_USER,
     to: demande.email,
-    subject: `Votre ${typeDemande}`,
-    text: `Veuillez trouver ci-joint votre ${typeDemande}.`,
+    subject: `Recevez Votre ${typeDemande}`,
+    text: `Veuillez trouver ci-joint votre demqande de ${typeDemande}.`,
     attachments: [{ filename: `${typeDemande}-${identifiant}.pdf`, content: pdfBuffer }]
   });
 

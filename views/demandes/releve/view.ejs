@@ -7,12 +7,13 @@
         class="badge bg-warning-subtle text-warning rounded-3 px-2 py-1 text-decoration-none d-flex align-items-center">  <!-- px-2 au lieu de px-1 -->
         <i class="bi bi-pen fs-5"></i> <span class="fs-6 px-1">Modifier</span>  <!-- fs-4 → fs-6 -->
     </a>
-
+<% if (user && (user.role==="Directeur" || user.role==="Secretaire" )) { %>
     <% if (releve.statut==="En attente" || releve.statut==="Rejetee" ) { %>
         <a href="/demandes/releve/valider/<%= releve.identifiant %>"
             class="badge bg-success-subtle text-success rounded-3 px-2 py-1 text-decoration-none d-flex align-items-center">
             <i class="bi bi-check2-circle fs-5"></i> <span class="fs-6 px-1">Valider</span>
         </a>
+    <% } %>
     <% } %>
     
     <% if (user && user.role==="Directeur" ) { %>
@@ -31,13 +32,14 @@
         </a>
     <% } %>
 
+    <% if (user && (user.role==="Directeur" || user.role==="Secretaire" )) { %>
     <% if (releve.statut==="En attente" || releve.statut==="Validee" ) { %>
         <a href="/demandes/releve/rejeter/<%= releve.identifiant %>"
             class="badge bg-danger-subtle text-danger rounded-3 px-2 py-1 text-decoration-none d-flex align-items-center">
             <i class="bi bi-x-circle fs-5"></i><span class="fs-6 px-1">Rejeter</span>
         </a>
     <% } %>
-
+ <% } %>
     <div class="badge bg-danger-subtle text-danger rounded-3 px-2 py-1 d-flex align-items-center">
         <button class="btn btn-link text-danger p-0 border-0 bg-danger-subtle d-flex align-items-center" 
                 style="text-decoration: none;"

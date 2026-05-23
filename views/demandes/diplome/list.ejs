@@ -135,85 +135,97 @@
                             class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
                             <i class="bi bi-pen fs-4"></i>
                         </a>
-
-                        <% if (diplome.statut==="En attente" || diplome.statut==="Rejetee" ) { %>
-                            <a href="/demandes/diplome/valider/<%= diplome.identifiant %>"
-                                class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
-                                <i class="bi bi-check2-circle fs-4"></i>
-                            </a>
-                            <% } %>
-                            <% if (user && user.role === "Directeur") { %>
-                                <% if (diplome.statut === "Validee") { %>
-                                  <a href="/demandes/diplome/signer/<%= diplome.identifiant %>"
-                                     class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
-                                     <i class="bi-file-earmark-text fs-4"></i>
-                                  </a>
+                        <% if (user && (user.role==="Directeur" || user.role==="Secretaire" )) { %>
+                            <% if (diplome.statut==="En attente" || diplome.statut==="Rejetee" ) { %>
+                                <a href="/demandes/diplome/valider/<%= diplome.identifiant %>"
+                                    class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                                    <i class="bi bi-check2-circle fs-4"></i>
+                                </a>
                                 <% } %>
-                              <% } %>
-                              
-                                                <% if (diplome.statut==="Signee" ) { %>
-                                                    <a href="/demandes/diplome/download/<%= diplome.identifiant %>"
-                                                        class="badge bg-info-subtle text-info rounded-3 px-1 py-1"
-                                                        download>
-                                                        <i class="bi bi-download fs-4"></i>
-                                                    </a>
+                                    <% } %>
+                                        <% if (user && user.role==="Directeur" ) { %>
+                                            <% if (diplome.statut==="Validee" ) { %>
+                                                <a href="/demandes/diplome/signer/<%= diplome.identifiant %>"
+                                                    class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                                                    <i class="bi-file-earmark-text fs-4"></i>
+                                                </a>
+                                                <% } %>
                                                     <% } %>
 
-
-                                                        <% if (diplome.statut==="En attente" ||
-                                                            diplome.statut==="Validee" ) { %>
-                                                            <a href="/demandes/diplome/rejeter/<%= diplome.identifiant %>"
-                                                                class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
-                                                                <i class="bi bi-x-circle fs-4"></i>
+                                                        <% if (diplome.statut==="Signee" ) { %>
+                                                            <a href="/demandes/diplome/download/<%= diplome.identifiant %>"
+                                                                class="badge bg-info-subtle text-info rounded-3 px-1 py-1"
+                                                                download>
+                                                                <i class="bi bi-download fs-4"></i>
                                                             </a>
                                                             <% } %>
 
-                                                                <a action="/demandes/diplome/delete/<%=diplome.identifiant %> "
-                                                                    method="POST"
-                                                                    class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
-                                                                    <button
-                                                                        class="bi bi-trash fs-4 text-danger bg-danger-subtle"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#deleteModal-<%= diplome.identifiant %>">
-                                                                        <i></i> </button>
+                                                                <% if (user && (user.role==="Directeur" ||
+                                                                    user.role==="Secretaire" )) { %>
+                                                                    <% if (diplome.statut==="En attente" ||
+                                                                        diplome.statut==="Validee" ) { %>
+                                                                        <a href="/demandes/diplome/rejeter/<%= diplome.identifiant %>"
+                                                                            class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                                                                            <i class="bi bi-x-circle fs-4"></i>
+                                                                        </a>
+                                                                        <% } %>
+                                                                            <% } %>
+                                                                                <a action="/demandes/diplome/delete/<%=diplome.identifiant %> "
+                                                                                    method="POST"
+                                                                                    class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                                                                                    <button
+                                                                                        class="bi bi-trash fs-4 text-danger bg-danger-subtle"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#deleteModal-<%= diplome.identifiant %>">
+                                                                                        <i></i> </button>
 
-                                                                    <div class="modal fade"
-                                                                        id="deleteModal-<%= diplome.identifiant %>"
-                                                                        tabindex="-1" aria-hidden="true">
-                                                                        <div class="modal-dialog modal-dialog-centered">
-                                                                            <div class="modal-content">
-                                                                                <div
-                                                                                    class="modal-header bg-danger text-white">
-                                                                                    <h5 class="modal-title">Confirmation
-                                                                                        de
-                                                                                        suppression</h5>
-                                                                                    <button type="button"
-                                                                                        class="btn-close btn-close-white text-primary"
-                                                                                        data-bs-dismiss="modal"></button>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    <p>Voulez-vous vraiment supprimer la
-                                                                                        demande
-                                                                                        <strong>
-                                                                                            <%= diplome.identifiant %>
-                                                                                        </strong> ?
-                                                                                    </p>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="reset"
-                                                                                        class="btn btn-primary border-0"
-                                                                                        data-bs-dismiss="modal">Annuler</button>
-                                                                                    <form
-                                                                                        action="/demandes/diplome/delete/<%= diplome.identifiant %>"
-                                                                                        method="POST">
-                                                                                        <button type="submit"
-                                                                                            class="btn btn-danger">Supprimer</button>
-                                                                                    </form>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
+                                                                                    <div class="modal fade"
+                                                                                        id="deleteModal-<%= diplome.identifiant %>"
+                                                                                        tabindex="-1"
+                                                                                        aria-hidden="true">
+                                                                                        <div
+                                                                                            class="modal-dialog modal-dialog-centered">
+                                                                                            <div class="modal-content">
+                                                                                                <div
+                                                                                                    class="modal-header bg-danger text-white">
+                                                                                                    <h5
+                                                                                                        class="modal-title">
+                                                                                                        Confirmation
+                                                                                                        de
+                                                                                                        suppression</h5>
+                                                                                                    <button
+                                                                                                        type="button"
+                                                                                                        class="btn-close btn-close-white text-primary"
+                                                                                                        data-bs-dismiss="modal"></button>
+                                                                                                </div>
+                                                                                                <div class="modal-body">
+                                                                                                    <p>Voulez-vous
+                                                                                                        vraiment
+                                                                                                        supprimer la
+                                                                                                        demande
+                                                                                                        <strong>
+                                                                                                            <%= diplome.identifiant
+                                                                                                                %>
+                                                                                                        </strong> ?
+                                                                                                    </p>
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="modal-footer">
+                                                                                                    <button type="reset"
+                                                                                                        class="btn btn-primary border-0"
+                                                                                                        data-bs-dismiss="modal">Annuler</button>
+                                                                                                    <form
+                                                                                                        action="/demandes/diplome/delete/<%= diplome.identifiant %>"
+                                                                                                        method="POST">
+                                                                                                        <button
+                                                                                                            type="submit"
+                                                                                                            class="btn btn-danger">Supprimer</button>
+                                                                                                    </form>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </a>
 
                     </td>
 

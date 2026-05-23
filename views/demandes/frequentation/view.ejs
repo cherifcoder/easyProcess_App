@@ -11,13 +11,14 @@
     </a>
 
     <!-- Bouton Valider (si En attente ou Rejetee) -->
+   <% if (user && (user.role==="Directeur" || user.role==="Secretaire" )) { %>
     <% if (frequentation.statut==="En attente" || frequentation.statut==="Rejetee" ) { %>
         <a href="/demandes/frequentation/valider/<%= frequentation.identifiant %>"
             class="badge bg-success-subtle text-success rounded-3 px-2 py-1 text-decoration-none d-flex align-items-center">
             <i class="bi bi-check2-circle fs-5"></i> <span class="fs-6 px-1">Valider</span>
         </a>
     <% } %>
-    
+    <% } %>
     <!-- Bouton Signer (pour Directeur si Validee) -->
     <% if (user && user.role==="Directeur" ) { %>
         <% if (frequentation.statut==="Validee" ) { %>
@@ -37,13 +38,14 @@
     <% } %>
 
     <!-- Bouton Rejeter (si En attente ou Validee) -->
+     <% if (user && (user.role==="Directeur" || user.role==="Secretaire" )) { %>
     <% if (frequentation.statut==="En attente" || frequentation.statut==="Validee" ) { %>
         <a href="/demandes/frequentation/rejeter/<%= frequentation.identifiant %>"
             class="badge bg-danger-subtle text-danger rounded-3 px-2 py-1 text-decoration-none d-flex align-items-center">
             <i class="bi bi-x-circle fs-5"></i><span class="fs-6 px-1">Rejeter</span>
         </a>
     <% } %>
-
+<% } %>
     <!-- Bouton Supprimer -->
     <div class="badge bg-danger-subtle text-danger rounded-3 px-2 py-1 d-flex align-items-center">
         <button class="btn btn-link text-danger p-0 border-0 bg-danger-subtle d-flex align-items-center" 

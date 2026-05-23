@@ -169,12 +169,12 @@ exports.getDashboardStats = async (req, res) => {
       (await Recommandation.countDocuments());
 
     const totalValidees =
-      (await countByStatut(Diplome, "Validee")) +
-      (await countByStatut(Frequentation, "Validee")) +
-      (await countByStatut(Stage, "Validee")) +
-      (await countByStatut(Releve, "Validee")) +
-      (await countByStatut(Reclamation, "Validee")) +
-      (await countByStatut(Recommandation, "Validee"));
+      (await countByStatut(Diplome, "Validee")) +(await countByStatut(Diplome, "Signee")) +
+      (await countByStatut(Frequentation, "Validee")) +(await countByStatut(Frequentation, "Signee")) +
+      (await countByStatut(Stage, "Validee")) +(await countByStatut(Stage, "Signee")) +
+      (await countByStatut(Releve, "Validee")) +(await countByStatut(Releve, "Signee")) +
+      (await countByStatut(Reclamation, "Validee")) +(await countByStatut(Reclamation, "Corrigee")) +
+      (await countByStatut(Recommandation, "Validee")) +(await countByStatut(Recommandation, "Signee"));
 
     const totalRejetees =
       (await countByStatut(Diplome, "Rejetee")) +

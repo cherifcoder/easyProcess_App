@@ -10,72 +10,97 @@
     </a>
 
     <!-- Bouton Valider (si En attente ou Rejetee) -->
-    <% if (diplome.statut==="En attente" || diplome.statut==="Rejetee" ) { %>
-        <a href="/demandes/diplome/valider/<%= diplome.identifiant %>"
-            class="badge bg-success-subtle text-success rounded-3 px-2 py-1 text-decoration-none d-flex align-items-center">
-            <i class="bi bi-check2-circle fs-5"></i> <span class="fs-6 px-1">Valider</span>
-        </a>
-    <% } %>
-    
-    <!-- Bouton Signer (pour Directeur si Validee) -->
-    <% if (user && user.role==="Directeur" ) { %>
-        <% if (diplome.statut==="Validee" ) { %>
-            <a href="/demandes/diplome/signer/<%= diplome.identifiant %>"
+    <% if (user && (user.role==="Directeur" || user.role==="Secretaire" )) { %>
+        <% if (diplome.statut==="En attente" || diplome.statut==="Rejetee" ) { %>
+            <a href="/demandes/diplome/valider/<%= diplome.identifiant %>"
                 class="badge bg-success-subtle text-success rounded-3 px-2 py-1 text-decoration-none d-flex align-items-center">
-                <i class="bi bi-file-earmark-text fs-5"></i><span class="fs-6 px-1">Signer</span>
+                <i class="bi bi-check2-circle fs-5"></i> <span class="fs-6 px-1">Valider</span>
             </a>
-        <% } %>
-    <% } %>
-    
-    <!-- Bouton Télécharger (si Signee) -->
-    <% if (diplome.statut==="Signee" ) { %>
-        <a href="/demandes/diplome/download/<%= diplome.identifiant %>"
-            class="badge bg-info-subtle text-info rounded-3 px-2 py-1 text-decoration-none d-flex align-items-center" download>
-            <i class="bi bi-download fs-5"></i><span class="fs-6 px-1">Telecharger</span>
-        </a>
-    <% } %>
+            <% } %>
+                <% } %>
 
-    <!-- Bouton Rejeter (si En attente ou Validee) -->
-    <% if (diplome.statut==="En attente" || diplome.statut==="Validee" ) { %>
-        <a href="/demandes/diplome/rejeter/<%= diplome.identifiant %>"
-            class="badge bg-danger-subtle text-danger rounded-3 px-2 py-1 text-decoration-none d-flex align-items-center">
-            <i class="bi bi-x-circle fs-5"></i><span class="fs-6 px-1">Rejeter</span>
-        </a>
-    <% } %>
+                    <!-- Bouton Signer (pour Directeur si Validee) -->
+                    <% if (user && user.role==="Directeur" ) { %>
+                        <% if (diplome.statut==="Validee" ) { %>
+                            <a href="/demandes/diplome/signer/<%= diplome.identifiant %>"
+                                class="badge bg-success-subtle text-success rounded-3 px-2 py-1 text-decoration-none d-flex align-items-center">
+                                <i class="bi bi-file-earmark-text fs-5"></i><span class="fs-6 px-1">Signer</span>
+                            </a>
+                            <% } %>
+                                <% } %>
 
-    <!-- Bouton Supprimer -->
-    <div class="badge bg-danger-subtle text-danger rounded-3 px-2 py-1 d-flex align-items-center">
-        <button class="btn btn-link text-danger p-0 border-0 bg-danger-subtle d-flex align-items-center" 
-                style="text-decoration: none;"
-                data-bs-toggle="modal" 
-                data-bs-target="#deleteModal-<%= diplome.identifiant %>">
-            <i class="bi bi-trash fs-5"></i>
-            <span class="fs-6 px-1 fw-bold">Supprimer</span>
-        </button>
-    </div>
+                                    <!-- Bouton Télécharger (si Signee) -->
+                                    <% if (diplome.statut==="Signee" ) { %>
+                                        <a href="/demandes/diplome/download/<%= diplome.identifiant %>"
+                                            class="badge bg-info-subtle text-info rounded-3 px-2 py-1 text-decoration-none d-flex align-items-center"
+                                            download>
+                                            <i class="bi bi-download fs-5"></i><span
+                                                class="fs-6 px-1">Telecharger</span>
+                                        </a>
+                                        <% } %>
 
-    <!-- Modal de suppression -->
-    <div class="modal fade" id="deleteModal-<%= diplome.identifiant %>" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-danger text-white">
-                    <h5 class="modal-title">Confirmation de suppression</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Voulez-vous vraiment supprimer la demande <strong><%= diplome.identifiant %></strong> ?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <form action="/demandes/diplome/delete/<%= diplome.identifiant %>" method="POST" class="d-inline">
-                        <button type="submit" class="btn btn-danger">Supprimer</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+                                            <!-- Bouton Rejeter (si En attente ou Validee) -->
+                                            <% if (user && (user.role==="Directeur" || user.role==="Secretaire" )) { %>
+                                                <% if (diplome.statut==="En attente" || diplome.statut==="Validee" ) {
+                                                    %>
+                                                    <a href="/demandes/diplome/rejeter/<%= diplome.identifiant %>"
+                                                        class="badge bg-danger-subtle text-danger rounded-3 px-2 py-1 text-decoration-none d-flex align-items-center">
+                                                        <i class="bi bi-x-circle fs-5"></i><span
+                                                            class="fs-6 px-1">Rejeter</span>
+                                                    </a>
+                                                    <% } %>
+                                                        <% } %>
+                                                            <!-- Bouton Supprimer -->
+                                                            <div
+                                                                class="badge bg-danger-subtle text-danger rounded-3 px-2 py-1 d-flex align-items-center">
+                                                                <button
+                                                                    class="btn btn-link text-danger p-0 border-0 bg-danger-subtle d-flex align-items-center"
+                                                                    style="text-decoration: none;"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#deleteModal-<%= diplome.identifiant %>">
+                                                                    <i class="bi bi-trash fs-5"></i>
+                                                                    <span class="fs-6 px-1 fw-bold">Supprimer</span>
+                                                                </button>
+                                                            </div>
+
+                                                            <!-- Modal de suppression -->
+                                                            <div class="modal fade"
+                                                                id="deleteModal-<%= diplome.identifiant %>"
+                                                                tabindex="-1" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header bg-danger text-white">
+                                                                            <h5 class="modal-title">Confirmation de
+                                                                                suppression
+                                                                            </h5>
+                                                                            <button type="button"
+                                                                                class="btn-close btn-close-white"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <p>Voulez-vous vraiment supprimer la demande
+                                                                                <strong>
+                                                                                    <%= diplome.identifiant %>
+                                                                                </strong> ?
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Annuler</button>
+                                                                            <form
+                                                                                action="/demandes/diplome/delete/<%= diplome.identifiant %>"
+                                                                                method="POST" class="d-inline">
+                                                                                <button type="submit"
+                                                                                    class="btn btn-danger">Supprimer</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 </div>
-<div class="bg-white px-4 py-4"> 
+<div class="bg-white px-4 py-4">
     <div class="row g-3">
         <div class="form-section-header border-info d-flex justify-content-between">
             <div class="">
@@ -84,81 +109,104 @@
                 </h3>
             </div>
         </div>
-       <!-- Civilité -->
+        <!-- Civilité -->
         <div class="col-md-1">
-            <p class="form-label fw-semibold">Civilité :</p> 
-            <span><%= diplome.civilite %></span>
+            <p class="form-label fw-semibold">Civilité :</p>
+            <span>
+                <%= diplome.civilite %>
+            </span>
         </div>
- 
+
         <!-- Nom complet -->
         <div class="col-md-3">
-            <p class="form-label fw-semibold">Nom Complet :</p> 
-            <span><%= diplome.prenom %> <%= diplome.nom %></span>
+            <p class="form-label fw-semibold">Nom Complet :</p>
+            <span>
+                <%= diplome.prenom %>
+                    <%= diplome.nom %>
+            </span>
         </div>
- 
+
         <div class="col-md-3">
-            <p class="form-label fw-semibold">Date de naissance :</p> 
-            <span><%= diplome.dateNaissance %> </span>
+            <p class="form-label fw-semibold">Date de naissance :</p>
+            <span>
+                <%= diplome.dateNaissance %>
+            </span>
         </div>
         <div class="col-md-3">
-            <p class="form-label fw-semibold">Lieu de naissance :</p> 
-            <span><%= diplome.lieu %> </span>
+            <p class="form-label fw-semibold">Lieu de naissance :</p>
+            <span>
+                <%= diplome.lieu %>
+            </span>
         </div>
         <!-- Filière -->
         <div class="col-md-2">
-            <p class="form-label fw-semibold">Filière :</p> 
-            <span><%= diplome.filiere %></span>
+            <p class="form-label fw-semibold">Filière :</p>
+            <span>
+                <%= diplome.filiere %>
+            </span>
         </div>
-        
+
         <!-- Niveau -->
         <div class="col-md-2">
-            <p class="form-label fw-semibold">Niveau :</p> 
-            <span><%= diplome.niveau %></span>
+            <p class="form-label fw-semibold">Niveau :</p>
+            <span>
+                <%= diplome.niveau %>
+            </span>
         </div>
- 
+
         <!-- Promotion -->
         <div class="col-md-2">
-            <p class="form-label fw-semibold">Promotion :</p> 
-            <span><%= diplome.promotion %></span>
+            <p class="form-label fw-semibold">Promotion :</p>
+            <span>
+                <%= diplome.promotion %>
+            </span>
         </div>
- 
+
         <!-- Matricule -->
         <div class="col-md-2">
-            <p class="form-label fw-semibold">Numéro matricule :</p> 
-            <span><%= diplome.matricule %></span>
+            <p class="form-label fw-semibold">Numéro matricule :</p>
+            <span>
+                <%= diplome.matricule %>
+            </span>
         </div>
-         <!-- Email -->
-         <div class="col-md-2">
-            <p class="form-label fw-semibold">Email</p> 
-            <span><%= diplome.email %></span>
+        <!-- Email -->
+        <div class="col-md-2">
+            <p class="form-label fw-semibold">Email</p>
+            <span>
+                <%= diplome.email %>
+            </span>
         </div>
     </div>
- 
+
     <hr class="mx-4">
- 
+
     <div class="form-section bg-white">
         <div class="form-section-header border-info">
             <h3 class="fw-bold text-primary">
                 <i class="bi bi-award fs-1 me-2"></i>Informations sur la demande de diplôme
             </h3>
         </div>
- 
+
         <div class="row">
             <!-- Identifiant -->
             <div class="col-md-4">
-                <p class="form-label fw-semibold">Id :</p> 
-                <span><%= diplome.identifiant %></span>
+                <p class="form-label fw-semibold">Id :</p>
+                <span>
+                    <%= diplome.identifiant %>
+                </span>
             </div>
- 
+
             <!-- Diplôme demandé -->
             <div class="col-md-4">
-                <p class="form-label fw-semibold">Diplôme :</p> 
-                <span><%= diplome.diplome %></span>
+                <p class="form-label fw-semibold">Diplôme :</p>
+                <span>
+                    <%= diplome.diplome %>
+                </span>
             </div>
- 
+
             <!-- Statut -->
             <div class="col-md-4">
-                <p class="form-label fw-semibold">Statut :</p> 
+                <p class="form-label fw-semibold">Statut :</p>
                 <span class="badge 
                     <%= diplome.statut==='En attente' ? 'bg-primary-subtle text-primary' 
                     : diplome.statut==='Validee' ? 'bg-success-subtle text-success' 
@@ -170,5 +218,4 @@
             </div>
         </div>
     </div>
- </div>
- 
+</div>
