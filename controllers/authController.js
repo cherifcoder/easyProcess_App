@@ -15,13 +15,13 @@ exports.login = async (req, res) => {
     const user = admin || etudiant;
     if (!user) {
       logger.warn(`Tentative de connexion échouée : utilisateur introuvable (${email})`);
-      return res.send("Utilisateur introuvable");
+        return res.redirect("/login?status=usernotfound");
     }
 
     const isMatch = await bcrypt.compare(motDePass, user.motDePass);
     if (!isMatch) {
       logger.warn(`Mot de passe incorrect pour ${email}`);
-      return res.send("Mot de passe incorrect");
+      return res.redirect("/login?status=wrongpassword");
     }
 
     req.session.user = {

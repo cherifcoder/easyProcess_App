@@ -46,3 +46,52 @@
         
     </div>
 </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get('status');
+
+    if (status) {
+      let title = '';
+      let message = '';
+      let icon = 'success'; // par défaut
+
+      switch (status) {
+        case 'successadm':
+          title = 'Succès';
+          message = 'Utilisateur enregistrée avec succès';
+          break;
+          title = 'Succès';
+          message = 'Demande rejetee avec succès';
+          break;
+          case 'usernotfound':
+    title = 'Erreur';
+    message = 'Nom d\'utilisateur ou mot de passe incorrect Veillez réessayer';
+    icon = 'error';
+    break;
+
+  case 'wrongpassword':
+    title = 'Erreur';
+    message = 'Nom d\'utilisateur ou mot de passe incorrect Veillez réessayer';
+    icon = 'error';
+    break;
+      }
+
+      Swal.fire({
+        title: title,
+        text: message,
+        icon: icon,
+        showConfirmButton: false,
+        timer: 4000
+      });
+    }
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>

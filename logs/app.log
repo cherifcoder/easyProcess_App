@@ -1717,3 +1717,186 @@
 {"level":"info","message":"Connexion réussie : Haidara Cherif Souleymane (etudiant)","timestamp":"2026-05-23 17:05:28"}
 {"ip":"::1","level":"info","message":"Requête: GET /mesDemandes/list","timestamp":"2026-05-23 17:05:28"}
 {"ip":"::1","level":"info","message":"Requête: GET /mesDemandes/list","timestamp":"2026-05-23 17:05:28"}
+{"ip":"::1","level":"info","message":"Requête: GET /logout","timestamp":"2026-05-23 17:07:52"}
+{"ip":"::1","level":"info","message":"Requête: GET /logout","timestamp":"2026-05-23 17:07:52"}
+{"level":"info","message":"Déconnexion réussie","timestamp":"2026-05-23 17:07:52"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:07:52"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:07:52"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:08:00"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:08:00"}
+{"level":"info","message":"Connexion réussie : Admin . (Directeur)","timestamp":"2026-05-23 17:08:00"}
+{"ip":"::1","level":"info","message":"Requête: GET /dashboard","timestamp":"2026-05-23 17:08:00"}
+{"ip":"::1","level":"info","message":"Requête: GET /dashboard","timestamp":"2026-05-23 17:08:00"}
+{"ip":"::1","level":"info","message":"Requête: GET /logout","timestamp":"2026-05-23 17:30:06"}
+{"ip":"::1","level":"info","message":"Requête: GET /logout","timestamp":"2026-05-23 17:30:06"}
+{"level":"info","message":"Déconnexion réussie","timestamp":"2026-05-23 17:30:06"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:30:06"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:30:06"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:30:12"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:30:12"}
+{"level":"warn","message":"Mot de passe incorrect pour admin@gmail.com","timestamp":"2026-05-23 17:30:12"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:30:12"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:30:12"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:30:17"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:30:17"}
+{"level":"warn","message":"Mot de passe incorrect pour admin@gmail.com","timestamp":"2026-05-23 17:30:17"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:30:17"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:30:17"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:30:24"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:30:24"}
+{"level":"warn","message":"Mot de passe incorrect pour admin@gmail.com","timestamp":"2026-05-23 17:30:24"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:30:24"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:30:24"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:31:09"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:31:09"}
+{"level":"warn","message":"Mot de passe incorrect pour admin@gmail.com","timestamp":"2026-05-23 17:31:09"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:31:09"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:31:09"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:31:15"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:31:15"}
+{"level":"warn","message":"Tentative de connexion échouée : utilisateur introuvable (DDadmin@gmail.com)","timestamp":"2026-05-23 17:31:15"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 17:31:15"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 17:31:15"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:31:17"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:31:17"}
+{"level":"warn","message":"Tentative de connexion échouée : utilisateur introuvable (DDadmin@gmail.com)","timestamp":"2026-05-23 17:31:17"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 17:31:17"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 17:31:17"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:36:14"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:36:14"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:36:19"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:36:19"}
+{"level":"info","message":"Connexion réussie : Admin . (Directeur)","timestamp":"2026-05-23 17:36:19"}
+{"ip":"::1","level":"info","message":"Requête: GET /dashboard","timestamp":"2026-05-23 17:36:19"}
+{"ip":"::1","level":"info","message":"Requête: GET /dashboard","timestamp":"2026-05-23 17:36:19"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:36:24"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:36:24"}
+{"level":"warn","message":"Mot de passe incorrect pour admin@gmail.com","timestamp":"2026-05-23 17:36:24"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:36:24"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:36:24"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:36:30"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:36:30"}
+{"level":"warn","message":"Tentative de connexion échouée : utilisateur introuvable (aEdmin@gmail.com)","timestamp":"2026-05-23 17:36:30"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 17:36:30"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 17:36:30"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:37:46"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:37:46"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:37:48"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:37:48"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:37:49"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:37:49"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:37:49"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:37:49"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:37:49"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:37:49"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:37:50"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:37:50"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:37:53"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:37:53"}
+{"level":"warn","message":"Mot de passe incorrect pour admin@gmail.com","timestamp":"2026-05-23 17:37:53"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:37:53"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:37:53"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:41:00"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:41:00"}
+{"level":"warn","message":"Mot de passe incorrect pour admin@gmail.com","timestamp":"2026-05-23 17:41:00"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:41:00"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:41:00"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:46:58"}
+{"ip":"::1","level":"info","message":"Requête: GET /","timestamp":"2026-05-23 17:46:58"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:47:02"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:47:02"}
+{"level":"warn","message":"Mot de passe incorrect pour admin@gmail.com","timestamp":"2026-05-23 17:47:02"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:47:02"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:47:02"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:47:12"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:47:12"}
+{"level":"warn","message":"Mot de passe incorrect pour cherif@gmail.com","timestamp":"2026-05-23 17:47:12"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:47:12"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:47:12"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:47:21"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:47:21"}
+{"level":"warn","message":"Tentative de connexion échouée : utilisateur introuvable (cheDDrif@gmail.com)","timestamp":"2026-05-23 17:47:21"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 17:47:21"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 17:47:21"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:49:12"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:49:12"}
+{"level":"warn","message":"Tentative de connexion échouée : utilisateur introuvable (aDdmin@gmail.com)","timestamp":"2026-05-23 17:49:12"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 17:49:12"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 17:49:12"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 17:50:40"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 17:50:40"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 17:50:45"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 17:50:45"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 17:51:06"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 17:51:06"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:51:12"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:51:12"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:51:16"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:51:16"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:51:53"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:51:53"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:51:56"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:51:56"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:53:08"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:53:08"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:53:42"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:53:42"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:54:08"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:54:08"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:54:53"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:54:53"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:55:20"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:55:20"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:55:22"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:55:22"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:55:22"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:55:22"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:55:22"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:55:22"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:55:55"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:55:55"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:55:57"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:55:57"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:56:15"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:56:15"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:56:43"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:56:43"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:57:08"}
+{"ip":"::1","level":"info","message":"Requête: GET /login","timestamp":"2026-05-23 17:57:08"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:57:20"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:57:20"}
+{"level":"warn","message":"Mot de passe incorrect pour admin@gmail.com","timestamp":"2026-05-23 17:57:20"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:57:20"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:57:20"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:57:26"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:57:26"}
+{"level":"warn","message":"Mot de passe incorrect pour admin@gmail.com","timestamp":"2026-05-23 17:57:26"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:57:26"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:57:26"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:59:42"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 17:59:42"}
+{"level":"warn","message":"Mot de passe incorrect pour admin@gmail.com","timestamp":"2026-05-23 17:59:42"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:59:42"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=wrongpassword","timestamp":"2026-05-23 17:59:42"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 18:01:03"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 18:01:03"}
+{"level":"warn","message":"Tentative de connexion échouée : utilisateur introuvable (dsds)","timestamp":"2026-05-23 18:01:03"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 18:01:03"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 18:01:03"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 18:01:48"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 18:01:48"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 18:01:53"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 18:01:53"}
+{"level":"warn","message":"Tentative de connexion échouée : utilisateur introuvable (ds)","timestamp":"2026-05-23 18:01:53"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 18:01:53"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 18:01:53"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 18:03:42"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 18:03:42"}
+{"level":"warn","message":"Tentative de connexion échouée : utilisateur introuvable ()","timestamp":"2026-05-23 18:03:42"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 18:03:42"}
+{"ip":"::1","level":"info","message":"Requête: GET /login?status=usernotfound","timestamp":"2026-05-23 18:03:42"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 18:03:54"}
+{"ip":"::1","level":"info","message":"Requête: POST /login","timestamp":"2026-05-23 18:03:54"}
+{"level":"info","message":"Connexion réussie : Admin . (Directeur)","timestamp":"2026-05-23 18:03:54"}
+{"ip":"::1","level":"info","message":"Requête: GET /dashboard","timestamp":"2026-05-23 18:03:54"}
+{"ip":"::1","level":"info","message":"Requête: GET /dashboard","timestamp":"2026-05-23 18:03:54"}

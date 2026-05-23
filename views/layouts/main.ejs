@@ -116,6 +116,17 @@
           title = 'Succès';
           message = 'Demande rejetee avec succès';
           break;
+          case 'usernotfound':
+    title = 'Erreur';
+    message = 'Utilisateur introuvable';
+    icon = 'error';
+    break;
+
+  case 'wrongpassword':
+    title = 'Erreur';
+    message = 'Mot de passe incorrect';
+    icon = 'error';
+    break;
       }
 
       Swal.fire({
