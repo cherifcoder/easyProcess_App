@@ -23,7 +23,14 @@ exports.registerEtudiant=async(req,res)=>{
 
 
         await newEtudiant.save();
-        res.redirect("/mesDemandes/list?status=successetd")
+        if (req.session.user && (req.session.user.role === "Directeur" || req.session.user.role === "Secretaire")) {
+  // Cas admin → retour vers la liste des étudiants
+  return res.redirect("/users/etd?status=successetd");
+} else {
+  // Cas étudiant → retour vers la page de login
+  return res.redirect("/login?status=successetd");
+}
+
     }catch(err){
         console.log(err);
         res.send(`Erreur lors de l'enregistrement : ${err}`)

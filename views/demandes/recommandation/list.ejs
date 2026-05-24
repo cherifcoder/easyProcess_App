@@ -97,13 +97,12 @@
                         <td><%= recommandation.matricule %></td>
                         <td><%= recommandation.type %></td>
                         <td class=" badge 
-                            <%=
-                            recommandation.statut==='En attente'?'bg-info-subtle text-info':
-                            recommandation.statut==='Validee'? 'bg-primary-subtle text-primary':
-                            recommandation.statut==='Signee'?'bg-success-subtle text-success':
-                            recommandation.statut==='Rejetee'?'bg-danger-subtle text-danger':''
-                            %> 
-                            ">
+                           <%= recommandation.statut==='En attente' ? 'bg-info-subtle text-info' :
+                  recommandation.statut==='Validee' ? 'bg-success-subtle text-success' :
+                  recommandation.statut==='Corrigee' ? 'bg-warning-subtle text-warning' :
+                  recommandation.statut==='Signee' ? 'bg-primary-subtle text-primary' :
+                  recommandation.statut==='Rejetee' ? 'bg-danger-subtle text-danger' : '' %>">
+                            
                     <%=recommandation.statut %>
                 </td>
                 <td>

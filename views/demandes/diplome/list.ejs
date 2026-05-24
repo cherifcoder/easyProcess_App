@@ -117,13 +117,12 @@
                         <%=diplome.diplome %>
                     </td>
                     <td class=" badge 
-                            <%=
-                            diplome.statut==='En attente'?'bg-info-subtle text-info':
-                            diplome.statut==='Validee'? 'bg-primary-subtle text-primary':
-                            diplome.statut==='Signee'?'bg-success-subtle text-success':
-                            diplome.statut==='Rejetee'?'bg-danger-subtle text-danger':''
-                            %> 
-                            ">
+                            <%= diplome.statut==='En attente' ? 'bg-info-subtle text-info' :
+                  diplome.statut==='Validee' ? 'bg-success-subtle text-success' :
+                  diplome.statut==='Corrigee' ? 'bg-warning-subtle text-warning' :
+                  diplome.statut==='Signee' ? 'bg-primary-subtle text-primary' :
+                  diplome.statut==='Rejetee' ? 'bg-danger-subtle text-danger' : '' %>">
+                           
                         <%=diplome.statut %>
                     </td>
                     <td>

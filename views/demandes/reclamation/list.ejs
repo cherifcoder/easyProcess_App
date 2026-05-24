@@ -119,13 +119,11 @@
                     <%=reclamation.motif %>
                 </td>
                 <td class=" badge 
-                            <%=
-                            reclamation.statut==='En attente'?'bg-info-subtle text-info':
-                            reclamation.statut==='Validee'? 'bg-primary-subtle text-primary':
-                            reclamation.statut==='Signee'?'bg-success-subtle text-success':
-                            reclamation.statut==='Rejetee'?'bg-danger-subtle text-danger':''
-                            %> 
-                            ">
+                            <%= reclamation.statut==='En attente' ? 'bg-info-subtle text-info' :
+                  reclamation.statut==='Validee' ? 'bg-success-subtle text-success' :
+                  reclamation.statut==='Corrigee' ? 'bg-warning-subtle text-warning' :
+                  reclamation.statut==='Signee' ? 'bg-primary-subtle text-primary' :
+                  reclamation.statut==='Rejetee' ? 'bg-danger-subtle text-danger' : '' %>">
                     <%=reclamation.statut %>
                 </td>
                 <td>

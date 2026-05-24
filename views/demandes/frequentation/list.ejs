@@ -119,13 +119,12 @@
                     <%=frequentation.destination %>
                 </td>
                 <td class=" badge 
-                            <%=
-                            frequentation.statut==='En attente'?'bg-info-subtle text-info':
-                            frequentation.statut==='Validee'? 'bg-primary-subtle text-primary':
-                            frequentation.statut==='Signee'?'bg-success-subtle text-success':
-                            frequentation.statut==='Rejetee'?'bg-danger-subtle text-danger':''
-                            %> 
-                            ">
+                           <%= frequentation.statut==='En attente' ? 'bg-info-subtle text-info' :
+                  frequentation.statut==='Validee' ? 'bg-success-subtle text-success' :
+                  frequentation.statut==='Corrigee' ? 'bg-warning-subtle text-warning' :
+                  frequentation.statut==='Signee' ? 'bg-primary-subtle text-primary' :
+                  frequentation.statut==='Rejetee' ? 'bg-danger-subtle text-danger' : '' %>">
+                         
                     <%=frequentation.statut %>
                 </td>
                 <td>

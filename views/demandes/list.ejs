@@ -130,23 +130,66 @@
                 <%= demande.promotion %>
               </td>
               <td
-                class="z-0 m-2 badge <%=demande.statut==='En attente'? 'bg-primary-subtle text-primary':demande.statut==='validee'?'bg-success-subtle text-success':demande.statut==='rejetee'?'bg-danger-subtle text-danger':''%> ">
-                <%=demande.statut %>
+                class="z-0 m-2 badge 
+                <%= demande.statut==='En attente' ? 'bg-info-subtle text-info' :
+                  demande.statut==='Validee' ? 'bg-success-subtle text-success' :
+                  demande.statut==='Corrigee' ? 'bg-warning-subtle text-warning' :
+                  demande.statut==='Signee' ? 'bg-primary-subtle text-primary' :
+                  demande.statut==='Rejetee' ? 'bg-danger-subtle text-danger' : '' %>">
+              <%= demande.statut %>
               </td>
               <td>
+                 
                 <a href="/demandes/<%= demande.type %>/view/<%= demande.identifiant %> "
                   class="badge bg-primary-subtle text-primary rounded-3 px-1 py-1">
                   <i class="bi bi-eye fs-4"></i>
                 </a>
+                 
                 <a href="/demandes/edit/<%= demande.type %>/<%= demande.identifiant %> "  class="badge bg-warning-subtle text-warning rounded-3 px-1 py-1">
                   <i class="bi bi-pen fs-4"></i>
                 </a>
-                <a href="" class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+<% if (demande.statut==="En attente" || demande.statut==="Rejetee" ) { %>
+                <a href="/demandes/<%= demande.type %>/valider/<%= demande.identifiant %>" class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
                   <i class="bi bi-check2-circle fs-4"></i>
                 </a>
-                <a href="" class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
+                <% } %>
+
+                 <% if (demande.statut==="En attente" || demande.statut==="Validee" ) { %>
+                <a href="/demandes/<%= demande.type %>/rejeter/<%= demande.identifiant %>" class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
                   <i class="bi bi-x-circle fs-4"></i>
                 </a>
+
+                <% } %>  <% if (user && user.role === "Directeur") { %>
+                            <% if (demande.statut==="Validee" && demande.type !== "Releve" && demande.type !== "Reclamation" ) { %>
+                                <a href="/demandes/<%= demande.type %>/signer/<%= demande.identifiant %>"
+                                    class="badge bg-success-subtle text-success rounded-3 px-1 py-1">
+                                    <i class="bi-file-earmark-text fs-4"></i>
+                                </a>
+                                <% } %>
+                                <% } %>
+
+
+
+ <% if (demande.statut==="Validee" && (demande.type === "Reclamation" || demande.type === "Releve" ) ){ %>
+                                <form method="POST" action="/demandes/<%= demande.type %>/upload/<%= demande.identifiant %>"
+                                    enctype="multipart/form-data" style="display:inline;">
+
+                                    <label class="badge bg-info-subtle text-info rounded-3 px-1 py-1"
+                                        style="cursor:pointer;">
+                                        <i class="bi bi-upload fs-4"></i>
+                                        <input type="file" name="pdfCorrection" accept="application/pdf" required
+                                            style="display:none;" onchange="this.form.submit()">
+                                    </label>
+                                </form>
+                                <% } %>
+
+                 <% if (demande.statut==="Signee" || demande.statut==="Corrigee" ) { %>
+                                        <a href="/demandes/demande/download/<%= demande.identifiant %>"
+                                            class="badge bg-info-subtle text-info rounded-3 px-1 py-1" download>
+                                            <i class="bi bi-download fs-4"></i>
+                                        </a>
+                                        <% } %>
+
                 <a action="/demandes/diplome/delete/<%=demande.identifiant %> " method="POST"
                   class="badge bg-danger-subtle text-danger rounded-3 px-1 py-1">
                   <button class="bi bi-trash fs-4 text-danger bg-danger-subtle" data-bs-toggle="modal"

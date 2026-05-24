@@ -47,8 +47,6 @@
 
 
 
-
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
@@ -125,6 +123,12 @@
   case 'wrongpassword':
     title = 'Erreur';
     message = 'Mot de passe incorrect';
+    icon = 'error';
+    break;
+
+    case 'champIncomplet':
+    title = 'Erreur';
+    message = 'Veuillez remplir tous les champs obligatoires';
     icon = 'error';
     break;
       }

@@ -95,13 +95,11 @@
                         <td><%= releve.matricule %></td>
                         <td><%= releve.semestre %></td>
                         <td class=" badge 
-                            <%=
-                            releve.statut==='En attente'?'bg-info-subtle text-info':
-                            releve.statut==='Validee'? 'bg-primary-subtle text-primary':
-                            releve.statut==='Signee'?'bg-success-subtle text-success':
-                            releve.statut==='Rejetee'?'bg-danger-subtle text-danger':''
-                            %> 
-                            ">
+                            <%= releve.statut==='En attente' ? 'bg-info-subtle text-info' :
+                  releve.statut==='Validee' ? 'bg-success-subtle text-success' :
+                  releve.statut==='Corrigee' ? 'bg-warning-subtle text-warning' :
+                  releve.statut==='Signee' ? 'bg-primary-subtle text-primary' :
+                  releve.statut==='Rejetee' ? 'bg-danger-subtle text-danger' : '' %>">
                     <%=releve.statut %>
                 </td>
                 <td>

@@ -46,8 +46,10 @@
             <td><%= demande.niveau || "-" %></td>
             <td><%= demande.promotion || "-" %></td>
             <td class="badge 
-              <%= demande.statut==='En attente' ? 'bg-info-subtle text-info' :
+             <%= demande.statut==='En attente' ? 'bg-info-subtle text-info' :
                   demande.statut==='Validee' ? 'bg-success-subtle text-success' :
+                  demande.statut==='Corrigee' ? 'bg-warning-subtle text-warning' :
+                  demande.statut==='Signee' ? 'bg-primary-subtle text-primary' :
                   demande.statut==='Rejetee' ? 'bg-danger-subtle text-danger' : '' %>">
               <%= demande.statut %>
             </td>
